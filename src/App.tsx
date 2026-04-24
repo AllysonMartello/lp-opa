@@ -30,7 +30,7 @@ export default function App() {
 
       <div className="z-10 grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl">
         <motion.a 
-          href="/composicao-opa/index.html"
+          href="/composicao-opa/"
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -54,7 +54,7 @@ export default function App() {
         </motion.a>
 
         <motion.a 
-          href="/imovel-morro-da-cruz/index.html"
+          href="/imovel-morro-da-cruz/"
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
