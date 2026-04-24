@@ -87,7 +87,6 @@ const DiagnosisForm = () => {
             value={formData[q.id] || ''}
             onChange={(e) => setFormData({ ...formData, [q.id]: e.target.value })}
             onKeyDown={(e) => { if (e.key === 'Enter' && canProceed) handleNext(); }}
-            autoFocus
           />
         ) : (
           <div className="space-y-3">
