@@ -328,15 +328,8 @@ export default function Home() {
                     <span className="text-[10px] uppercase tracking-[0.4em] text-[#2F5D82]/60 font-bold">Iniciando Experiência 360°</span>
                   </div>
                 </div>
-                {/* Scanning Line */}
+                 {/* Scanning Line */}
                 <div className="absolute top-0 left-0 w-full h-px bg-[#2F5D82]/20 animate-[scan_4s_ease-in-out_infinite]" />
-                <style jsx>{`
-                  @keyframes scan {
-                    0% { top: 0%; }
-                    50% { top: 100%; }
-                    100% { top: 0%; }
-                  }
-                `}</style>
               </div>
               <FadeIn>
                 <h3 className="text-[18px] md:text-[22px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-5 border-b border-[#D9D9D9] pb-3 inline-block">Tour virtual de alta fidelidade</h3>
