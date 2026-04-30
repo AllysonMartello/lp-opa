@@ -535,13 +535,10 @@ export default function App() {
               </div>
             </div>
             
-            <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
-              <p className="text-[10px] text-white/20 uppercase tracking-[0.3em]">
+            <div className="pt-8 flex justify-center border-t border-white/5">
+              <p className="text-[10px] text-white/20 uppercase tracking-[0.3em] text-center">
                 © {new Date().getFullYear()} OPA. Todos os direitos reservados.
               </p>
-              <div className="flex gap-6">
-                 <span className="text-[10px] text-white/20 uppercase tracking-[0.3em]">Design por AI Studio Build</span>
-              </div>
             </div>
           </div>
         </footer>
