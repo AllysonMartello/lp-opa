@@ -14,12 +14,11 @@ export default function Home() {
       {/* 1. HERO */}
       <section className="relative min-h-[100svh] w-full flex items-center pt-[200px] pb-[200px] overflow-hidden">
         <Image
-          src="https://images.openai.com/static-rsc-4/HRE6Tpjva07ForOwnDsh97YsvMYUy814NtFdNtP2EKTa5StOhroolOyHLlr06q6Tff9fvKmy0new8KNP7HacKiQHA6n3hPjzBzPwYGmxHkD1bG9dx07xwwKBJpW8L6Inqhkpj1siWVKiD5L4lhCbUfZYcNGn_GODPdigKzJWe3GP3xhDSbY-40vv0TKBQ665?purpose=fullsize"
-          alt="Vista luxuosa de uma propriedade em Ilhabela com luz natural"
+          src="/assets/images/ilhabela-foto-de-cima-drone-opa-ilhabela.jpg"
+          alt="Vista aérea de Ilhabela - Foto de Drone OPA"
           fill
           className="object-cover"
           priority
-          referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-[#0F2A44]/35" /> {/* Slightly lighter overlay for more natural light */}
         

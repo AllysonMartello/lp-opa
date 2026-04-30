@@ -17,11 +17,11 @@ export default function App() {
         {/* 1. HERO */}
         <section className="relative min-h-[100svh] w-full flex items-center pt-[200px] pb-[200px] overflow-hidden">
           <img
-            src="https://images.openai.com/static-rsc-4/HRE6Tpjva07ForOwnDsh97YsvMYUy814NtFdNtP2EKTa5StOhroolOyHLlr06q6Tff9fvKmy0new8KNP7HacKiQHA6n3hPjzBzPwYGmxHkD1bG9dx07xwwKBJpW8L6Inqhkpj1siWVKiD5L4lhCbUfZYcNGn_GODPdigKzJWe3GP3xhDSbY-40vv0TKBQ665?purpose=fullsize"
-            alt="Vista luxuosa de uma propriedade em Ilhabela com luz natural"
+            src="/assets/images/ilhabela-foto-de-cima-drone-opa-ilhabela.jpg"
+            alt="Vista aérea de Ilhabela - Foto de Drone OPA"
             className="absolute inset-0 w-full h-full object-cover"
-            referrerPolicy="no-referrer"
           />
+
           <div className="absolute inset-0 bg-[#0F2A44]/35" />
           
           <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-16 xl:px-24 flex flex-col items-start justify-center text-white">
