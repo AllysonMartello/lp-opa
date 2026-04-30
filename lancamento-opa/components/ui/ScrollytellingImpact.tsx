@@ -14,14 +14,21 @@ const ScrollytellingImpact = () => {
   const phrase3Ref = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
+    const isMobile = window.innerWidth < 768;
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: "+=300%", // 300vh duration
+        end: isMobile ? "+=150%" : "+=300%", // Shorter scroll distance on mobile
         pin: true,
-        scrub: 1.5,
-        // markers: true, // For debugging if needed
+        scrub: 0.5, // Much faster scrub for more fluid feel
+        snap: {
+          snapTo: [0, 0.45, 0.9], // Snap to phrases
+          duration: { min: 0.2, max: 0.5 },
+          delay: 0,
+          ease: "power2.inOut"
+        }
       }
     });
 
@@ -31,51 +38,51 @@ const ScrollytellingImpact = () => {
     // First transition: P1 out, P2 in
     tl.to(phrase1Ref.current, {
       opacity: 0,
-      y: -100,
+      y: -60,
       scale: 0.95,
-      filter: "blur(20px)",
+      filter: "blur(15px)",
       duration: 1,
       ease: "power2.inOut"
-    }, 1)
+    }, 0.5)
     .fromTo(phrase2Ref.current, {
       opacity: 0,
-      y: 100,
+      y: 60,
       scale: 1.05,
-      filter: "blur(20px)",
+      filter: "blur(15px)",
     }, {
       opacity: 1,
       y: 0,
       scale: 1,
       filter: "blur(0px)",
-      duration: 1.2,
+      duration: 1,
       ease: "power2.out"
-    }, 1.2)
+    }, 0.8)
     
     // Second transition: P2 out, P3 in
     .to(phrase2Ref.current, {
       opacity: 0,
-      y: -100,
+      y: -60,
       scale: 0.95,
-      filter: "blur(20px)",
+      filter: "blur(15px)",
       duration: 1,
       ease: "power2.inOut"
-    }, 3)
+    }, 2)
     .fromTo(phrase3Ref.current, {
       opacity: 0,
-      y: 100,
+      y: 60,
       scale: 1.05,
-      filter: "blur(20px)",
+      filter: "blur(15px)",
     }, {
       opacity: 1,
       y: 0,
       scale: 1,
       filter: "blur(0px)",
-      duration: 1.2,
+      duration: 1,
       ease: "power2.out"
-    }, 3.2);
+    }, 2.3);
 
     // Final buffer to hold P3
-    tl.to({}, { duration: 1.5 });
+    tl.to({}, { duration: 0.8 });
 
   }, { scope: containerRef });
 

@@ -5,7 +5,7 @@ import { Eye, Target, Zap, Smartphone, FileText, MousePointerClick, Layers, Sear
 
 export default function Home() {
   return (
-    <main className="min-h-screen relative selection:bg-[#2F5D82]/30">
+    <main className="min-h-screen relative selection:bg-[#2F5D82]/30 overflow-x-hidden">
       {/* Background Subtle Architectural Line */}
       <div className="absolute top-0 right-[35%] w-px h-full bg-[#D9D9D9] opacity-[0.15] hidden lg:block z-0 pointer-events-none" />
 
@@ -115,11 +115,11 @@ export default function Home() {
 
             <FadeIn delay={0.3} className="relative aspect-[16/10] lg:aspect-square w-full rounded-[32px] border border-[#D9D9D9] p-3 bg-white shadow-sm overflow-hidden">
                <Image
-                src="https://images.openai.com/static-rsc-4/TVJWhxoFqNA_fT19IqbsC-KW2BCpia3bucOpYByy8l6kex3wJdtEGd3owspydmVVST-mQoTW2f7vbebJuJynYJBToSeE0UNT_lNqrGgoUYrKSATd-K4FvLCM8QAiN_trENy2bR4uJ7EdDn8dwRT8OxCVYGkezu_soIYnECAC7ZQkFA0BJy-sIdflu4UIdqNs?purpose=fullsize"
-                alt="Arquitetura integrada com natureza"
+                src="/assets/images/sobre-a-opa-imoveis-ilhabela.png"
+                alt="Sobre a OPA Imóveis Ilhabela"
                 fill
                 className="object-cover rounded-[24px]"
-                referrerPolicy="no-referrer"
+                priority
               />
             </FadeIn>
           </div>
@@ -159,7 +159,7 @@ export default function Home() {
               </div>
               <div className="flex items-center gap-4">
                 <span className="h-px w-12 bg-[#D9D9D9]/30" />
-                <p className="text-[#2B2B2B]/40 text-[11px] uppercase tracking-[0.4em] font-medium whitespace-nowrap">Depois disso, construímos o lançamento</p>
+                <p className="text-[#2B2B2B]/40 text-[11px] uppercase tracking-[0.4em] font-medium">Depois disso, construímos o lançamento</p>
               </div>
             </FadeIn>
           </div>
@@ -292,28 +292,52 @@ export default function Home() {
                   </a>
                 </div>
               </FadeIn>
-              <FadeIn className="order-1 lg:order-2 relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-2 bg-white shadow-sm">
-                <Image
-                  src="https://images.openai.com/static-rsc-4/H0LcV4rAfIUeuDo0JpzqCwHXWH_CVQsSbTvqCPa_Xrv3_iSv4JUjUY-rEQvkoOSK-szS2iO1V94VVeTsTs-u9tyCJ6si_bRucLYF9OF9-FE-uMEZsjkOLFx3t3sLa5X_SwIV8qf4-uhj7hb23nOJGlEXjRJiY9GUycsk8xyZ6ZMckl4G-9Q0jpZnl-Ftzcw0?purpose=fullsize"
-                  alt="Vídeo cinematográfico"
-                  fill
-                  className="object-cover"
-                  referrerPolicy="no-referrer"
-                />
-              </FadeIn>
+               <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-1 bg-[#0F2A44] shadow-2xl group/video">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#2F5D82]/30 to-transparent opacity-50" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-[#2F5D82] rounded-full blur-2xl opacity-20 group-hover/video:opacity-40 transition-opacity duration-700" />
+                    <div className="relative w-20 h-20 rounded-full border border-white/20 flex items-center justify-center bg-white/5 backdrop-blur-sm group-hover/video:scale-110 transition-transform duration-700">
+                      <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[18px] border-l-white border-b-[10px] border-b-transparent ml-1" />
+                    </div>
+                  </div>
+                </div>
+                {/* Animated Waveform Lines */}
+                <div className="absolute bottom-0 left-0 w-full h-24 flex items-end justify-center gap-1 px-12 pb-8 opacity-20">
+                  {[...Array(12)].map((_, i) => (
+                    <div 
+                      key={i} 
+                      className="w-1 bg-white rounded-full animate-pulse" 
+                      style={{ height: `${Math.random() * 100}%`, animationDelay: `${i * 0.1}s` }} 
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* Item 2 */}
             <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center">
-              <FadeIn className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-2 bg-white shadow-sm">
-                <Image
-                  src="https://images.openai.com/static-rsc-4/ONd65rFcdYLhvojtt07JtNCD9gKb9ExOQOGwk8VxxuVvM_eM5xheTsgqYr91kVyuN8TAjkVTi7cp-veTgbIq08DooXeX5UP9hvd9fBUsPEM-w_fBy_ZkacKVAwRcEPFnNx-umpVH5VJrVe3tLNd5t1zY3EmtyUhSjA-ge40xC84y6CLaGzRpxJD_URXkY2e0?purpose=fullsize"
-                  alt="Tour virtual de alta fidelidade"
-                  fill
-                  className="object-cover p-2"
-                  referrerPolicy="no-referrer"
-                />
-              </FadeIn>
+               <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-1 bg-[#F7F6F3] shadow-2xl group/tour">
+                <div className="absolute inset-0 bg-[radial-gradient(#2F5D82_1px,transparent_1px)] [background-size:20px_20px] opacity-[0.05]" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="relative flex flex-col items-center gap-4">
+                    <div className="w-24 h-24 rounded-full border-2 border-[#2F5D82]/20 flex items-center justify-center relative">
+                      <div className="absolute inset-0 rounded-full border-t-2 border-[#2F5D82] animate-[spin_3s_linear_infinite]" />
+                      <Layers className="text-[#2F5D82] w-10 h-10" />
+                    </div>
+                    <span className="text-[10px] uppercase tracking-[0.4em] text-[#2F5D82]/60 font-bold">Iniciando Experiência 360°</span>
+                  </div>
+                </div>
+                {/* Scanning Line */}
+                <div className="absolute top-0 left-0 w-full h-px bg-[#2F5D82]/20 animate-[scan_4s_ease-in-out_infinite]" />
+                <style jsx>{`
+                  @keyframes scan {
+                    0% { top: 0%; }
+                    50% { top: 100%; }
+                    100% { top: 0%; }
+                  }
+                `}</style>
+              </div>
               <FadeIn>
                 <h3 className="text-[18px] md:text-[22px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-5 border-b border-[#D9D9D9] pb-3 inline-block">Tour virtual de alta fidelidade</h3>
                 <p className="text-[17px] md:text-[19px] font-light text-[#2B2B2B]/80 leading-relaxed mt-2">
