@@ -32,7 +32,7 @@ export default function Home() {
           </FadeIn>
           
           <FadeIn delay={0.2} className="max-w-2xl">
-            <p className="mt-10 text-[18px] tracking-wide font-light leading-[1.8] opacity-90 drop-shadow-sm">
+            <p className="mt-10 text-[18px] tracking-wide font-normal leading-[1.8] opacity-100 drop-shadow-sm">
               Anunciar não é lançar. Divulgar não é posicionar. Expor imóveis e empreendimentos de alto padrão sem estratégia não acelera a venda.{' '}<br className="hidden md:block"/>
               Desgasta, perde, tração, não vende! .
             </p>
@@ -56,7 +56,7 @@ export default function Home() {
               <h2 className="font-sans text-3xl md:text-5xl text-[#0F2A44] leading-[1.1] mb-8 font-bold">
                 Veja o que normalmente é feito com imóveis.
               </h2>
-              <p className="text-[#2B2B2B]/70 font-light text-base leading-relaxed max-w-md">
+              <p className="text-[#2B2B2B]/90 font-normal text-base leading-relaxed max-w-md">
                 Esse é o processo padrão. E ele funciona para imóvel comum, em mercado de volume. Não para um imóvel de alto padrão como os que trabalhamos em Ilhabela.<br/><br/>
                 Seu imóvel não está sem vender por falta de divulgação. Ele apenas nunca foi apresentado ao mercado da forma correta. O comprador qualificado não age por impulso. Ele pesquisa, compara e precisa sentir o estilo de vida antes de agendar visita. Quando o ativo chega ao mercado sem narrativa e sem estratégia, ele some no barulho. E quando o comprador certo finalmente aparece, o produto já perdeu tração de ter ido ao mercado..
               </p>
@@ -108,7 +108,7 @@ export default function Home() {
                 </h2>
               </FadeIn>
               
-              <FadeIn delay={0.2} className="space-y-6 text-[#2B2B2B]/80 font-light text-base leading-relaxed">
+              <FadeIn delay={0.2} className="space-y-6 text-[#2B2B2B]/90 font-normal text-base leading-relaxed">
                 <p className="text-lg">A OPA foi construída para resolver o que a divulgação sozinha nunca resolve.</p>
                 <p>Reunimos arquitetura, mercado imobiliário e conhecimento profundo de Ilhabela em um único processo. Não lemos um imóvel somente como corretores. Lemos como quem conhece cada bairro, cada encosta, cada orientação solar da ilha, e sabe exatamente o que aquilo vale para o comprador certo.</p>
               </FadeIn>

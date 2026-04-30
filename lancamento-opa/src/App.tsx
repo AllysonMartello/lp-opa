@@ -34,7 +34,7 @@ export default function App() {
             </FadeIn>
             
             <FadeIn delay={0.2} className="max-w-2xl">
-              <p className="mt-10 text-[18px] tracking-wide font-light leading-[1.8] opacity-90 drop-shadow-sm">
+              <p className="mt-10 text-[18px] tracking-wide font-normal leading-[1.8] opacity-100 drop-shadow-sm">
                 Anunciar não é lançar. Divulgar não é posicionar. Expor imóveis e empreendimentos de alto padrão sem estratégia não acelera a venda.{' '}<br className="hidden md:block"/>
                 Desgasta, perde, tração, não vende! .
               </p>
@@ -58,7 +58,7 @@ export default function App() {
                 <h2 className="font-sans text-3xl md:text-5xl text-[#0F2A44] leading-[1.1] mb-8 font-bold">
                   Veja o que normalmente é feito com imóveis.
                 </h2>
-                <p className="text-[#2B2B2B]/70 font-light text-base leading-relaxed max-w-md">
+                <p className="text-[#2B2B2B]/90 font-normal text-base leading-relaxed max-w-md">
                   Esse é o processo padrão. E ele funciona para imóvel comum, em mercado de volume. Não para um imóvel de alto padrão como os que trabalhamos em Ilhabela.<br/><br/>
                   Seu imóvel não está sem vender por falta de divulgação. Ele apenas nunca foi apresentado ao mercado da forma correta. O comprador qualificado não age por impulso. Ele pesquisa, compara e precisa sentir o estilo de vida antes de agendar visita. Quando o ativo chega ao mercado sem narrativa e sem estratégia, ele some no barulho. E quando o comprador certo finalmente aparece, o produto já perdeu tração de ter ido ao mercado..
                 </p>
@@ -107,7 +107,7 @@ export default function App() {
                   </h2>
                 </FadeIn>
                 
-                <FadeIn delay={0.2} className="space-y-6 text-[#2B2B2B]/80 font-light text-base leading-relaxed">
+                <FadeIn delay={0.2} className="space-y-6 text-[#2B2B2B]/90 font-normal text-base leading-relaxed">
                   <p className="text-lg">A OPA foi construída para resolver o que a divulgação sozinha nunca resolve.</p>
                   <p>Reunimos arquitetura, mercado imobiliário e conhecimento profundo de Ilhabela em um único processo. Não lemos um imóvel somente como corretores. Lemos como quem conhece cada bairro, cada encosta, cada orientação solar da ilha, e sabe exatamente o que aquilo vale para o comprador certo.</p>
                 </FadeIn>
@@ -264,7 +264,7 @@ export default function App() {
               <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-center">
                 <FadeIn className="order-2 lg:order-1">
                   <h3 className="text-[18px] md:text-[22px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-5 border-b border-[#D9D9D9] pb-3 inline-block">Vídeo cinematográfico</h3>
-                  <p className="text-[17px] md:text-[19px] font-light text-[#2B2B2B]/80 leading-relaxed mt-2">
+                  <p className="text-[17px] md:text-[19px] font-normal text-[#2B2B2B]/90 leading-relaxed mt-2">
                     Narrativa que desperta desejo antes da visita e cria convicção em quem já está considerando.
                   </p>
 
@@ -283,7 +283,7 @@ export default function App() {
 
                 <FadeIn>
                   <h3 className="text-[18px] md:text-[22px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-5 border-b border-[#D9D9D9] pb-3 inline-block">Tour virtual de alta fidelidade</h3>
-                  <p className="text-[17px] md:text-[19px] font-light text-[#2B2B2B]/80 leading-relaxed mt-2">
+                  <p className="text-[17px] md:text-[19px] font-normal text-[#2B2B2B]/90 leading-relaxed mt-2">
                     O comprador de São Paulo, Rio ou do exterior percorre cada cômodo antes de agendar visita presencial. Quem chega, chega para comprar.
                   </p>
 
@@ -294,7 +294,7 @@ export default function App() {
               <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-center">
                 <FadeIn className="order-2 lg:order-1">
                   <h3 className="text-[18px] md:text-[22px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-5 border-b border-[#D9D9D9] pb-3 inline-block">Site exclusivo do imóvel</h3>
-                  <p className="text-[17px] md:text-[19px] font-light text-[#2B2B2B]/80 leading-relaxed mt-2">
+                  <p className="text-[17px] md:text-[19px] font-normal text-[#2B2B2B]/90 leading-relaxed mt-2">
                     Não um link de portal. Um endereço digital dedicado, com narrativa completa, à altura do que está sendo oferecido.
                   </p>
 
@@ -313,7 +313,7 @@ export default function App() {
 
                 <FadeIn>
                   <h3 className="text-[18px] md:text-[22px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-5 border-b border-[#D9D9D9] pb-3 inline-block">Campanha segmentada</h3>
-                  <p className="text-[17px] md:text-[19px] font-light text-[#2B2B2B]/80 leading-relaxed mt-2">
+                  <p className="text-[17px] md:text-[19px] font-normal text-[#2B2B2B]/90 leading-relaxed mt-2">
                     Mais de 1 milhão de visualizações orgânicas por mês nos canais da OPA, combinado com distribuição paga para o perfil certo de renda e intenção de compra.
                   </p>
 
@@ -339,7 +339,7 @@ export default function App() {
                           Relatórios quinzenais <br/>de acompanhamento
                         </h3>
                         
-                        <p className="text-[17px] md:text-[20px] font-light text-white/70 leading-relaxed max-w-2xl">
+                        <p className="text-[17px] md:text-[20px] font-normal text-white/90 leading-relaxed max-w-2xl">
                           A cada duas semanas, o proprietário recebe um relatório completo: quem foi alcançado, qual o perfil de quem demonstrou interesse, como a campanha está performando e quais ajustes foram feitos. <span className="text-white font-medium">Sem achismo. Sem silêncio.</span> O ativo está sendo trabalhado e você vai saber exatamente como.
                         </p>
                         
