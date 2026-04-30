@@ -3,6 +3,8 @@ import Header from '../components/Header';
 import FadeIn from '../components/FadeIn';
 import ScrollytellingImpact from "../components/ui/ScrollytellingImpact";
 import { Eye, Target, Zap, Smartphone, FileText, MousePointerClick, Layers, Search, Sparkles, Users2, Presentation, ShieldCheck, TrendingUp, Clock, Lock } from 'lucide-react';
+import { CinematicVideoVisual, VirtualTourVisual, ExclusiveSiteVisual, SegmentedCampaignVisual } from '../components/ui/PremiumVisuals';
+
 
 export default function App() {
   return (
@@ -265,32 +267,26 @@ export default function App() {
                   <p className="text-[17px] md:text-[19px] font-light text-[#2B2B2B]/80 leading-relaxed mt-2">
                     Narrativa que desperta desejo antes da visita e cria convicção em quem já está considerando.
                   </p>
-                  <div className="mt-8">
-                    <a href="#apply" className="text-[12px] uppercase tracking-widest text-[#2F5D82] font-bold hover:brightness-125 transition-all inline-flex items-center gap-2">
-                      Confira completo &rarr;
-                    </a>
-                  </div>
+
                 </FadeIn>
-                <FadeIn className="order-1 lg:order-2 relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-2 bg-white shadow-sm">
-                  <img src="https://images.openai.com/static-rsc-4/H0LcV4rAfIUeuDo0JpzqCwHXWH_CVQsSbTvqCPa_Xrv3_iSv4JUjUY-rEQvkoOSK-szS2iO1V94VVeTsTs-u9tyCJ6si_bRucLYF9OF9-FE-uMEZsjkOLFx3t3sLa5X_SwIV8qf4-uhj7hb23nOJGlEXjRJiY9GUycsk8xyZ6ZMckl4G-9Q0jpZnl-Ftzcw0?purpose=fullsize" alt="Vídeo cinematográfico" className="w-full h-full object-cover" />
+                <FadeIn className="order-1 lg:order-2 relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-2 bg-[#0F2A44] shadow-sm">
+                  <CinematicVideoVisual />
                 </FadeIn>
+
               </div>
 
               {/* Item 2 - Tour */}
               <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center">
                 <FadeIn className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-2 bg-white shadow-sm">
-                  <img src="https://images.openai.com/static-rsc-4/ONd65rFcdYLhvojtt07JtNCD9gKb9ExOQOGwk8VxxuVvM_eM5xheTsgqYr91kVyuN8TAjkVTi7cp-veTgbIq08DooXeX5UP9hvd9fBUsPEM-w_fBy_ZkacKVAwRcEPFnNx-umpVH5VJrVe3tLNd5t1zY3EmtyUhSjA-ge40xC84y6CLaGzRpxJD_URXkY2e0?purpose=fullsize" alt="Tour virtual de alta fidelidade" className="w-full h-full object-cover p-2" />
+                  <VirtualTourVisual />
                 </FadeIn>
+
                 <FadeIn>
                   <h3 className="text-[18px] md:text-[22px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-5 border-b border-[#D9D9D9] pb-3 inline-block">Tour virtual de alta fidelidade</h3>
                   <p className="text-[17px] md:text-[19px] font-light text-[#2B2B2B]/80 leading-relaxed mt-2">
                     O comprador de São Paulo, Rio ou do exterior percorre cada cômodo antes de agendar visita presencial. Quem chega, chega para comprar.
                   </p>
-                  <div className="mt-8">
-                    <a href="#apply" className="text-[12px] uppercase tracking-widest text-[#2F5D82] font-bold hover:brightness-125 transition-all inline-flex items-center gap-2">
-                      Confira completo &rarr;
-                    </a>
-                  </div>
+
                 </FadeIn>
               </div>
 
@@ -301,32 +297,26 @@ export default function App() {
                   <p className="text-[17px] md:text-[19px] font-light text-[#2B2B2B]/80 leading-relaxed mt-2">
                     Não um link de portal. Um endereço digital dedicado, com narrativa completa, à altura do que está sendo oferecido.
                   </p>
-                  <div className="mt-8">
-                    <a href="#apply" className="text-[12px] uppercase tracking-widest text-[#2F5D82] font-bold hover:brightness-125 transition-all inline-flex items-center gap-2">
-                      Confira completo &rarr;
-                    </a>
-                  </div>
+
                 </FadeIn>
                 <FadeIn className="order-1 lg:order-2 relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-2 bg-white shadow-sm">
-                  <img src="https://images.openai.com/static-rsc-4/c8JbxHA4b4jyqySOTGD-kfJeCVIm_43h3ILN6RMCA6YScDS_qvoZlJALjRR6xT-e_-0iqiRaSTbDJLt7CK3Megxmhz1ljez8uFmJCBGsMisQjmSitc_W8rkGe1vCywgAPRXR3Lo3iQHQ04wOS68OpoSiAUPz2a_KV8kTRI2HPLct6tfFLybsbms6utV_AHjs?purpose=fullsize" alt="Site exclusivo" className="w-full h-full object-cover object-center p-2" />
+                  <ExclusiveSiteVisual />
                 </FadeIn>
+
               </div>
 
               {/* Item 4 - Campanha */}
               <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center">
                 <FadeIn className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-2 bg-white shadow-sm">
-                  <img src="https://images.openai.com/static-rsc-4/XKkb9MEf5YPqpRO50EuR2xC1H_KvUFPW6rI87r1kL354L-2nt9n4IS003S_gCUVW3QzT1yMkSwDkQHUSbjPbhRJuKsRD-tsHl5KDnV85wM9fhRLRNCCPmQypOMp4QbVSk4JCRmAgkAcEVnr65pS5jdZaOareyfAAhIoMua3oK9NDdRl6uUx6wvCoTpJFEG2y?purpose=fullsize" alt="Campanha segmentada" className="w-full h-full object-cover p-2" />
+                  <SegmentedCampaignVisual />
                 </FadeIn>
+
                 <FadeIn>
                   <h3 className="text-[18px] md:text-[22px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-5 border-b border-[#D9D9D9] pb-3 inline-block">Campanha segmentada</h3>
                   <p className="text-[17px] md:text-[19px] font-light text-[#2B2B2B]/80 leading-relaxed mt-2">
                     Mais de 1 milhão de visualizações orgânicas por mês nos canais da OPA, combinado com distribuição paga para o perfil certo de renda e intenção de compra.
                   </p>
-                  <div className="mt-8">
-                    <a href="#apply" className="text-[12px] uppercase tracking-widest text-[#2F5D82] font-bold hover:brightness-125 transition-all inline-flex items-center gap-2">
-                      Confira completo &rarr;
-                    </a>
-                  </div>
+
                 </FadeIn>
               </div>
 

@@ -2,6 +2,8 @@ import Image from 'next/image';
 import FadeIn from '@/components/FadeIn';
 import ScrollytellingImpact from "@/components/ui/ScrollytellingImpact";
 import { Eye, Target, Zap, Smartphone, FileText, MousePointerClick, Layers, Search, Sparkles, Users2, Presentation, ShieldCheck, TrendingUp, Clock, Lock } from 'lucide-react';
+import { CinematicVideoVisual, VirtualTourVisual, ExclusiveSiteVisual, SegmentedCampaignVisual } from '@/components/ui/PremiumVisuals';
+
 
 export default function Home() {
   return (
@@ -286,61 +288,26 @@ export default function Home() {
                 <p className="text-[17px] md:text-[19px] font-light text-[#2B2B2B]/80 leading-relaxed mt-2">
                   Narrativa que desperta desejo antes da visita e cria convicção em quem já está considerando.
                 </p>
-                <div className="mt-8">
-                  <a href="#apply" className="text-[12px] uppercase tracking-widest text-[#2F5D82] font-bold hover:brightness-125 transition-all inline-flex items-center gap-2">
-                    Confira completo &rarr;
-                  </a>
-                </div>
+
               </FadeIn>
-               <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-1 bg-[#0F2A44] shadow-2xl group/video">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#2F5D82]/30 to-transparent opacity-50" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-[#2F5D82] rounded-full blur-2xl opacity-20 group-hover/video:opacity-40 transition-opacity duration-700" />
-                    <div className="relative w-20 h-20 rounded-full border border-white/20 flex items-center justify-center bg-white/5 backdrop-blur-sm group-hover/video:scale-110 transition-transform duration-700">
-                      <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[18px] border-l-white border-b-[10px] border-b-transparent ml-1" />
-                    </div>
-                  </div>
+                <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-1 bg-[#0F2A44] shadow-2xl group/video">
+                  <CinematicVideoVisual />
                 </div>
-                {/* Animated Waveform Lines */}
-                <div className="absolute bottom-0 left-0 w-full h-24 flex items-end justify-center gap-1 px-12 pb-8 opacity-20">
-                  {[...Array(12)].map((_, i) => (
-                    <div 
-                      key={i} 
-                      className="w-1 bg-white rounded-full animate-pulse" 
-                      style={{ height: `${Math.random() * 100}%`, animationDelay: `${i * 0.1}s` }} 
-                    />
-                  ))}
-                </div>
-              </div>
+
             </div>
 
             {/* Item 2 */}
             <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center">
                <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-1 bg-[#F7F6F3] shadow-2xl group/tour">
-                <div className="absolute inset-0 bg-[radial-gradient(#2F5D82_1px,transparent_1px)] [background-size:20px_20px] opacity-[0.05]" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative flex flex-col items-center gap-4">
-                    <div className="w-24 h-24 rounded-full border-2 border-[#2F5D82]/20 flex items-center justify-center relative">
-                      <div className="absolute inset-0 rounded-full border-t-2 border-[#2F5D82] animate-[spin_3s_linear_infinite]" />
-                      <Layers className="text-[#2F5D82] w-10 h-10" />
-                    </div>
-                    <span className="text-[10px] uppercase tracking-[0.4em] text-[#2F5D82]/60 font-bold">Iniciando Experiência 360°</span>
-                  </div>
-                </div>
-                 {/* Scanning Line */}
-                <div className="absolute top-0 left-0 w-full h-px bg-[#2F5D82]/20 animate-[scan_4s_ease-in-out_infinite]" />
+                 <VirtualTourVisual />
               </div>
+
               <FadeIn>
                 <h3 className="text-[18px] md:text-[22px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-5 border-b border-[#D9D9D9] pb-3 inline-block">Tour virtual de alta fidelidade</h3>
                 <p className="text-[17px] md:text-[19px] font-light text-[#2B2B2B]/80 leading-relaxed mt-2">
                   O comprador de São Paulo, Rio ou do exterior percorre cada cômodo antes de agendar visita presencial. Quem chega, chega para comprar.
                 </p>
-                <div className="mt-8">
-                  <a href="#apply" className="text-[12px] uppercase tracking-widest text-[#2F5D82] font-bold hover:brightness-125 transition-all inline-flex items-center gap-2">
-                    Confira completo &rarr;
-                  </a>
-                </div>
+
               </FadeIn>
             </div>
 
@@ -351,44 +318,26 @@ export default function Home() {
                 <p className="text-[17px] md:text-[19px] font-light text-[#2B2B2B]/80 leading-relaxed mt-2">
                   Não um link de portal. Um endereço digital dedicado, com narrativa completa, à altura do que está sendo oferecido.
                 </p>
-                <div className="mt-8">
-                  <a href="#apply" className="text-[12px] uppercase tracking-widest text-[#2F5D82] font-bold hover:brightness-125 transition-all inline-flex items-center gap-2">
-                    Confira completo &rarr;
-                  </a>
-                </div>
+
               </FadeIn>
               <FadeIn className="order-1 lg:order-2 relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-2 bg-white shadow-sm">
-                <Image
-                  src="https://images.openai.com/static-rsc-4/c8JbxHA4b4jyqySOTGD-kfJeCVIm_43h3ILN6RMCA6YScDS_qvoZlJALjRR6xT-e_-0iqiRaSTbDJLt7CK3Megxmhz1ljez8uFmJCBGsMisQjmSitc_W8rkGe1vCywgAPRXR3Lo3iQHQ04wOS68OpoSiAUPz2a_KV8kTRI2HPLct6tfFLybsbms6utV_AHjs?purpose=fullsize"
-                  alt="Site exclusivo"
-                  fill
-                  className="object-cover object-center p-2"
-                  referrerPolicy="no-referrer"
-                />
+                <ExclusiveSiteVisual />
               </FadeIn>
+
             </div>
 
             {/* Item 4 */}
             <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center">
               <FadeIn className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-2 bg-white shadow-sm">
-                <Image
-                  src="https://images.openai.com/static-rsc-4/XKkb9MEf5YPqpRO50EuR2xC1H_KvUFPW6rI87r1kL354L-2nt9n4IS003S_gCUVW3QzT1yMkSwDkQHUSbjPbhRJuKsRD-tsHl5KDnV85wM9fhRLRNCCPmQypOMp4QbVSk4JCRmAgkAcEVnr65pS5jdZaOareyfAAhIoMua3oK9NDdRl6uUx6wvCoTpJFEG2y?purpose=fullsize"
-                  alt="Campanha segmentada"
-                  fill
-                  className="object-cover p-2"
-                  referrerPolicy="no-referrer"
-                />
+                <SegmentedCampaignVisual />
               </FadeIn>
+
               <FadeIn>
                 <h3 className="text-[18px] md:text-[22px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-5 border-b border-[#D9D9D9] pb-3 inline-block">Campanha segmentada</h3>
                 <p className="text-[17px] md:text-[19px] font-light text-[#2B2B2B]/80 leading-relaxed mt-2">
                   Mais de 1 milhão de visualizações orgânicas por mês nos canais da OPA, combinado com distribuição paga para o perfil certo de renda e intenção de compra.
                 </p>
-                <div className="mt-8">
-                  <a href="#apply" className="text-[12px] uppercase tracking-widest text-[#2F5D82] font-bold hover:brightness-125 transition-all inline-flex items-center gap-2">
-                    Confira completo &rarr;
-                  </a>
-                </div>
+
               </FadeIn>
             </div>
 
@@ -399,11 +348,7 @@ export default function Home() {
                 <p className="text-[17px] md:text-[19px] font-light text-[#2B2B2B]/80 leading-relaxed mt-2">
                   A cada duas semanas, o proprietário recebe um relatório completo: quem foi alcançado, qual o perfil de quem demonstrou interesse, como a campanha está performando e quais ajustes foram feitos. Sem achismo. Sem silêncio. O ativo está sendo trabalhado e você vai saber exatamente como.
                 </p>
-                <div className="mt-8">
-                  <a href="#apply" className="text-[12px] uppercase tracking-widest text-[#2F5D82] font-bold hover:brightness-125 transition-all inline-flex items-center gap-2">
-                    Confira completo &rarr;
-                  </a>
-                </div>
+
               </FadeIn>
               <FadeIn className="order-1 lg:order-2 relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-white border border-[#D9D9D9] p-2 shadow-sm">
                 <Image
