@@ -259,68 +259,58 @@ export default function App() {
               </p>
             </FadeIn>
 
-            <div className="space-y-[120px] text-left">
-              {/* Item 1 - Vídeo */}
-              <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-center">
-                <FadeIn className="order-2 lg:order-1">
-                  <h3 className="text-[18px] md:text-[22px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-5 border-b border-[#D9D9D9] pb-3 inline-block">Vídeo cinematográfico</h3>
-                  <p className="text-[17px] md:text-[19px] font-normal text-[#2B2B2B]/90 leading-relaxed mt-2">
+            <div className="space-y-8 text-left">
+              {/* Linha 1: Vídeo e Tour */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Item 1 - Vídeo */}
+                <FadeIn className="bg-white p-8 md:p-10 rounded-[40px] border border-[#F2F2F2] flex flex-col shadow-sm hover:shadow-md transition-shadow">
+                  <h3 className="text-[18px] md:text-[20px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-4 border-b border-[#D9D9D9] pb-3 inline-block self-start">Vídeo cinematográfico</h3>
+                  <p className="text-[16px] md:text-[17px] font-normal text-[#2B2B2B]/90 leading-relaxed mb-8">
                     Narrativa que desperta desejo antes da visita e cria convicção em quem já está considerando.
                   </p>
-
-                </FadeIn>
-                <FadeIn className="order-1 lg:order-2 relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-2 bg-[#0F2A44] shadow-sm">
-                  <CinematicVideoVisual />
-                </FadeIn>
-
-              </div>
-
-              {/* Item 2 - Tour */}
-              <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center">
-                <FadeIn className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-2 bg-white shadow-sm">
-                  <VirtualTourVisual />
+                  <div className="mt-auto relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-1 bg-[#0F2A44] shadow-sm">
+                    <CinematicVideoVisual />
+                  </div>
                 </FadeIn>
 
-                <FadeIn>
-                  <h3 className="text-[18px] md:text-[22px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-5 border-b border-[#D9D9D9] pb-3 inline-block">Tour virtual de alta fidelidade</h3>
-                  <p className="text-[17px] md:text-[19px] font-normal text-[#2B2B2B]/90 leading-relaxed mt-2">
-                    O comprador de São Paulo, Rio ou do exterior percorre cada cômodo antes de agendar visita presencial. Quem chega, chega para comprar.
+                {/* Item 2 - Tour */}
+                <FadeIn className="bg-white p-8 md:p-10 rounded-[40px] border border-[#F2F2F2] flex flex-col shadow-sm hover:shadow-md transition-shadow">
+                  <h3 className="text-[18px] md:text-[20px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-4 border-b border-[#D9D9D9] pb-3 inline-block self-start">Tour virtual</h3>
+                  <p className="text-[16px] md:text-[17px] font-normal text-[#2B2B2B]/90 leading-relaxed mb-8">
+                    O comprador percorre cada cômodo antes de agendar visita presencial. Quem chega, chega para comprar.
                   </p>
-
+                  <div className="mt-auto relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-1 bg-[#F7F6F3] shadow-sm">
+                    <VirtualTourVisual />
+                  </div>
                 </FadeIn>
               </div>
 
-              {/* Item 3 - Site */}
-              <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-center">
-                <FadeIn className="order-2 lg:order-1">
-                  <h3 className="text-[18px] md:text-[22px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-5 border-b border-[#D9D9D9] pb-3 inline-block">Site exclusivo do imóvel</h3>
-                  <p className="text-[17px] md:text-[19px] font-normal text-[#2B2B2B]/90 leading-relaxed mt-2">
-                    Não um link de portal. Um endereço digital dedicado, com narrativa completa, à altura do que está sendo oferecido.
+              {/* Linha 2: Site e Campanha */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Item 3 - Site */}
+                <FadeIn className="bg-white p-8 md:p-10 rounded-[40px] border border-[#F2F2F2] flex flex-col shadow-sm hover:shadow-md transition-shadow">
+                  <h3 className="text-[18px] md:text-[20px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-4 border-b border-[#D9D9D9] pb-3 inline-block self-start">Site exclusivo</h3>
+                  <p className="text-[16px] md:text-[17px] font-normal text-[#2B2B2B]/90 leading-relaxed mb-8">
+                    Um endereço digital dedicado, com narrativa completa, à altura do que está sendo oferecido.
                   </p>
-
-                </FadeIn>
-                <FadeIn className="order-1 lg:order-2 relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-2 bg-white shadow-sm">
-                  <ExclusiveSiteVisual />
-                </FadeIn>
-
-              </div>
-
-              {/* Item 4 - Campanha */}
-              <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center">
-                <FadeIn className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-2 bg-white shadow-sm">
-                  <SegmentedCampaignVisual />
+                  <div className="mt-auto relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-1 bg-white shadow-sm">
+                    <ExclusiveSiteVisual />
+                  </div>
                 </FadeIn>
 
-                <FadeIn>
-                  <h3 className="text-[18px] md:text-[22px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-5 border-b border-[#D9D9D9] pb-3 inline-block">Campanha segmentada</h3>
-                  <p className="text-[17px] md:text-[19px] font-normal text-[#2B2B2B]/90 leading-relaxed mt-2">
-                    Mais de 1 milhão de visualizações orgânicas por mês nos canais da OPA, combinado com distribuição paga para o perfil certo de renda e intenção de compra.
+                {/* Item 4 - Campanha */}
+                <FadeIn className="bg-white p-8 md:p-10 rounded-[40px] border border-[#F2F2F2] flex flex-col shadow-sm hover:shadow-md transition-shadow">
+                  <h3 className="text-[18px] md:text-[20px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-4 border-b border-[#D9D9D9] pb-3 inline-block self-start">Campanha segmentada</h3>
+                  <p className="text-[16px] md:text-[17px] font-normal text-[#2B2B2B]/90 leading-relaxed mb-8">
+                    Distribuição paga para o perfil certo de renda e intenção de compra. Onde o comprador está, nós aparecemos.
                   </p>
-
+                  <div className="mt-auto relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-1 bg-[#F7F6F3] shadow-sm">
+                    <SegmentedCampaignVisual />
+                  </div>
                 </FadeIn>
               </div>
 
-              {/* Item 5 - Relatórios (Destaque Diferente sem Imagem) */}
+              {/* Item 5 - Relatórios (Mantido como está) */}
               <div className="w-full">
                 <FadeIn>
                   <div className="bg-[#0F2A44] rounded-[40px] p-8 md:p-16 lg:p-20 relative overflow-hidden group">
@@ -378,10 +368,7 @@ export default function App() {
 
         {/* 6. ESCASSEZ (Redesigned for Premium UI/UX) */}
         <section className="py-[160px] bg-[#FBFBFA] px-6 w-full relative z-10 border-b border-[#D9D9D9] overflow-hidden">
-          {/* Subtle watermark background */}
-          <div className="absolute -right-20 top-0 text-[200px] font-black text-[#0F2A44]/[0.02] select-none pointer-events-none uppercase">
-            Exclusivo
-          </div>
+
           
           <div className="max-w-[1000px] mx-auto relative z-10">
             <div className="text-center mb-20">
