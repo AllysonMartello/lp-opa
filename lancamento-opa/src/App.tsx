@@ -386,24 +386,71 @@ export default function App() {
           </div>
         </section>
 
-        {/* 6. ESCASSEZ */}
-        <section className="py-[140px] bg-[#FFFFFF] px-6 w-full relative z-10 border-b border-[#D9D9D9]">
-          <div className="max-w-[800px] mx-auto text-center">
-            <FadeIn>
-              <h3 className="text-xs uppercase tracking-[0.3em] font-extrabold mb-6 text-[#2F5D82]">Exclusividade</h3>
-              <h2 className="font-sans text-3xl md:text-4xl lg:text-5xl text-[#0F2A44] leading-[1.3] mb-10 font-bold">
-                O Lançamento OPA <br className="hidden md:block"/>não atende volume
-              </h2>
-            </FadeIn>
+        {/* 6. ESCASSEZ (Redesigned for Premium UI/UX) */}
+        <section className="py-[160px] bg-[#FBFBFA] px-6 w-full relative z-10 border-b border-[#D9D9D9] overflow-hidden">
+          {/* Subtle watermark background */}
+          <div className="absolute -right-20 top-0 text-[200px] font-black text-[#0F2A44]/[0.02] select-none pointer-events-none uppercase">
+            Exclusivo
+          </div>
+          
+          <div className="max-w-[1000px] mx-auto relative z-10">
+            <div className="text-center mb-20">
+              <FadeIn>
+                <div className="inline-flex items-center gap-3 mb-6">
+                  <span className="h-px w-8 bg-[#2F5D82]/30" />
+                  <h3 className="text-xs uppercase tracking-[0.4em] font-extrabold text-[#2F5D82]">Exclusividade</h3>
+                  <span className="h-px w-8 bg-[#2F5D82]/30" />
+                </div>
+                <h2 className="font-sans text-4xl md:text-5xl lg:text-6xl text-[#0F2A44] leading-[1.1] mb-10 font-bold tracking-tight">
+                  O Lançamento OPA <br className="hidden md:block"/>não atende volume
+                </h2>
+              </FadeIn>
+            </div>
             
-            <FadeIn delay={0.2} className="space-y-8 text-[#2B2B2B]/80 font-light text-base leading-relaxed">
-              <p>
-                Selecionamos poucos imóveis. Cada ativo recebe atenção de Marco diretamente, estratégia individual e equipe dedicada do início ao fim.
-              </p>
-              <p>
-                Antes de qualquer coisa, Marco avalia o ativo pessoalmente. O imóvel ou empreendimento está no preço? Existe um comprador real para ele agora? Ele conecta com o que a OPA se propõe a fazer? Se a resposta for sim para os três, o processo começa. Se não for, somos os primeiros a dizer.
-              </p>
-            </FadeIn>
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-16 items-center">
+              <FadeIn delay={0.2} className="space-y-8">
+                <div className="p-8 md:p-10 bg-white border border-[#F2F2F2] rounded-[40px] shadow-[0_30px_60px_rgba(0,0,0,0.02)]">
+                  <p className="text-[#2B2B2B]/80 font-light text-lg leading-relaxed mb-8">
+                    Selecionamos poucos imóveis. Cada ativo recebe atenção de Marco diretamente, estratégia individual e equipe dedicada do início ao fim.
+                  </p>
+                  <p className="text-[#2B2B2B]/80 font-light text-lg leading-relaxed">
+                    Antes de qualquer coisa, Marco avalia o ativo pessoalmente. Para nós, o lançamento é um compromisso de resultado, por isso o filtro é rigoroso.
+                  </p>
+                </div>
+              </FadeIn>
+
+              <FadeIn delay={0.3}>
+                <div className="relative p-10 md:p-12 bg-[#0F2A44] rounded-[40px] text-white overflow-hidden group">
+                  {/* Subtle inner glow */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#2F5D82]/20 blur-[50px] rounded-full" />
+                  
+                  <h4 className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#2F5D82] mb-10">Critérios de Qualificação</h4>
+                  
+                  <div className="space-y-10">
+                    {[
+                      "O imóvel ou empreendimento está no preço?",
+                      "Existe um comprador real para ele agora?",
+                      "Ele conecta com o que a OPA se propõe a fazer?"
+                    ].map((question, i) => (
+                      <div key={i} className="flex gap-6 items-start group/item">
+                        <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[10px] font-bold text-[#2F5D82] group-hover/item:border-[#2F5D82] transition-colors duration-500">
+                          0{i+1}
+                        </div>
+                        <p className="text-lg md:text-xl font-medium text-white/90 group-hover/item:text-white transition-colors">
+                          {question}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-12 pt-10 border-t border-white/5">
+                    <p className="text-sm font-light text-white/40 italic">
+                      Se a resposta for sim para os três, o processo começa. Se não for, somos os primeiros a dizer.
+                    </p>
+                  </div>
+                </div>
+              </FadeIn>
+            </div>
           </div>
         </section>
 
