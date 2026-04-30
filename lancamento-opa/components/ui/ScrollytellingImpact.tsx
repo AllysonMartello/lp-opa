@@ -25,9 +25,9 @@ const ScrollytellingImpact = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#2F5D82]/30 rounded-full blur-[150px] pointer-events-none" />
       
       <div className="max-w-[1400px] w-full px-6 md:px-16 text-center z-10">
-        <h2 className="text-3xl md:text-5xl lg:text-7xl xl:text-8xl font-black text-white leading-tight tracking-tighter">
+        <h2 className="text-3xl md:text-5xl lg:text-7xl xl:text-8xl font-black text-white leading-tight tracking-tighter flex flex-col md:block items-center justify-center">
           <span className="opacity-40">Um imóvel mal</span>{" "}
-          <div className="inline-block relative min-h-[1.2em] align-top text-left md:text-center w-full md:w-auto">
+          <div className="inline-block relative min-h-[1.2em] md:min-h-0">
             <AnimatePresence mode="wait">
               <motion.div
                 key={index}
