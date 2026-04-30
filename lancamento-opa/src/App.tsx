@@ -153,6 +153,10 @@ export default function App() {
                   </h4>
                   <p className="text-[11px] uppercase tracking-widest text-[#2B2B2B]/60 font-medium">— Marco Henrique, arquiteto e sócio-fundador</p>
                 </div>
+                <div className="flex items-center gap-4">
+                  <span className="h-px w-12 bg-[#D9D9D9]/30" />
+                  <p className="text-[#2B2B2B]/40 text-[11px] uppercase tracking-[0.4em] font-medium whitespace-nowrap">Depois disso, construímos o lançamento</p>
+                </div>
               </FadeIn>
             </div>
           </div>
@@ -210,15 +214,18 @@ export default function App() {
                   <h2 className="font-sans text-4xl md:text-6xl leading-[1.1] font-bold max-w-[500px] tracking-tight">
                     O que muda quando um imóvel é lançado da forma certa.
                   </h2>
+                  <p className="mt-10 text-xl font-light text-white/50 leading-relaxed max-w-[450px]">
+                    O cliente de alto padrão não compra operação. Ele compra resultado.
+                  </p>
                 </FadeIn>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-10">
                 {[
                   { title: "Segurança de precificação", desc: "O ativo chega ao mercado no preço certo, para o comprador certo. Sem queima de produto.", icon: <ShieldCheck size={24} className="text-[#2F5D82]" /> },
-                  { title: "Percepção de valor real", desc: "Imóveis e empreendimentos que passaram pelo Lançamento OPA chegam ao comprador já posicionados como produto.", icon: <TrendingUp size={24} className="text-[#2F5D82]" /> },
-                  { title: "Redução de tempo no mercado", desc: "Comprador qualificado não precisa ser convencido do valor. Ele já chegou sabendo.", icon: <Clock size={24} className="text-[#2F5D82]" /> },
-                  { title: "Liquidez sem exposição desnecessária", desc: "O proprietário não abre o ativo para curiosos. Apenas compradores com intenção chegam ao imóvel.", icon: <Lock size={24} className="text-[#2F5D82]" /> }
+                  { title: "Percepção de valor real", desc: "Imóveis e empreendimentos que passaram pelo Lançamento OPA chegam ao comprador já posicionados como produto. O desejo está construído antes da visita.", icon: <TrendingUp size={24} className="text-[#2F5D82]" /> },
+                  { title: "Redução de tempo no mercado", desc: "Comprador qualificado não precisa ser convencido do valor. Ele já chegou sabendo. Isso encurta o ciclo de negociação.", icon: <Clock size={24} className="text-[#2F5D82]" /> },
+                  { title: "Liquidez sem exposição desnecessária", desc: "O proprietário não abre o ativo para curiosos. Apenas compradores com intenção e perfil compatível chegam ao imóvel.", icon: <Lock size={24} className="text-[#2F5D82]" /> }
                 ].map((item, i) => (
                   <FadeIn key={i} delay={0.1 * i} className="group relative">
                     <div className="h-full bg-white/5 backdrop-blur-sm border border-white/10 p-10 rounded-[40px] hover:bg-white/[0.08] hover:border-[#2F5D82]/30 transition-all duration-700 hover:-translate-y-2">
@@ -245,55 +252,238 @@ export default function App() {
               <h2 className="font-sans text-3xl md:text-5xl text-[#0F2A44] leading-[1.2] font-bold">
                 Como isso chega ao comprador
               </h2>
+              <p className="mt-6 text-[#2B2B2B]/70 font-light text-[15px] uppercase tracking-wide">
+                Cada imóvel ou empreendimento recebe estrutura completa de produção e distribuição:
+              </p>
             </FadeIn>
 
             <div className="space-y-[120px] text-left">
-              {/* Vídeo */}
+              {/* Item 1 - Vídeo */}
               <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-center">
                 <FadeIn className="order-2 lg:order-1">
                   <h3 className="text-[18px] md:text-[22px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-5 border-b border-[#D9D9D9] pb-3 inline-block">Vídeo cinematográfico</h3>
-                  <p className="text-[17px] md:text-[19px] font-light text-[#2B2B2B]/80 leading-relaxed">Narrativa que desperta desejo antes da visita.</p>
+                  <p className="text-[17px] md:text-[19px] font-light text-[#2B2B2B]/80 leading-relaxed mt-2">
+                    Narrativa que desperta desejo antes da visita e cria convicção em quem já está considerando.
+                  </p>
+                  <div className="mt-8">
+                    <a href="#apply" className="text-[12px] uppercase tracking-widest text-[#2F5D82] font-bold hover:brightness-125 transition-all inline-flex items-center gap-2">
+                      Confira completo &rarr;
+                    </a>
+                  </div>
                 </FadeIn>
                 <FadeIn className="order-1 lg:order-2 relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-2 bg-white shadow-sm">
-                  <img src="https://images.openai.com/static-rsc-4/H0LcV4rAfIUeuDo0JpzqCwHXWH_CVQsSbTvqCPa_Xrv3_iSv4JUjUY-rEQvkoOSK-szS2iO1V94VVeTsTs-u9tyCJ6si_bRucLYF9OF9-FE-uMEZsjkOLFx3t3sLa5X_SwIV8qf4-uhj7hb23nOJGlEXjRJiY9GUycsk8xyZ6ZMckl4G-9Q0jpZnl-Ftzcw0?purpose=fullsize" alt="Vídeo" className="w-full h-full object-cover" />
+                  <img src="https://images.openai.com/static-rsc-4/H0LcV4rAfIUeuDo0JpzqCwHXWH_CVQsSbTvqCPa_Xrv3_iSv4JUjUY-rEQvkoOSK-szS2iO1V94VVeTsTs-u9tyCJ6si_bRucLYF9OF9-FE-uMEZsjkOLFx3t3sLa5X_SwIV8qf4-uhj7hb23nOJGlEXjRJiY9GUycsk8xyZ6ZMckl4G-9Q0jpZnl-Ftzcw0?purpose=fullsize" alt="Vídeo cinematográfico" className="w-full h-full object-cover" />
                 </FadeIn>
               </div>
 
-              {/* Tour */}
+              {/* Item 2 - Tour */}
               <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center">
                 <FadeIn className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-2 bg-white shadow-sm">
-                  <img src="https://images.openai.com/static-rsc-4/ONd65rFcdYLhvojtt07JtNCD9gKb9ExOQOGwk8VxxuVvM_eM5xheTsgqYr91kVyuN8TAjkVTi7cp-veTgbIq08DooXeX5UP9hvd9fBUsPEM-w_fBy_ZkacKVAwRcEPFnNx-umpVH5VJrVe3tLNd5t1zY3EmtyUhSjA-ge40xC84y6CLaGzRpxJD_URXkY2e0?purpose=fullsize" alt="Tour" className="w-full h-full object-cover" />
+                  <img src="https://images.openai.com/static-rsc-4/ONd65rFcdYLhvojtt07JtNCD9gKb9ExOQOGwk8VxxuVvM_eM5xheTsgqYr91kVyuN8TAjkVTi7cp-veTgbIq08DooXeX5UP9hvd9fBUsPEM-w_fBy_ZkacKVAwRcEPFnNx-umpVH5VJrVe3tLNd5t1zY3EmtyUhSjA-ge40xC84y6CLaGzRpxJD_URXkY2e0?purpose=fullsize" alt="Tour virtual de alta fidelidade" className="w-full h-full object-cover p-2" />
                 </FadeIn>
                 <FadeIn>
-                  <h3 className="text-[18px] md:text-[22px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-5 border-b border-[#D9D9D9] pb-3 inline-block">Tour virtual</h3>
-                  <p className="text-[17px] md:text-[19px] font-light text-[#2B2B2B]/80 leading-relaxed">Alta fidelidade para compradores remotos.</p>
+                  <h3 className="text-[18px] md:text-[22px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-5 border-b border-[#D9D9D9] pb-3 inline-block">Tour virtual de alta fidelidade</h3>
+                  <p className="text-[17px] md:text-[19px] font-light text-[#2B2B2B]/80 leading-relaxed mt-2">
+                    O comprador de São Paulo, Rio ou do exterior percorre cada cômodo antes de agendar visita presencial. Quem chega, chega para comprar.
+                  </p>
+                  <div className="mt-8">
+                    <a href="#apply" className="text-[12px] uppercase tracking-widest text-[#2F5D82] font-bold hover:brightness-125 transition-all inline-flex items-center gap-2">
+                      Confira completo &rarr;
+                    </a>
+                  </div>
+                </FadeIn>
+              </div>
+
+              {/* Item 3 - Site */}
+              <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-center">
+                <FadeIn className="order-2 lg:order-1">
+                  <h3 className="text-[18px] md:text-[22px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-5 border-b border-[#D9D9D9] pb-3 inline-block">Site exclusivo do imóvel</h3>
+                  <p className="text-[17px] md:text-[19px] font-light text-[#2B2B2B]/80 leading-relaxed mt-2">
+                    Não um link de portal. Um endereço digital dedicado, com narrativa completa, à altura do que está sendo oferecido.
+                  </p>
+                  <div className="mt-8">
+                    <a href="#apply" className="text-[12px] uppercase tracking-widest text-[#2F5D82] font-bold hover:brightness-125 transition-all inline-flex items-center gap-2">
+                      Confira completo &rarr;
+                    </a>
+                  </div>
+                </FadeIn>
+                <FadeIn className="order-1 lg:order-2 relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-2 bg-white shadow-sm">
+                  <img src="https://images.openai.com/static-rsc-4/c8JbxHA4b4jyqySOTGD-kfJeCVIm_43h3ILN6RMCA6YScDS_qvoZlJALjRR6xT-e_-0iqiRaSTbDJLt7CK3Megxmhz1ljez8uFmJCBGsMisQjmSitc_W8rkGe1vCywgAPRXR3Lo3iQHQ04wOS68OpoSiAUPz2a_KV8kTRI2HPLct6tfFLybsbms6utV_AHjs?purpose=fullsize" alt="Site exclusivo" className="w-full h-full object-cover object-center p-2" />
+                </FadeIn>
+              </div>
+
+              {/* Item 4 - Campanha */}
+              <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center">
+                <FadeIn className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#D9D9D9] p-2 bg-white shadow-sm">
+                  <img src="https://images.openai.com/static-rsc-4/XKkb9MEf5YPqpRO50EuR2xC1H_KvUFPW6rI87r1kL354L-2nt9n4IS003S_gCUVW3QzT1yMkSwDkQHUSbjPbhRJuKsRD-tsHl5KDnV85wM9fhRLRNCCPmQypOMp4QbVSk4JCRmAgkAcEVnr65pS5jdZaOareyfAAhIoMua3oK9NDdRl6uUx6wvCoTpJFEG2y?purpose=fullsize" alt="Campanha segmentada" className="w-full h-full object-cover p-2" />
+                </FadeIn>
+                <FadeIn>
+                  <h3 className="text-[18px] md:text-[22px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-5 border-b border-[#D9D9D9] pb-3 inline-block">Campanha segmentada</h3>
+                  <p className="text-[17px] md:text-[19px] font-light text-[#2B2B2B]/80 leading-relaxed mt-2">
+                    Mais de 1 milhão de visualizações orgânicas por mês nos canais da OPA, combinado com distribuição paga para o perfil certo de renda e intenção de compra.
+                  </p>
+                  <div className="mt-8">
+                    <a href="#apply" className="text-[12px] uppercase tracking-widest text-[#2F5D82] font-bold hover:brightness-125 transition-all inline-flex items-center gap-2">
+                      Confira completo &rarr;
+                    </a>
+                  </div>
+                </FadeIn>
+              </div>
+
+              {/* Item 5 - Relatórios */}
+              <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-center">
+                <FadeIn className="order-2 lg:order-1">
+                  <h3 className="text-[18px] md:text-[22px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-5 border-b border-[#D9D9D9] pb-3 inline-block">Relatórios quinzenais de acompanhamento</h3>
+                  <p className="text-[17px] md:text-[19px] font-light text-[#2B2B2B]/80 leading-relaxed mt-2">
+                    A cada duas semanas, o proprietário recebe um relatório completo: quem foi alcançado, qual o perfil de quem demonstrou interesse, como a campanha está performando e quais ajustes foram feitos. Sem achismo. Sem silêncio. O ativo está sendo trabalhado e você vai saber exatamente como.
+                  </p>
+                  <div className="mt-8">
+                    <a href="#apply" className="text-[12px] uppercase tracking-widest text-[#2F5D82] font-bold hover:brightness-125 transition-all inline-flex items-center gap-2">
+                      Confira completo &rarr;
+                    </a>
+                  </div>
+                </FadeIn>
+                <FadeIn className="order-1 lg:order-2 relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-white border border-[#D9D9D9] p-2 shadow-sm">
+                  <img src="https://images.openai.com/static-rsc-4/SPBuSnbTZdQ91GSZdb_DgaBoAqQx6RKj1cMj4UkAf-d27WRcWiFI3cjyp5AflM5gEcmnilGodadiIH1lMVJhmI3WAB5s0AUkbsujDQslu-gN3t0FruUZDRsxHQDOvhAxE57shuhsxL_vlcx1Qi2y55mGhw-52zQWWOEV19iE61AfsA2G6fD3gJrRbGbPJJKq?purpose=fullsize" alt="Relatórios quinzenais" className="w-full h-full object-cover object-bottom p-2" />
                 </FadeIn>
               </div>
             </div>
           </div>
         </section>
 
-        {/* 7. CTA FINAL */}
-        <section id="apply" className="py-[160px] md:py-[200px] bg-[#0F2A44] w-full text-center text-white relative z-10 overflow-hidden">
-          <div className="max-w-[1000px] mx-auto relative z-10 px-6">
+        {/* 6. ESCASSEZ */}
+        <section className="py-[140px] bg-[#FFFFFF] px-6 w-full relative z-10 border-b border-[#D9D9D9]">
+          <div className="max-w-[800px] mx-auto text-center">
             <FadeIn>
-              <h2 className="font-sans text-4xl md:text-5xl lg:text-[72px] text-white leading-[1.05] mb-12 font-bold tracking-tighter drop-shadow-lg">
-                Se o imóvel não vende, o problema não é o imóvel.
+              <h3 className="text-xs uppercase tracking-[0.3em] font-extrabold mb-6 text-[#2F5D82]">Exclusividade</h3>
+              <h2 className="font-sans text-3xl md:text-4xl lg:text-5xl text-[#0F2A44] leading-[1.3] mb-10 font-bold">
+                O Lançamento OPA <br className="hidden md:block"/>não atende volume
               </h2>
-              <button className="bg-[#2F5D82] text-white px-12 py-6 rounded-full uppercase tracking-widest font-bold hover:bg-[#1E3A5F] transition-all">
-                Quero aplicar meu imóvel
-              </button>
+            </FadeIn>
+            
+            <FadeIn delay={0.2} className="space-y-8 text-[#2B2B2B]/80 font-light text-base leading-relaxed">
+              <p>
+                Selecionamos poucos imóveis. Cada ativo recebe atenção de Marco diretamente, estratégia individual e equipe dedicada do início ao fim.
+              </p>
+              <p>
+                Antes de qualquer coisa, Marco avalia o ativo pessoalmente. O imóvel ou empreendimento está no preço? Existe um comprador real para ele agora? Ele conecta com o que a OPA se propõe a fazer? Se a resposta for sim para os três, o processo começa. Se não for, somos os primeiros a dizer.
+              </p>
             </FadeIn>
           </div>
         </section>
 
+        {/* 7. CTA FINAL */}
+        <section id="apply" className="py-[160px] md:py-[200px] bg-[#0F2A44] w-full text-center text-white relative z-10 overflow-hidden">
+          {/* Imagem de Fundo e Grafismos */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <img
+              src="https://images.openai.com/static-rsc-4/TVJWhxoFqNA_fT19IqbsC-KW2BCpia3bucOpYByy8l6kex3wJdtEGd3owspydmVVST-mQoTW2f7vbebJuJynYJBToSeE0UNT_lNqrGgoUYrKSATd-K4FvLCM8QAiN_trENy2bR4uJ7EdDn8dwRT8OxCVYGkezu_soIYnECAC7ZQkFA0BJy-sIdflu4UIdqNs?purpose=fullsize"
+              alt="Textura de luxo"
+              className="absolute inset-0 w-full h-full object-cover opacity-[0.07] mix-blend-overlay"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0F2A44] via-transparent to-[#0F2A44]/80" />
+            
+            {/* Luz de Destaque */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#2F5D82]/20 blur-[150px] rounded-full" />
+          </div>
+
+          <div className="max-w-[1000px] mx-auto relative z-10 px-6">
+            <FadeIn>
+              <div className="flex items-center justify-center gap-6 mb-12">
+                <span className="w-16 h-px bg-gradient-to-r from-transparent to-[#2F5D82]" />
+                <span className="text-[11px] md:text-[13px] uppercase tracking-[0.4em] font-extrabold text-[#2F5D82]">O Último Passo</span>
+                <span className="w-16 h-px bg-gradient-to-l from-transparent to-[#2F5D82]" />
+              </div>
+              
+              <h2 className="font-sans text-4xl md:text-5xl lg:text-[72px] text-white leading-[1.05] mb-12 font-bold tracking-tighter drop-shadow-lg">
+                Se o imóvel não vende, o problema não é o imóvel.
+              </h2>
+            </FadeIn>
+            
+            <FadeIn delay={0.2} className="relative mb-20 max-w-[800px] mx-auto">
+              {/* Linhas Laterais de Estrutura */}
+              <div className="absolute left-0 top-0 w-px h-full bg-gradient-to-b from-transparent via-white/20 to-transparent hidden md:block" />
+              <div className="absolute right-0 top-0 w-px h-full bg-gradient-to-b from-transparent via-white/20 to-transparent hidden md:block" />
+              
+              <div className="md:px-14 flex flex-col items-center">
+                <p className="text-white/60 font-light text-[17px] leading-[1.8] mb-8">
+                  Dez corretores trabalhando no mesmo imóvel ao mesmo tempo, sem estratégia, sem narrativa. O imóvel perde tração, perde desejo, perde resultado.
+                </p>
+                
+                <div className="bg-white/5 border border-white/10 rounded-2xl p-8 mb-8 backdrop-blur-md w-full max-w-[600px] hover:border-white/20 transition-all duration-700">
+                  <p className="text-[15px] text-white/80 font-light leading-relaxed">
+                    O melhor momento para lançar da forma certa é antes de ir ao mercado. 
+                    <span className="font-bold text-white block mt-3 text-lg">O segundo melhor momento é agora.</span>
+                  </p>
+                </div>
+
+                <p className="text-white/60 font-light text-[17px] leading-[1.8]">
+                  Existimos para evitar esse caminho. Um processo, um método, uma equipe dedicada do início ao fim. Uma venda eficiente, não uma exposição desgastante sem resultado.
+                </p>
+              </div>
+            </FadeIn>
+
+            <FadeIn delay={0.4} className="flex flex-col items-center gap-6">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-5 w-full sm:w-auto">
+                <button className="group relative w-full sm:w-[320px] bg-white text-[#0F2A44] px-10 py-5 text-[12px] uppercase tracking-[0.2em] font-extrabold transition-all hover:bg-transparent hover:text-white border border-white rounded-full overflow-hidden shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                  <span className="relative z-10 group-hover:text-white transition-colors duration-500">Quero aplicar meu imóvel</span>
+                  <div className="absolute inset-0 h-full w-full bg-[#2F5D82] -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]" />
+                </button>
+                
+                <button className="group relative w-full sm:w-[360px] bg-transparent text-white px-8 py-[19px] text-[12px] uppercase tracking-[0.15em] font-extrabold transition-all border border-[#2F5D82] rounded-full overflow-hidden shadow-[0_0_0_rgba(47,93,130,0)] hover:shadow-[0_0_30px_rgba(47,93,130,0.4)]">
+                  <span className="relative z-10 transition-colors duration-500">Quero aplicar meu empreendimento</span>
+                  <div className="absolute inset-0 h-full w-full bg-[#2F5D82]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </button>
+              </div>
+              
+              <p className="text-[11px] uppercase tracking-[0.2em] text-white/40 mt-6 flex items-center justify-center gap-2 font-medium">
+                <Lock size={12} className="text-[#2F5D82]" /> Confidencialidade Absoluta em Análises Pretéritas
+              </p>
+            </FadeIn>
+          </div>
+        </section>
+        
         {/* FOOTER */}
-        <footer className="bg-[#0A1D30] py-12 border-t border-white/5 text-white text-center">
+        <footer className="bg-[#0A1D30] py-24 border-t border-white/5 text-white relative z-10">
           <div className="max-w-[1200px] mx-auto px-6">
-            <span className="text-3xl font-sans font-black tracking-tighter mb-4">OPA<span className="text-[#2F5D82]">.</span></span>
-            <p className="text-[10px] text-white/20 uppercase tracking-[0.3em] mt-8">
-              © {new Date().getFullYear()} OPA. Todos os direitos reservados.
-            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 items-start pb-16 border-b border-white/5">
+              <div className="flex flex-col items-start lg:col-span-1">
+                <span className="text-3xl font-sans font-black tracking-tighter mb-4">OPA<span className="text-[#2F5D82]">.</span></span>
+                <p className="text-[11px] text-white/40 uppercase tracking-[0.25em] leading-relaxed max-w-[200px]">
+                  Arquitetura. Mercado. Ilhabela.
+                </p>
+              </div>
+              
+              <div className="flex flex-col gap-4">
+                <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/30">Navegação</h4>
+                <a href="#olhar" className="text-[11px] uppercase tracking-widest text-white/70 hover:text-white transition-colors">O Olhar</a>
+                <a href="#metodo" className="text-[11px] uppercase tracking-widest text-white/70 hover:text-white transition-colors">O Método</a>
+                <a href="#problema" className="text-[11px] uppercase tracking-widest text-white/70 hover:text-white transition-colors">Distribuição</a>
+              </div>
+
+              <div className="flex flex-col gap-4">
+                <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/30">Impacto</h4>
+                <p className="text-[11px] text-white/70 tracking-wide">+1M Visualizações Mensais</p>
+                <p className="text-[11px] text-white/70 tracking-wide">Relatórios Quinzenais</p>
+                <p className="text-[11px] text-white/70 tracking-wide">Estratégia Individualizada</p>
+              </div>
+
+              <div className="flex flex-col gap-4">
+                <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/30">Ação</h4>
+                <a href="#apply" className="text-[11px] uppercase tracking-widest text-[#2F5D82] font-bold hover:brightness-125 transition-all">Aplicar Imóvel →</a>
+                <a href="#apply" className="text-[11px] uppercase tracking-widest text-[#2F5D82] font-bold hover:brightness-125 transition-all">Aplicar Empreendimento →</a>
+              </div>
+            </div>
+            
+            <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+              <p className="text-[10px] text-white/20 uppercase tracking-[0.3em]">
+                © {new Date().getFullYear()} OPA. Todos os direitos reservados.
+              </p>
+              <div className="flex gap-6">
+                 <span className="text-[10px] text-white/20 uppercase tracking-[0.3em]">Design por AI Studio Build</span>
+              </div>
+            </div>
           </div>
         </footer>
       </main>
