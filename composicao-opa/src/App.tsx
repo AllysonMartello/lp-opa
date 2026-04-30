@@ -263,6 +263,17 @@ export default function App() {
         style={{ transform: `translate(${mousePos.x - 3}px, ${mousePos.y - 3}px)` }}
       />
 
+      {/* Header with Logo */}
+      <header className="fixed top-0 left-0 w-full z-40 px-6 py-4 flex justify-between items-center bg-transparent">
+        <a href="/">
+          <img 
+            src="https://smabio.com.br/wp-content/uploads/2026/04/Frame-83.png" 
+            alt="Opa Logo" 
+            className="h-10 sm:h-12 drop-shadow-md hover:scale-105 transition-transform"
+          />
+        </a>
+      </header>
+
       {/* Hero Section */}
       <section className="relative h-screen min-h-[600px] flex items-center justify-center px-6 overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -523,22 +534,22 @@ export default function App() {
               <Eyebrow>Os 90 dias</Eyebrow>
               <h2 className="text-4xl sm:text-5xl text-primary-1 mb-6">O que acontece nos primeiros 90 dias</h2>
               <p className="text-text-sec text-lg mb-8">
-                A campanha não começa no volume máximo. Ela começa aprendendo. Nas primeiras semanas, mapeamos quem responde de verdade ao imóvel. Depois, o orçamento vai para onde o dado provou que funciona. Por fim, os grupos campeões são escalados com criativos renovados. O investimento em mídia não é jogado de uma vez. Ele é aplicado com precisão crescente ao longo da campanha.
+                O lançamento de um imóvel exclusivo não é um evento de um dia, é um processo de construção de desejo e valor. Durante 90 dias, nosso objetivo não é apenas gerar visualizações, mas sim encontrar, qualificar e trazer à mesa de negociação o comprador ideal, protegendo a exclusividade da sua propriedade a cada etapa.
               </p>
             </FadeUp>
           </div>
           <div className="lg:col-span-12">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
-                { phase: 'Fase 1', days: 'Dias 1 a 30', title: 'Mapeamento e coleta', val: 'R$ 1.800', desc: 'O algoritmo aprende o terreno. Identificamos quais grupos geram intenção real de compra e negativamos os termos que atraem curiosos. Proteção máxima do aporte nessa fase.' },
-                { phase: 'Fase 2', days: 'Dias 31 a 60', title: 'Ajuste de rota', val: 'R$ 2.100', desc: 'O grupo vencedor da Fase 1 recebe 70% do orçamento. Grupos com CTR abaixo de 2% são pausados. A verba vai para onde o dado provou que funciona.' },
-                { phase: 'Fase 3', days: 'Dias 61 a 90', title: 'Escala nos campeões', val: 'R$ 2.100', desc: '80% do orçamento no grupo vencedor. Criativos renovados na semana 9. Relatório final com CPL real e todos os leads qualificados entregues.' }
+                { phase: 'Fase 1', days: 'Dias 1 a 30', title: 'Apresentação e Filtro', icon: <Eye className="w-8 h-8" />, desc: 'O imóvel é posicionado no mercado com a narrativa correta. Nosso foco é mapear o perfil exato de quem demonstra interesse real, filtrando curiosos para proteger a exclusividade do imóvel.' },
+                { phase: 'Fase 2', days: 'Dias 31 a 60', title: 'Qualificação e Ajuste', icon: <Target className="w-8 h-8" />, desc: 'Intensificamos o contato com os perfis mais promissores. A comunicação se torna extremamente assertiva e o foco se volta inteiramente para as famílias e investidores com potencial de compra.' },
+                { phase: 'Fase 3', days: 'Dias 61 a 90', title: 'Tração e Negociação', icon: <CheckCircle2 className="w-8 h-8" />, desc: 'O desejo foi construído. Nesta fase, as conexões estabelecidas se transformam em propostas sérias. Conduzimos os compradores qualificados até a mesa, garantindo a defesa do valor.' }
               ].map((item, i) => (
                 <FadeUp key={i} delay={i * 0.15}>
                   <div className="bg-white p-8 rounded-[2rem] shadow-md border border-primary-1/5 flex flex-col sm:flex-row gap-6 items-start">
-                    <div className="flex-shrink-0 w-24 h-24 rounded-full bg-bg-main flex flex-col items-center justify-center border border-primary-2/20">
-                      <span className="text-xs text-text-sec uppercase tracking-wider">{item.phase}</span>
-                      <span className="text-lg font-serif text-primary-1">{item.val}</span>
+                    <div className="flex-shrink-0 w-24 h-24 rounded-full bg-bg-main flex flex-col items-center justify-center border border-primary-2/20 text-primary-2">
+                      <span className="text-xs text-text-sec uppercase tracking-wider mb-1">{item.phase}</span>
+                      {item.icon}
                     </div>
                     <div>
                       <div className="flex items-center gap-3 mb-2">

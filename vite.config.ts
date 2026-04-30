@@ -24,6 +24,7 @@ export default defineConfig(({mode}) => {
           main: path.resolve(__dirname, 'index.html'),
           composicao: path.resolve(__dirname, 'composicao-opa/index.html'),
           morrodacruz: path.resolve(__dirname, 'imovel-morro-da-cruz/index.html'),
+          lancamento: path.resolve(__dirname, 'lancamento-opa/index.html'),
         },
       },
     },
