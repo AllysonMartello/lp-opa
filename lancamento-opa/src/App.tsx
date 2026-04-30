@@ -115,8 +115,8 @@ export default function App() {
 
               <FadeIn delay={0.3} className="relative aspect-[16/10] lg:aspect-square w-full rounded-[32px] border border-[#D9D9D9] p-3 bg-white shadow-sm overflow-hidden">
                  <img
-                  src="https://images.openai.com/static-rsc-4/TVJWhxoFqNA_fT19IqbsC-KW2BCpia3bucOpYByy8l6kex3wJdtEGd3owspydmVVST-mQoTW2f7vbebJuJynYJBToSeE0UNT_lNqrGgoUYrKSATd-K4FvLCM8QAiN_trENy2bR4uJ7EdDn8dwRT8OxCVYGkezu_soIYnECAC7ZQkFA0BJy-sIdflu4UIdqNs?purpose=fullsize"
-                  alt="Arquitetura integrada com natureza"
+                  src="/assets/images/sobre-a-opa-imoveis-ilhabela.png"
+                  alt="Sobre a OPA Imóveis Ilhabela"
                   className="w-full h-full object-cover rounded-[24px]"
                   referrerPolicy="no-referrer"
                 />
