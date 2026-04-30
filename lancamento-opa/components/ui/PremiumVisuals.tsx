@@ -15,37 +15,48 @@ const glowPulse = {
 
 export const CinematicVideoVisual = () => {
   return (
-    <div className="relative w-full h-full bg-[#050A0F] overflow-hidden rounded-2xl flex flex-col items-center justify-center p-6">
+    <div className="relative w-full h-full bg-[#050A0F] overflow-hidden rounded-2xl flex flex-col items-center justify-center p-6 group">
       {/* Background Glow */}
       <motion.div 
         animate={glowPulse}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute w-40 h-40 bg-[#2F5D82]/30 blur-[60px] rounded-full"
+        className="absolute w-40 h-40 bg-[#2F5D82]/20 blur-[60px] rounded-full"
       />
       
-      <div className="relative z-10 flex flex-col items-center gap-6">
+      <div className="relative z-10 flex flex-col items-center gap-4">
+        {[
+          { text: "Narrativa", delay: 0 },
+          { text: "Detalhes", delay: 0.2 },
+          { text: "Cuidado", delay: 0.4 }
+        ].map((item, idx) => (
+          <motion.span
+            key={idx}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: item.delay, duration: 0.8 }}
+            className="text-lg md:text-xl font-bold text-white uppercase tracking-[0.4em] drop-shadow-lg"
+          >
+            {item.text}
+          </motion.span>
+        ))}
+        
         <motion.div 
-          animate={iconPulse}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center bg-white/5 backdrop-blur-md"
-        >
-          <Play className="text-white fill-white/20 w-8 h-8 ml-1" />
-        </motion.div>
-        <div className="text-center">
-          <div className="text-[10px] uppercase tracking-[0.4em] text-[#2F5D82] font-black mb-1">Narrativa</div>
-          <div className="text-[8px] uppercase tracking-[0.2em] text-white/30 font-bold">Produção Audiovisual OPA</div>
-        </div>
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          transition={{ delay: 0.8, duration: 1 }}
+          className="h-px w-24 bg-[#2F5D82] mt-4 origin-center"
+        />
       </div>
 
-      {/* REC Indicator */}
-      <div className="absolute top-6 left-6 flex items-center gap-2">
-        <motion.div 
-          animate={{ opacity: [1, 0, 1] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "steps(1)" }}
-          className="w-2 h-2 rounded-full bg-red-500"
-        />
-        <span className="text-[8px] uppercase tracking-widest text-white/40 font-bold">REC</span>
-      </div>
+      {/* Subtle Lens Flare Effect */}
+      <motion.div 
+        animate={{ 
+          x: ['-50%', '50%'],
+          opacity: [0, 0.3, 0]
+        }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12 pointer-events-none"
+      />
     </div>
   );
 };

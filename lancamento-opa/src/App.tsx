@@ -508,7 +508,7 @@ export default function App() {
           <div className="max-w-[1200px] mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 items-start pb-16 border-b border-white/5">
               <div className="flex flex-col items-start lg:col-span-1">
-                <span className="text-3xl font-sans font-black tracking-tighter mb-4">OPA<span className="text-[#2F5D82]">.</span></span>
+                <img src="/assets/logo/logo-opa-nova.svg" alt="Opa Logo" className="h-10 mb-6" />
                 <p className="text-[11px] text-white/40 uppercase tracking-[0.25em] leading-relaxed max-w-[200px]">
                   Arquitetura. Mercado. Ilhabela.
                 </p>
