@@ -27,10 +27,9 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           <a href="#" className="flex items-center z-50 relative">
             <img 
-              src="https://smabio.com.br/wp-content/uploads/2026/04/Logo_OPA-1.png" 
+              src="/assets/logo/logo-opa-nova.svg" 
               alt="OPA Logo" 
-              className={`h-8 transition-all duration-300 ${scrolled || mobileMenuOpen ? 'brightness-100' : 'brightness-0 invert'}`}
-              referrerPolicy="no-referrer"
+              className={`h-8 transition-all duration-300 ${scrolled || mobileMenuOpen ? 'brightness-0' : 'brightness-100'}`}
             />
           </a>
           

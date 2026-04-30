@@ -267,7 +267,7 @@ export default function App() {
       <header className="fixed top-0 left-0 w-full z-40 px-6 py-4 flex justify-between items-center bg-transparent">
         <a href="/">
           <img 
-            src="https://smabio.com.br/wp-content/uploads/2026/04/Frame-83.png" 
+            src="/assets/logo/logo-opa-nova.svg" 
             alt="Opa Logo" 
             className="h-10 sm:h-12 drop-shadow-md hover:scale-105 transition-transform"
           />

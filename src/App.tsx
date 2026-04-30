@@ -16,7 +16,7 @@ export default function App() {
         className="z-10 text-center mb-16"
       >
         <img 
-          src="https://smabio.com.br/wp-content/uploads/2026/04/Frame-83.png" 
+          src="/assets/logo/logo-opa-nova.svg" 
           alt="Opa Logo" 
           className="h-20 mx-auto mb-8 drop-shadow-lg"
         />

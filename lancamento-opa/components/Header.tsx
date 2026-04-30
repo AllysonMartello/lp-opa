@@ -34,11 +34,11 @@ const Header = () => {
         {/* LOGO */}
         <a href="/" className="flex items-center group">
           <img 
-            src="https://smabio.com.br/wp-content/uploads/2026/04/Frame-83.png" 
+            src="/assets/logo/logo-opa-nova.svg" 
             alt="Opa Logo" 
             className={cn(
               "transition-all duration-500",
-              isScrolled ? "h-8" : "h-12"
+              isScrolled ? "h-8 brightness-0" : "h-12 brightness-100"
             )}
           />
         </a>
