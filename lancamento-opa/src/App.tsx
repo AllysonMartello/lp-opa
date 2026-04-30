@@ -330,21 +330,56 @@ export default function App() {
                 </FadeIn>
               </div>
 
-              {/* Item 5 - Relatórios */}
-              <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-center">
-                <FadeIn className="order-2 lg:order-1">
-                  <h3 className="text-[18px] md:text-[22px] uppercase tracking-[0.15em] font-bold text-[#0F2A44] mb-5 border-b border-[#D9D9D9] pb-3 inline-block">Relatórios quinzenais de acompanhamento</h3>
-                  <p className="text-[17px] md:text-[19px] font-light text-[#2B2B2B]/80 leading-relaxed mt-2">
-                    A cada duas semanas, o proprietário recebe um relatório completo: quem foi alcançado, qual o perfil de quem demonstrou interesse, como a campanha está performando e quais ajustes foram feitos. Sem achismo. Sem silêncio. O ativo está sendo trabalhado e você vai saber exatamente como.
-                  </p>
-                  <div className="mt-8">
-                    <a href="#apply" className="text-[12px] uppercase tracking-widest text-[#2F5D82] font-bold hover:brightness-125 transition-all inline-flex items-center gap-2">
-                      Confira completo &rarr;
-                    </a>
+              {/* Item 5 - Relatórios (Destaque Diferente sem Imagem) */}
+              <div className="w-full">
+                <FadeIn>
+                  <div className="bg-[#0F2A44] rounded-[40px] p-8 md:p-16 lg:p-20 relative overflow-hidden group">
+                    {/* Decorative elements */}
+                    <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#2F5D82]/20 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none" />
+                    <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#2F5D82]/10 blur-[80px] rounded-full translate-y-1/2 -translate-x-1/4 pointer-events-none" />
+                    
+                    <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-12 items-center">
+                      <div>
+                        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
+                          <div className="w-2 h-2 rounded-full bg-[#2F5D82] animate-pulse" />
+                          <span className="text-[10px] uppercase tracking-[0.3em] text-white/60 font-bold">Acompanhamento Ativo</span>
+                        </div>
+                        
+                        <h3 className="text-2xl md:text-4xl uppercase tracking-[0.1em] font-bold text-white mb-8 leading-tight">
+                          Relatórios quinzenais <br/>de acompanhamento
+                        </h3>
+                        
+                        <p className="text-[17px] md:text-[20px] font-light text-white/70 leading-relaxed max-w-2xl">
+                          A cada duas semanas, o proprietário recebe um relatório completo: quem foi alcançado, qual o perfil de quem demonstrou interesse, como a campanha está performando e quais ajustes foram feitos. <span className="text-white font-medium">Sem achismo. Sem silêncio.</span> O ativo está sendo trabalhado e você vai saber exatamente como.
+                        </p>
+                        
+                        <div className="mt-12 flex flex-wrap gap-6">
+                          <div className="flex items-center gap-3 text-white/50 text-[11px] uppercase tracking-widest font-bold">
+                            <span className="w-8 h-px bg-white/20" />
+                            Transparência
+                          </div>
+                          <div className="flex items-center gap-3 text-white/50 text-[11px] uppercase tracking-widest font-bold">
+                            <span className="w-8 h-px bg-white/20" />
+                            Dados Reais
+                          </div>
+                          <div className="flex items-center gap-3 text-white/50 text-[11px] uppercase tracking-widest font-bold">
+                            <span className="w-8 h-px bg-white/20" />
+                            Ajuste de Rota
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="relative">
+                        <div className="aspect-square w-full max-w-[300px] mx-auto border border-white/10 rounded-3xl bg-white/5 backdrop-blur-md p-8 flex flex-col justify-center items-center group-hover:border-[#2F5D82]/50 transition-all duration-700">
+                           <Layers size={64} className="text-[#2F5D82] mb-6 group-hover:scale-110 transition-transform duration-700" />
+                           <div className="text-center">
+                             <div className="text-white font-bold text-lg mb-1">Visibilidade Total</div>
+                             <div className="text-white/40 text-[10px] uppercase tracking-widest">Controle do Proprietário</div>
+                           </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </FadeIn>
-                <FadeIn className="order-1 lg:order-2 relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-white border border-[#D9D9D9] p-2 shadow-sm">
-                  <img src="https://images.openai.com/static-rsc-4/SPBuSnbTZdQ91GSZdb_DgaBoAqQx6RKj1cMj4UkAf-d27WRcWiFI3cjyp5AflM5gEcmnilGodadiIH1lMVJhmI3WAB5s0AUkbsujDQslu-gN3t0FruUZDRsxHQDOvhAxE57shuhsxL_vlcx1Qi2y55mGhw-52zQWWOEV19iE61AfsA2G6fD3gJrRbGbPJJKq?purpose=fullsize" alt="Relatórios quinzenais" className="w-full h-full object-cover object-bottom p-2" />
                 </FadeIn>
               </div>
             </div>
