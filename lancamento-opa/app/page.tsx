@@ -160,7 +160,7 @@ export default function Home() {
               </div>
               <div className="flex items-center gap-4">
                 <span className="h-px w-12 bg-[#D9D9D9]/30" />
-                <p className="text-[#2B2B2B]/40 text-[11px] uppercase tracking-[0.4em] font-medium">Depois disso, construímos o lançamento</p>
+                <p className="text-[#2B2B2B]/40 text-[10px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.4em] font-medium">Depois disso, construímos o lançamento</p>
               </div>
             </FadeIn>
           </div>

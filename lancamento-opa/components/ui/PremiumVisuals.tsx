@@ -123,18 +123,15 @@ export const SegmentedCampaignVisual = () => {
           </div>
         </div>
 
-        <div className="w-full max-w-[200px] space-y-4">
-          <div className="flex justify-between items-end">
-            <div className="space-y-1">
-              <div className="text-[8px] uppercase tracking-widest text-[#0F2A44]/40 font-bold">Alcance Alvo</div>
-              <div className="text-2xl font-black text-[#0F2A44]">1.2M+</div>
-            </div>
-            <TrendingUp className="text-[#2F5D82] w-6 h-6" />
+        <div className="w-full max-w-[200px] space-y-2">
+          <div className="flex flex-col gap-1">
+            <div className="text-[10px] uppercase tracking-widest text-[#0F2A44] font-black">Alcance em regiões</div>
+            <div className="text-[9px] uppercase tracking-widest text-[#2F5D82] font-bold">de alto impacto</div>
           </div>
           <div className="w-full h-1 bg-[#0F2A44]/5 rounded-full overflow-hidden">
             <motion.div 
-              animate={{ width: ['0%', '85%'] }}
-              transition={{ duration: 2, ease: "easeOut" }}
+              animate={{ width: ['0%', '95%'] }}
+              transition={{ duration: 3, ease: "easeOut" }}
               className="h-full bg-[#2F5D82]"
             />
           </div>
