@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary-1: #253A47;
+  --color-primary-2: #809C9E;
+  --color-secondary: #4A6B7C;
+  --color-bg-main: #F4F7F7;
+  --color-bg-alt: #E8ECEE;
+  --color-text-main: #1A2226;
+  --color-text-sec: #66757D;
+  --color-border-main: #D5DCE2;
+  --color-alert: #C47A2C;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  @media (pointer: fine) {
+    body, a, button, [role="button"], input, textarea, select {
+      cursor: none !important;
+    }
+  }
+
+  body {
+    @apply bg-bg-main text-text-main font-sans antialiased selection:bg-secondary selection:text-white;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-bg-main;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-secondary rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-blue-700;
+  }
+}

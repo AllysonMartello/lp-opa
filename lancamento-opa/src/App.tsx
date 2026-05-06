@@ -4,6 +4,7 @@ import FadeIn from '../components/FadeIn';
 import ScrollytellingImpact from "../components/ui/ScrollytellingImpact";
 import { Eye, Target, Zap, Smartphone, FileText, MousePointerClick, Layers, Search, Sparkles, Users2, Presentation, ShieldCheck, TrendingUp, Clock, Lock } from 'lucide-react';
 import { CinematicVideoVisual, VirtualTourVisual, ExclusiveSiteVisual, SegmentedCampaignVisual } from '../components/ui/PremiumVisuals';
+import CookieConsent from '@/src/components/CookieConsent';
 
 
 export default function App() {
@@ -542,6 +543,7 @@ export default function App() {
             </div>
           </div>
         </footer>
+        <CookieConsent />
       </main>
     </div>
   );

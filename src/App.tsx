@@ -1,6 +1,7 @@
 import React from 'react';
 import { Globe, BookOpen } from 'lucide-react';
 import { motion } from 'framer-motion';
+import CookieConsent from '@/src/components/CookieConsent';
 
 export default function App() {
   return (
@@ -88,6 +89,8 @@ export default function App() {
       >
         &copy; {new Date().getFullYear()} Opa Ilhabela. Todos os direitos reservados.
       </motion.footer>
+
+      <CookieConsent />
     </div>
   );
 }

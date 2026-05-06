@@ -15,6 +15,7 @@ import {
   BarChart3,
   Play
 } from 'lucide-react';
+import CookieConsent from '@/src/components/CookieConsent';
 
 // --- Components ---
 
@@ -685,6 +686,7 @@ export default function App() {
         </p>
       </footer>
 
+      <CookieConsent />
     </div>
   );
 }
