@@ -170,7 +170,8 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
     message += `*Cidade:* ${formData.cidade}`;
 
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/5512974068058?text=${encodedMessage}`, "_blank");
+    const customSubject = encodeURIComponent(`Novo Lead - Siriúba 2 - ${formData.nome}`);
+    window.location.href = `mailto:opaimoveisilhabela@gmail.com?subject=${customSubject}&body=${encodedMessage}`;
     
     setIsSubmitted(true);
     setTimeout(() => {
