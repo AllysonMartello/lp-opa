@@ -1,4 +1,4 @@
-import { Instagram, Facebook, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { Instagram, Youtube, MapPin, Phone } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -11,14 +11,11 @@ export default function Footer() {
               Curadoria de imóveis com alma, design e propósito. Transformando a maneira como você encontra o seu próximo refúgio.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary hover:text-white transition-colors duration-300">
+              <a href="https://www.instagram.com/opaimoveisilhabela/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary hover:text-white transition-colors duration-300">
                 <Instagram size={18} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary hover:text-white transition-colors duration-300">
-                <Facebook size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary hover:text-white transition-colors duration-300">
-                <Linkedin size={18} />
+              <a href="https://www.youtube.com/@marcohenriqueilhabela" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary hover:text-white transition-colors duration-300">
+                <Youtube size={18} />
               </a>
             </div>
           </div>
