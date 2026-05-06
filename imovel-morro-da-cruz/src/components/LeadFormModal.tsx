@@ -150,28 +150,44 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
     }
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the data to a backend or WhatsApp
-    console.log("Form Submitted:", { answers, formData });
     
-    // Construct WhatsApp message
-    let message = "Olá! Gostaria de mais informações sobre a casa em Ilhabela.\n\n";
+    // Format answers for email
+    const emailData: Record<string, string> = {
+      _subject: `Novo Lead - Morro da Cruz - ${formData.nome}`,
+      Nome: formData.nome,
+      Telefone: formData.telefone,
+      Cidade: formData.cidade,
+    };
+
     steps.forEach(step => {
       if (step.type !== "final") {
         const answer = answers[step.id];
         if (answer) {
-          message += `*${step.question}*\n${Array.isArray(answer) ? answer.join(", ") : answer}\n\n`;
+          emailData[step.question] = Array.isArray(answer) ? answer.join(", ") : answer;
         }
       }
     });
-    message += `*Nome:* ${formData.nome}\n`;
-    message += `*Telefone:* ${formData.telefone}\n`;
-    message += `*Cidade:* ${formData.cidade}`;
 
-    const encodedMessage = encodeURIComponent(message);
-    const customSubject = encodeURIComponent(`Novo Lead - Morro da Cruz - ${formData.nome}`);
-    window.location.href = `mailto:opaimoveisilhabela@gmail.com?subject=${customSubject}&body=${encodedMessage}`;
+    try {
+      // Send email in the background using formsubmit.co
+      await fetch("https://formsubmit.co/ajax/opaimoveisilhabela@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(emailData)
+      });
+    } catch (error) {
+      console.error("Erro ao enviar formulário:", error);
+    }
+
+    // Redirect to WhatsApp with a simple message
+    const whatsappMessage = "Olá! Gostaria de mais informações sobre a casa Morro da Cruz em Ilhabela.";
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    window.open(`https://wa.me/5512974068058?text=${encodedMessage}`, "_blank");
     
     setIsSubmitted(true);
     setTimeout(() => {
