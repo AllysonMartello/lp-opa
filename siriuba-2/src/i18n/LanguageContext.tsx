@@ -13,6 +13,8 @@ const STORAGE_KEY = "siriuba2_lang";
 
 const detectInitialLang = (): Lang => {
   if (typeof window === "undefined") return "pt";
+  const queryLang = new URLSearchParams(window.location.search).get("lang")?.toLowerCase();
+  if (queryLang === "pt" || queryLang === "en") return queryLang;
   const stored = window.localStorage.getItem(STORAGE_KEY);
   if (stored === "pt" || stored === "en") return stored;
   const nav = window.navigator.language?.toLowerCase() ?? "";
