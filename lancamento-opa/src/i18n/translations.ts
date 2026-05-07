@@ -294,8 +294,8 @@ const en: Dictionary = {
       "We don't do advertising. We do asset positioning. We reveal attributes the market ignored. We build the right narrative. We bring the property or development to the buyer who sees value where others walk past.",
     pillars: [
       {
-        letter: "L",
-        title: "Lens",
+        letter: "O",
+        title: "Observation",
         desc: "Before any action, the asset is interpreted. Architecture, solar orientation, the vocation of the lot, the behavior of the local market, the real buyer profile. This reading is what separates a launch from a listing.",
       },
       {
@@ -304,8 +304,8 @@ const en: Dictionary = {
         desc: "With the reading done, we define which story the property tells, for which profile, and on which channel that meeting happens. Each asset asks for its own path. There is no off-the-shelf model.",
       },
       {
-        letter: "E",
-        title: "Execution",
+        letter: "A",
+        title: "Action",
         desc: "The launch runs across simultaneous fronts, with constant follow-up and biweekly reports. The owner knows exactly what's happening with their asset, who is reaching out, and the quality of that interest.",
       },
     ],
