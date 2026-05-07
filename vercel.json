@@ -1,4 +1,15 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/siriuba-2/(.*)", "destination": "/siriuba-2/index.html" },
+    { "source": "/siriuba-2", "destination": "/siriuba-2/index.html" },
+    { "source": "/composicao-opa/(.*)", "destination": "/composicao-opa/index.html" },
+    { "source": "/composicao-opa", "destination": "/composicao-opa/index.html" },
+    { "source": "/imovel-morro-da-cruz/(.*)", "destination": "/imovel-morro-da-cruz/index.html" },
+    { "source": "/imovel-morro-da-cruz", "destination": "/imovel-morro-da-cruz/index.html" },
+    { "source": "/lancamento-opa/(.*)", "destination": "/lancamento-opa/index.html" },
+    { "source": "/lancamento-opa", "destination": "/lancamento-opa/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
