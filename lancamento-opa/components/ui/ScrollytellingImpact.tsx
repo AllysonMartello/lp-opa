@@ -1,15 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const phrases = [
-  { dynamic: "precificado", conclusion: "perde força." },
-  { dynamic: "comunicado", conclusion: "perde desejo." },
-  { dynamic: "interpretado", conclusion: "perde valor." },
-];
+import { useT } from '../../src/i18n/LanguageContext';
 
 const ScrollytellingImpact = () => {
+  const t = useT();
+  const phrases = t.scrollytelling.phrases;
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -17,7 +14,7 @@ const ScrollytellingImpact = () => {
       setIndex((prev) => (prev + 1) % phrases.length);
     }, 4000);
     return () => clearInterval(timer);
-  }, []);
+  }, [phrases.length]);
 
   return (
     <section className="relative w-full h-[60vh] md:h-[80vh] bg-[#0F2A44] overflow-hidden flex items-center justify-center py-20">
@@ -26,7 +23,7 @@ const ScrollytellingImpact = () => {
       
       <div className="max-w-[1400px] w-full px-6 md:px-16 text-center z-10">
         <h2 className="text-3xl md:text-5xl lg:text-7xl xl:text-8xl font-black text-white leading-tight tracking-tighter flex flex-col md:block items-center justify-center">
-          <span className="opacity-40">Um imóvel mal</span>{" "}
+          <span className="opacity-40">{t.scrollytelling.prefix}</span>{" "}
           <div className="inline-block relative min-h-[1.2em] md:min-h-0">
             <AnimatePresence mode="wait">
               <motion.div
