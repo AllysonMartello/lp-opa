@@ -1,67 +1,20 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { MapPin, Anchor, Sailboat, UtensilsCrossed, Landmark, Compass } from "lucide-react";
+import { useT } from "../i18n/LanguageContext";
 
-type Distance = {
-  label: string;
-  time: string;
-  icon: typeof Anchor;
-  images: { src: string; caption?: string }[];
-  description?: string[];
-};
-
-const distances: Distance[] = [
-  {
-    label: "Praia do Viana",
-    time: "3 min",
-    icon: UtensilsCrossed,
-    images: [
-      { src: "/assets/siriuba-2/locais/praia-do-viana.jpg", caption: "Praia do Viana" },
-      { src: "/assets/siriuba-2/locais/praia-do-viana-quiosque.jpg", caption: "Quiosque" },
-    ],
-    description: [
-      "Praia pequena, charmosa e de águas calmas, com clima reservado e sofisticado. O quiosque local é parada obrigatória — boa gastronomia pé na areia, a poucos minutos da casa.",
-    ],
-  },
-  {
-    label: "Praia do Siriúba",
-    time: "2 min",
-    icon: Anchor,
-    images: [
-      { src: "/assets/siriuba-2/locais/praia-do-siriuba.jpg", caption: "Praia do Siriúba" },
-      { src: "/assets/siriuba-2/locais/praia-do-siriuba-quiosque.jpg", caption: "Quiosque" },
-    ],
-    description: [
-      "Extensa faixa de areia, mar calmo e coqueiros — ideal para famílias e para o dia a dia de praia. Quiosque com infraestrutura completa logo na descida.",
-    ],
-  },
-  {
-    label: "Praia da Armação",
-    time: "7 min",
-    icon: Sailboat,
-    images: [
-      { src: "/assets/siriuba-2/locais/praia-da-armacao.jpg", caption: "Praia da Armação" },
-      { src: "/assets/siriuba-2/locais/escola-de-vela-bl3.jpg", caption: "Escola de Vela BL3" },
-    ],
-    description: [
-      "Mar protegido e ventos consistentes, referência para vela e esportes náuticos no norte da ilha. Sede da BL3, escola de vela reconhecida — aulas, eventos e estrutura para velejadores.",
-    ],
-  },
-  {
-    label: "Centro Histórico (Vila)",
-    time: "12 min",
-    icon: Landmark,
-    images: [
-      { src: "/assets/siriuba-2/locais/centro-historico.jpg", caption: "Centro Histórico" },
-      { src: "/assets/siriuba-2/locais/rua-do-meio.jpg", caption: "Rua do Meio" },
-      { src: "/assets/siriuba-2/locais/chegada-de-barco.jpg", caption: "Chegada de barco" },
-    ],
-    description: [
-      "Coração social e cultural de Ilhabela: construções coloniais, lojas, sorveterias, bares e restaurantes. A Rua do Meio concentra o melhor da gastronomia e do passeio a pé.",
-      "Diferencial: também é possível chegar de barco, atracando no pier da Vila.",
-    ],
-  },
+const itemImages = [
+  ["/assets/siriuba-2/locais/praia-do-viana.jpg", "/assets/siriuba-2/locais/praia-do-viana-quiosque.jpg"],
+  ["/assets/siriuba-2/locais/praia-do-siriuba.jpg", "/assets/siriuba-2/locais/praia-do-siriuba-quiosque.jpg"],
+  ["/assets/siriuba-2/locais/praia-da-armacao.jpg", "/assets/siriuba-2/locais/escola-de-vela-bl3.jpg"],
+  [
+    "/assets/siriuba-2/locais/centro-historico.jpg",
+    "/assets/siriuba-2/locais/rua-do-meio.jpg",
+    "/assets/siriuba-2/locais/chegada-de-barco.jpg",
+  ],
 ];
+
+const itemIcons = [UtensilsCrossed, Anchor, Sailboat, Landmark];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -80,6 +33,7 @@ const itemVariants = {
 };
 
 export default function Location() {
+  const t = useT();
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   const toggleAccordion = (index: number) => {
@@ -94,7 +48,7 @@ export default function Location() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "0px" }}
@@ -103,24 +57,17 @@ export default function Location() {
           >
             <div className="flex items-center gap-2 mb-4">
               <Compass size={16} className="text-primary-2" />
-              <span className="text-primary-2 uppercase tracking-widest text-xs font-bold">Localização Estratégica em Ilhabela</span>
+              <span className="text-primary-2 uppercase tracking-widest text-xs font-bold">{t.location.eyebrow}</span>
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-primary-1 mb-8 leading-tight">
-              Siriúba 2, norte de Ilhabela
+              {t.location.title}
             </h2>
             <div className="space-y-6 text-text-sec text-lg font-light leading-relaxed mb-10">
-              <p>
-                A casa está no Siriúba 2, em uma posição muito interessante do norte da ilha. Não é extremo norte. E também não está colada ao centro.
-              </p>
-              <p>
-                Ela fica no meio do caminho entre a Vila e a Ponta das Canas. Isso entrega uma combinação rara: acesso às boas praias do norte, conexão com esportes náuticos e uma distância ainda confortável do centro histórico.
-              </p>
-              <p className="font-bold text-primary-1">
-                Outro ponto importante: a relação de nível com a via principal.
-              </p>
-              <p>
-                A casa tem uma vista aberta para o mar e um pôr do sol muito bonito, sem exigir uma subida excessiva. Em Ilhabela, isso faz diferença.
-              </p>
+              {t.location.paragraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+              <p className="font-bold text-primary-1">{t.location.highlight}</p>
+              <p>{t.location.paragraphFinal}</p>
             </div>
 
             <div className="bg-white/80 backdrop-blur-sm p-8 rounded-[2rem] shadow-lg shadow-black/5 border border-white">
@@ -128,19 +75,20 @@ export default function Location() {
                 <span className="w-8 h-8 rounded-full bg-primary-2/10 flex items-center justify-center text-primary-2">
                   <MapPin size={16} />
                 </span>
-                Ao redor da casa
+                {t.location.aroundTitle}
               </h3>
-              <motion.ul 
+              <motion.ul
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "0px" }}
                 className="space-y-4"
               >
-                {distances.map((item, index) => {
-                  const Icon = item.icon;
+                {t.location.items.map((item, index) => {
+                  const Icon = itemIcons[index] ?? Anchor;
+                  const images = itemImages[index] ?? [];
                   const isExpanded = expandedIndex === index;
-                  const hasAccordion = item.images.length > 0 || !!item.description;
+                  const hasAccordion = images.length > 0 || (item.description?.length ?? 0) > 0;
 
                   return (
                     <motion.li
@@ -167,37 +115,43 @@ export default function Location() {
                             exit={{ height: 0, opacity: 0, marginTop: 0 }}
                             className="overflow-hidden rounded-xl w-full"
                           >
-                            {item.images.length > 0 && (
-                              <div className={`grid gap-3 mb-4 ${item.images.length === 1 ? 'grid-cols-1' : item.images.length === 2 ? 'grid-cols-2' : 'grid-cols-2 sm:grid-cols-3'}`}>
-                                {item.images.map((img, i) => (
-                                  <figure key={i} className="relative overflow-hidden rounded-xl shadow-md">
-                                    <img
-                                      src={img.src}
-                                      alt={img.caption ?? item.label}
-                                      loading="lazy"
-                                      className="w-full h-40 object-cover"
-                                    />
-                                    {img.caption && (
-                                      <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white text-xs font-medium px-3 py-2">
-                                        {img.caption}
-                                      </figcaption>
-                                    )}
-                                  </figure>
-                                ))}
+                            {images.length > 0 && (
+                              <div className={`grid gap-3 mb-4 ${images.length === 1 ? 'grid-cols-1' : images.length === 2 ? 'grid-cols-2' : 'grid-cols-2 sm:grid-cols-3'}`}>
+                                {images.map((src, i) => {
+                                  const caption = item.captions?.[i];
+                                  return (
+                                    <figure key={i} className="relative overflow-hidden rounded-xl shadow-md">
+                                      <img
+                                        src={src}
+                                        alt={caption ?? item.label}
+                                        loading="lazy"
+                                        className="w-full h-40 object-cover"
+                                      />
+                                      {caption && (
+                                        <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white text-xs font-medium px-3 py-2">
+                                          {caption}
+                                        </figcaption>
+                                      )}
+                                    </figure>
+                                  );
+                                })}
                               </div>
                             )}
-                            {item.description && (
+                            {item.description && item.description.length > 0 && (
                               <div className="space-y-3 text-sm text-text-sec pb-2 px-1">
                                 {item.description.map((desc, i) => {
-                                  const parts = desc.split(':');
-                                  if (parts.length > 1 && ['Destaque', 'Ambiente', 'Curiosidade', 'Atrações', 'Estilo', 'Foco', 'Visual', 'Diferencial'].includes(parts[0].trim())) {
-                                    const boldPart = parts.shift();
-                                    const rest = parts.join(':');
-                                    return (
-                                      <p key={i}>
-                                        <span className="font-bold text-primary-1">{boldPart}:</span>{rest}
-                                      </p>
-                                    );
+                                  const colon = desc.indexOf(':');
+                                  if (colon > -1) {
+                                    const tagKey = desc.slice(0, colon).trim() as keyof typeof t.location.descriptionTags;
+                                    const translatedTag = t.location.descriptionTags[tagKey];
+                                    if (translatedTag) {
+                                      return (
+                                        <p key={i}>
+                                          <span className="font-bold text-primary-1">{translatedTag}:</span>
+                                          {desc.slice(colon + 1)}
+                                        </p>
+                                      );
+                                    }
                                   }
                                   return <p key={i}>{desc}</p>;
                                 })}
@@ -212,27 +166,27 @@ export default function Location() {
               </motion.ul>
             </div>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "0px" }}
             transition={{ duration: 1 }}
             className="lg:col-span-7 relative h-[600px] lg:h-[800px] rounded-[2.5rem] overflow-hidden shadow-2xl bg-bg-alt border-4 border-white"
           >
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14569.1!2d-45.34!3d-23.74!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94d2a6e051415555%3A0x1234567890!2sSiriuba%2C%20Ilhabela%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1" 
-              width="100%" 
-              height="100%" 
-              style={{ border: 0, filter: "grayscale(100%) invert(92%) contrast(83%)" }} 
-              allowFullScreen={false} 
-              loading="lazy" 
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14569.1!2d-45.34!3d-23.74!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94d2a6e051415555%3A0x1234567890!2sSiriuba%2C%20Ilhabela%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1"
+              width="100%"
+              height="100%"
+              style={{ border: 0, filter: "grayscale(100%) invert(92%) contrast(83%)" }}
+              allowFullScreen={false}
+              loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               className="absolute inset-0 pointer-events-none"
             ></iframe>
-            
+
             {/* Floating Glass Card */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -243,7 +197,7 @@ export default function Location() {
                 <Compass size={24} />
               </div>
               <div>
-                <p className="text-xs font-bold text-primary-2 uppercase tracking-wider mb-0.5">Coordenadas</p>
+                <p className="text-xs font-bold text-primary-2 uppercase tracking-wider mb-0.5">{t.location.coordinatesLabel}</p>
                 <p className="text-sm font-mono text-primary-1 font-semibold">23°44'25"S 45°20'05"W</p>
               </div>
             </motion.div>

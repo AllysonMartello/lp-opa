@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { TrendingUp } from "lucide-react";
+import { useLanguage, useT } from "../i18n/LanguageContext";
 
 const data = [
   { year: "2019", value: 9500 },
@@ -11,13 +12,13 @@ const data = [
   { year: "2024", value: 17000 },
 ];
 
-const CustomTooltip = ({ active, payload, label }: any) => {
+const CustomTooltip = ({ active, payload, label, locale, unit }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-4 rounded-xl shadow-xl border border-border-main/50">
         <p className="text-text-sec text-sm mb-1">{label}</p>
         <p className="text-primary-1 font-bold text-lg">
-          R$ {payload[0].value.toLocaleString("pt-BR")}/m²
+          R$ {payload[0].value.toLocaleString(locale)}{unit}
         </p>
       </div>
     );
@@ -26,6 +27,9 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 };
 
 export default function Investment() {
+  const t = useT();
+  const { lang } = useLanguage();
+  const locale = lang === "pt" ? "pt-BR" : "en-US";
   return (
     <section className="py-24 bg-bg-alt relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,17 +41,14 @@ export default function Investment() {
             transition={{ duration: 0.8 }}
             className="lg:col-span-5"
           >
-            <span className="text-primary-2 uppercase tracking-widest text-xs font-bold mb-4 block">Segurança Patrimonial</span>
+            <span className="text-primary-2 uppercase tracking-widest text-xs font-bold mb-4 block">{t.investment.eyebrow}</span>
             <h2 className="text-4xl md:text-5xl font-serif text-primary-1 mb-8 leading-tight">
-              Um imóvel alinhado com o novo perfil de compra
+              {t.investment.title}
             </h2>
             <div className="space-y-6 text-text-sec text-lg font-light leading-relaxed mb-10">
-              <p>
-                O norte da ilha vem mudando. Acesso melhor, perfil de comprador mais exigente e uma busca maior por casas prontas, bem resolvidas e com menos necessidade de intervenção.
-              </p>
-              <p>
-                Este tipo de imóvel se destaca no mercado atual. Não só pela valorização imobiliária constante de Ilhabela, mas principalmente pela liquidez e segurança que um projeto contemporâneo e atualizado oferece ao longo do tempo.
-              </p>
+              {t.investment.paragraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
             </div>
 
             <div className="flex items-center gap-6 bg-white p-6 rounded-2xl shadow-sm border border-border-main/50">
@@ -56,10 +57,10 @@ export default function Investment() {
               </div>
               <div>
                 <div className="flex items-baseline gap-3">
-                  <span className="text-3xl font-bold text-primary-1">+79%</span>
-                  <span className="text-sm font-medium text-green-600 bg-green-100 px-2 py-0.5 rounded-full">em 5 anos</span>
+                  <span className="text-3xl font-bold text-primary-1">{t.investment.growthValue}</span>
+                  <span className="text-sm font-medium text-green-600 bg-green-100 px-2 py-0.5 rounded-full">{t.investment.growthPeriod}</span>
                 </div>
-                <p className="text-text-sec text-sm mt-1">Crescimento médio do m² na região</p>
+                <p className="text-text-sec text-sm mt-1">{t.investment.growthLabel}</p>
               </div>
             </div>
           </motion.div>
@@ -73,10 +74,10 @@ export default function Investment() {
           >
             <div className="flex justify-between items-end mb-8">
               <div>
-                <p className="text-text-sec text-sm font-medium mb-1">Evolução do m² (R$)</p>
+                <p className="text-text-sec text-sm font-medium mb-1">{t.investment.chartLabel}</p>
                 <div className="flex items-baseline gap-4">
-                  <span className="text-2xl text-text-sec/50 line-through decoration-1">2019: 9.500</span>
-                  <span className="text-3xl font-bold text-primary-1">2024: 17.000</span>
+                  <span className="text-2xl text-text-sec/50 line-through decoration-1">{t.investment.chartFrom}</span>
+                  <span className="text-3xl font-bold text-primary-1">{t.investment.chartTo}</span>
                 </div>
               </div>
             </div>
@@ -104,7 +105,7 @@ export default function Investment() {
                     tick={{ fill: '#6B7280', fontSize: 14 }}
                     tickFormatter={(value) => `R$ ${value / 1000}k`}
                   />
-                  <Tooltip content={<CustomTooltip />} />
+                  <Tooltip content={<CustomTooltip locale={locale} unit={t.investment.tooltipUnit} />} />
                   <Area 
                     type="monotone" 
                     dataKey="value" 

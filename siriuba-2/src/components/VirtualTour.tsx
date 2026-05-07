@@ -1,8 +1,12 @@
 import { motion } from "motion/react";
 import { Play, Eye, Maximize, Map, Navigation, Ruler } from "lucide-react";
 import { useState } from "react";
+import { useT } from "../i18n/LanguageContext";
+
+const featureIcons = [Eye, Maximize, Map, Navigation, Ruler];
 
 export default function VirtualTour() {
+  const t = useT();
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
@@ -15,7 +19,7 @@ export default function VirtualTour() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-serif mb-12"
           >
-            Esteja dentro da casa, da sua tela...
+            {t.virtualTour.title}
           </motion.h2>
           
           <motion.div 
@@ -27,9 +31,9 @@ export default function VirtualTour() {
           >
             {!isPlaying ? (
               <div className="cursor-pointer h-full w-full" onClick={() => setIsPlaying(true)}>
-                <img 
-                  src="/assets/siriuba-2/Ambientes integrados.jpg" 
-                  alt="Preview do Tour Virtual" 
+                <img
+                  src="/assets/siriuba-2/Ambientes integrados.jpg"
+                  alt={t.virtualTour.previewAlt}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   referrerPolicy="no-referrer"
                 />
@@ -59,26 +63,15 @@ export default function VirtualTour() {
             transition={{ delay: 0.4 }}
             className="flex flex-wrap justify-center items-center gap-3 md:gap-6 mb-10"
           >
-            <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-5 py-2.5 rounded-full text-white/90 text-sm font-medium">
-              <Eye size={18} className="text-secondary" />
-              <span>Ver cada ponto sem filtros</span>
-            </div>
-            <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-5 py-2.5 rounded-full text-white/90 text-sm font-medium">
-              <Maximize size={18} className="text-secondary" />
-              <span>Verificar proporções e tamanho real das salas</span>
-            </div>
-            <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-5 py-2.5 rounded-full text-white/90 text-sm font-medium">
-              <Map size={18} className="text-secondary" />
-              <span>Visão da planta baixa interativa</span>
-            </div>
-            <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-5 py-2.5 rounded-full text-white/90 text-sm font-medium">
-              <Navigation size={18} className="text-secondary" />
-              <span>Testar a circulação entre a casa e a piscina</span>
-            </div>
-            <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-5 py-2.5 rounded-full text-white/90 text-sm font-medium">
-              <Ruler size={18} className="text-secondary" />
-              <span>Medir espaços para o seu projeto com precisão</span>
-            </div>
+            {t.virtualTour.features.map((feature, i) => {
+              const Icon = featureIcons[i] ?? Eye;
+              return (
+                <div key={i} className="flex items-center gap-2 bg-white/5 border border-white/10 px-5 py-2.5 rounded-full text-white/90 text-sm font-medium">
+                  <Icon size={18} className="text-secondary" />
+                  <span>{feature}</span>
+                </div>
+              );
+            })}
           </motion.div>
           
           {!isPlaying && (
@@ -90,7 +83,7 @@ export default function VirtualTour() {
               transition={{ delay: 0.6 }}
               className="bg-secondary text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-opacity-90 transition-all shadow-xl"
             >
-              Acessar tour virtual
+              {t.virtualTour.button}
             </motion.button>
           )}
         </div>

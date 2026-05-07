@@ -1,7 +1,9 @@
 import { motion } from "motion/react";
 import { MessageCircle } from "lucide-react";
+import { useT } from "../i18n/LanguageContext";
 
 export default function FinalCTA() {
+  const t = useT();
   return (
     <section id="contato" className="py-32 bg-bg-main relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 opacity-30 pointer-events-none">
@@ -16,33 +18,33 @@ export default function FinalCTA() {
           viewport={{ once: true }}
           className="text-4xl md:text-6xl font-serif text-primary-1 mb-8"
         >
-          Pronto para conhecer uma nova experiência?
+          {t.finalCTA.title}
         </motion.h2>
-        
-        <motion.p 
+
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
           className="text-text-sec text-xl mb-12 max-w-2xl mx-auto"
         >
-          Vamos conversar. Não para vender. Para entender se é esse tipo de casa que você está buscando.
+          {t.finalCTA.subtitle}
         </motion.p>
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
         >
-          <button 
+          <button
             onClick={() => window.dispatchEvent(new CustomEvent("open-lead-form"))}
             className="inline-flex items-center justify-center gap-3 bg-secondary hover:bg-secondary/90 text-white px-10 py-5 rounded-full text-lg font-medium transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
           >
             <MessageCircle size={24} />
-            Falar com a OPA
+            {t.finalCTA.button}
           </button>
-          <p className="mt-6 text-sm text-text-sec">Atendimento direto com Marco Henrique.</p>
+          <p className="mt-6 text-sm text-text-sec">{t.finalCTA.footer}</p>
         </motion.div>
       </div>
     </section>

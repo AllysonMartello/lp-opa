@@ -1,8 +1,10 @@
 import { useState, useRef } from "react";
 import { motion } from "motion/react";
 import { MessageCircle, Mail, Play, Pause } from "lucide-react";
+import { useT } from "../i18n/LanguageContext";
 
 export default function MarcosView() {
+  const t = useT();
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -42,9 +44,9 @@ export default function MarcosView() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <span className="text-[10px] font-bold tracking-[0.2em] text-primary-2 uppercase mb-2 block">Atendimento</span>
-              <h2 className="text-3xl font-serif text-primary-1 mb-1">Marco Henrique</h2>
-              <p className="text-text-sec text-xs font-medium tracking-wider mb-8">Arquiteto · Curadoria OPA Imóveis</p>
+              <span className="text-[10px] font-bold tracking-[0.2em] text-primary-2 uppercase mb-2 block">{t.marcosView.eyebrow}</span>
+              <h2 className="text-3xl font-serif text-primary-1 mb-1">{t.marcosView.name}</h2>
+              <p className="text-text-sec text-xs font-medium tracking-wider mb-8">{t.marcosView.role}</p>
               
               <div className="bg-bg-alt/50 rounded-2xl p-5 flex flex-col sm:flex-row items-center gap-5 mb-8 border border-border-main/40">
                 <audio 
@@ -61,7 +63,7 @@ export default function MarcosView() {
                   {isPlaying ? <Pause fill="currentColor" size={20} /> : <Play fill="currentColor" size={20} className="ml-0.5" />}
                 </button>
                 <div className="flex-1 text-left w-full">
-                  <p className="text-xs font-bold text-primary-1 mb-1">Análise Técnica – Siriúba 2</p>
+                  <p className="text-xs font-bold text-primary-1 mb-1">{t.marcosView.audioTitle}</p>
                   
                   {/* Waveform */}
                   <div className="flex items-center gap-0.5 h-4 w-full overflow-hidden">
@@ -87,17 +89,17 @@ export default function MarcosView() {
               </div>
 
               <div className="text-text-sec text-base font-serif italic mb-8 border-l-2 border-primary-2/20 pl-5 py-1">
-                "Responsável por conduzir a visita e traduzir o que, muitas vezes, não aparece na primeira impressão."
+                "{t.marcosView.quote}"
               </div>
-              
+
               <div className="flex flex-wrap items-center justify-center md:justify-start gap-6">
                 <a href="#contato" className="text-sm font-bold text-primary-1 hover:text-primary-2 transition-colors flex items-center gap-2 group">
                   <MessageCircle size={18} />
-                  Falar com o Marco
+                  {t.marcosView.talkCta}
                 </a>
                 <a href="mailto:marcofilhoilha@gmail.com" className="text-xs font-medium text-text-sec hover:text-primary-1 transition-colors flex items-center gap-2">
                   <Mail size={14} />
-                  Email Profissional
+                  {t.marcosView.emailCta}
                 </a>
               </div>
             </motion.div>

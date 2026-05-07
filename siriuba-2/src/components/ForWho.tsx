@@ -1,31 +1,11 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { Check, Heart } from "lucide-react";
-
-const profiles = [
-  {
-    id: 1,
-    text: "O mar aparece: Uma vista aberta e um pôr do sol muito bonito.",
-    tag: "A Vista"
-  },
-  {
-    id: 2,
-    text: "O verde entra: Relação muito bonita entre a arquitetura contemporânea e a natureza.",
-    tag: "Integração"
-  },
-  {
-    id: 3,
-    text: "A piscina puxa a convivência: Generosa, com espreguiçadeiras e espaço gourmet ao redor. Pronta para os filhos e netos.",
-    tag: "Lazer"
-  },
-  {
-    id: 4,
-    text: "A varanda vira o lugar natural para ficar com os amigos.",
-    tag: "Convivência"
-  }
-];
+import { motion } from "motion/react";
+import { Check } from "lucide-react";
+import { useT } from "../i18n/LanguageContext";
 
 export default function ForWho() {
+  const t = useT();
+  const profiles = t.forWho.profiles.map((p, i) => ({ id: i + 1, ...p }));
   const [selected, setSelected] = useState<number[]>([]);
 
   const toggleProfile = (id: number) => {
@@ -44,31 +24,31 @@ export default function ForWho() {
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-primary-2 uppercase tracking-[0.4em] text-xs font-bold mb-6 block"
           >
-            A Vivência
+            {t.forWho.eyebrow}
           </motion.span>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className="text-5xl md:text-7xl font-serif text-primary-1 mb-8 leading-tight"
           >
-            Para reunir a família e criar memória
+            {t.forWho.title}
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             className="text-text-sec text-xl font-light max-w-2xl mx-auto leading-relaxed"
           >
-            Essa é uma casa onde a família consegue se encontrar com conforto. Pais. Filhos. Netos. Amigos próximos. A casa tem espaço, mas não perde a conexão.
+            {t.forWho.intro}
           </motion.p>
         </div>
         
@@ -121,7 +101,7 @@ export default function ForWho() {
                       <span className={`text-xs font-bold uppercase tracking-wider transition-colors duration-300 ${
                         isSelected ? "text-white" : "text-primary-2"
                       }`}>
-                        {isSelected ? "Para mim" : "Clique aqui se for você"}
+                        {isSelected ? t.forWho.selectedLabel : t.forWho.unselectedLabel}
                       </span>
                     </div>
 
@@ -150,13 +130,13 @@ export default function ForWho() {
         >
           <div className="space-y-6">
             <p className="text-text-sec font-serif italic text-2xl">
-              "Mais do que uma casa de veraneio, ela funciona como cenário para tempo de qualidade."
+              "{t.forWho.quote}"
             </p>
-            <button 
+            <button
               onClick={() => window.dispatchEvent(new CustomEvent("open-lead-form"))}
               className="mt-8 bg-primary-2 text-white px-8 py-4 rounded-full font-bold hover:bg-opacity-90 transition-all shadow-lg"
             >
-              Quero entender se faz sentido para minha família
+              {t.forWho.cta}
             </button>
           </div>
         </motion.div>

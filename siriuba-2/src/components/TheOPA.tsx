@@ -1,6 +1,8 @@
 import { motion } from "motion/react";
+import { useT } from "../i18n/LanguageContext";
 
 export default function TheOPA() {
+  const t = useT();
   return (
     <section className="py-24 md:py-32 bg-bg-main relative overflow-hidden">
       {/* Decorative Elements */}
@@ -35,9 +37,9 @@ export default function TheOPA() {
               <div className="w-full h-full rounded-2xl md:rounded-[3rem] shadow-[0_20px_50px_rgba(42,60,79,0.15)] bg-white p-2 relative z-10 group">
                 <div className="w-full h-full rounded-xl md:rounded-[2.5rem] overflow-hidden relative">
                   <div className="absolute inset-0 bg-primary-1/10 group-hover:bg-transparent transition-colors duration-700"></div>
-                  <img 
-                    src="https://smabio.com.br/wp-content/uploads/2026/04/Frame-83.png" 
-                    alt="OPA Imóveis" 
+                  <img
+                    src="https://smabio.com.br/wp-content/uploads/2026/04/Frame-83.png"
+                    alt={t.theOPA.logoAlt}
                     className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700 hover:scale-105"
                     referrerPolicy="no-referrer"
                   />
@@ -50,8 +52,8 @@ export default function TheOPA() {
                   transition={{ delay: 0.5 }}
                   className="absolute -bottom-6 -right-6 bg-primary-1 text-white p-6 rounded-2xl shadow-xl hidden md:block"
                 >
-                  <p className="text-[10px] uppercase tracking-widest font-bold mb-1 opacity-70">Experiência</p>
-                  <p className="text-2xl font-serif">+20 anos</p>
+                  <p className="text-[10px] uppercase tracking-widest font-bold mb-1 opacity-70">{t.theOPA.badgeLabel}</p>
+                  <p className="text-2xl font-serif">{t.theOPA.badgeValue}</p>
                 </motion.div>
               </div>
             </div>
@@ -67,21 +69,19 @@ export default function TheOPA() {
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className="h-[1px] w-12 bg-primary-2"></div>
-                <span className="text-primary-2 uppercase tracking-[0.3em] text-[10px] font-black">Curadoria OPA Imóveis</span>
+                <span className="text-primary-2 uppercase tracking-[0.3em] text-[10px] font-black">{t.theOPA.eyebrow}</span>
               </div>
-              
+
               <h2 className="text-4xl md:text-5xl xl:text-6xl font-serif text-primary-1 mb-8 leading-[1.1]">
-                Ilhabela não é um <span className="italic">mercado simples.</span>
+                {t.theOPA.titleStart} <span className="italic">{t.theOPA.titleEnd}</span>
               </h2>
-              
+
               <div className="space-y-8">
-                <p className="text-text-sec text-lg leading-relaxed font-light max-w-2xl">
-                  Cada bairro responde de um jeito. Cada casa tem um comportamento diferente ao longo do tempo. E nem tudo que aparece na foto é o que define o valor de um imóvel.
-                </p>
-                
-                <p className="text-text-sec text-lg leading-relaxed font-light max-w-2xl">
-                  Quando a OPA apresenta uma casa, ela já passou por essa leitura técnica baseada na forma de uso e na relação real com o mar. Você não está vendo um anúncio. Está vendo uma curadoria.
-                </p>
+                {t.theOPA.paragraphs.map((p, i) => (
+                  <p key={i} className="text-text-sec text-lg leading-relaxed font-light max-w-2xl">
+                    {p}
+                  </p>
+                ))}
               </div>
             </motion.div>
           </div>

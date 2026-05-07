@@ -1,28 +1,19 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
+import { useT } from "../i18n/LanguageContext";
 
-const experiences = [
-  {
-    time: "Manhã",
-    title: "O início silencioso",
-    desc: "A casa começa silenciosa. A luz entra suave. O mar ainda está mais calmo. É o momento de abrir tudo, deixar o ar circular e tomar um café olhando para fora, sem pressa.",
-    img: "/assets/siriuba-2/Manhã.jpg"
-  },
-  {
-    time: "Tarde",
-    title: "A casa ganha vida",
-    desc: "A luz fica mais forte e o mar começa a brilhar. A piscina reflete no teto da sala, movimentando o ambiente e trazendo vida para todos os espaços integrados.",
-    img: "/assets/siriuba-2/Tarde.jpg"
-  },
-  {
-    time: "Noite",
-    title: "Protagonismo íntimo",
-    desc: "A casa fica mais contida. Mais silenciosa. A iluminação interna assume o protagonismo. A sala, a área externa e a piscina funcionam de forma mais íntima.",
-    img: "/assets/siriuba-2/Noite.jpg"
-  }
+const experienceImages = [
+  "/assets/siriuba-2/Manhã.jpg",
+  "/assets/siriuba-2/Tarde.jpg",
+  "/assets/siriuba-2/Noite.jpg",
 ];
 
 export default function Experience() {
+  const t = useT();
+  const experiences = t.experience.items.map((item, i) => ({
+    ...item,
+    img: experienceImages[i],
+  }));
   const containerRef = useRef<HTMLElement>(null);
   
   const { scrollYProgress } = useScroll({
@@ -64,14 +55,14 @@ export default function Experience() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
-          <span className="text-primary-2 uppercase tracking-widest text-xs font-bold mb-4 block">Como seria viver aqui…</span>
-          <motion.h2 
+          <span className="text-primary-2 uppercase tracking-widest text-xs font-bold mb-4 block">{t.experience.eyebrow}</span>
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "0px" }}
             className="text-4xl md:text-5xl lg:text-6xl font-serif text-primary-1"
           >
-            A Vivência
+            {t.experience.title}
           </motion.h2>
         </div>
 
@@ -112,7 +103,7 @@ export default function Experience() {
            className="mt-32 text-center max-w-2xl mx-auto"
         >
           <p className="text-2xl md:text-3xl font-serif text-primary-1 italic leading-relaxed">
-            "Porque no fim, não é sobre como a casa é. É sobre como ela funciona ao longo do seu dia."
+            "{t.experience.quote}"
           </p>
         </motion.div>
       </div>

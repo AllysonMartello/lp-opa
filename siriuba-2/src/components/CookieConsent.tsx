@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ShieldAlert, X } from 'lucide-react';
+import { useT } from '../i18n/LanguageContext';
 
 export default function CookieConsent() {
+  const t = useT();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -38,10 +40,10 @@ export default function CookieConsent() {
             
             <div className="flex-1">
               <h3 className="text-primary-1 font-serif text-lg sm:text-xl font-medium mb-1">
-                Privacidade e Cookies
+                {t.cookieConsent.title}
               </h3>
               <p className="text-text-sec text-sm leading-relaxed">
-                Utilizamos cookies e tecnologias semelhantes para melhorar a sua experiência, analisar o tráfego do site e personalizar conteúdo e anúncios (Meta Ads, Google, etc). Ao continuar navegando, você concorda com a nossa política de privacidade e uso de cookies em conformidade com a LGPD.
+                {t.cookieConsent.body}
               </p>
             </div>
             
@@ -50,7 +52,7 @@ export default function CookieConsent() {
                 onClick={acceptCookies}
                 className="flex-1 sm:flex-none bg-primary-1 hover:bg-primary-2 text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 shadow-md hover:shadow-lg active:scale-95"
               >
-                Aceitar e fechar
+                {t.cookieConsent.accept}
               </button>
             </div>
             

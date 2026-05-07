@@ -1,120 +1,22 @@
 import { useState, FormEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X, ChevronRight, ChevronLeft, Check, Send, Phone, User, MapPin } from "lucide-react";
+import { useT } from "../i18n/LanguageContext";
 
 interface LeadFormModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const steps = [
-  {
-    id: 1,
-    question: "O que você procura em Ilhabela?",
-    type: "single",
-    options: [
-      "Segunda residência",
-      "Refúgio familiar",
-      "Investimento patrimonial",
-      "Mudança de estilo de vida"
-    ]
-  },
-  {
-    id: 2,
-    question: "O que é mais importante para a experiência da sua família em Ilhabela?",
-    type: "single",
-    options: [
-      "Privacidade e tranquilidade",
-      "Vista panorâmica para o mar ou natureza",
-      "Acesso ao mar / vida náutica",
-      "Proximidade da Vila e restaurantes",
-      "Integração com a natureza"
-    ]
-  },
-  {
-    id: 3,
-    question: "Qual é a faixa de investimento prevista?",
-    type: "single",
-    options: [
-      "Até R$ 3 milhões",
-      "De R$ 3M a R$ 5M",
-      "De R$ 5M a R$ 10M",
-      "Acima de R$ 10M"
-    ]
-  },
-  {
-    id: 4,
-    question: "Como você pretende estruturar a aquisição?",
-    type: "single",
-    options: [
-      "Recursos próprios",
-      "Financiamento",
-      "Estudo permuta parcial"
-    ]
-  },
-  {
-    id: 5,
-    question: "Quando pretende tomar a decisão de compra?",
-    type: "single",
-    options: [
-      "Estou pronto para avançar agora",
-      "Nos próximos 3 a 6 meses",
-      "Apenas estudando o mercado"
-    ]
-  },
-  {
-    id: 6,
-    question: "Como seria a composição ideal da casa?",
-    subtitle: "(Selecione o que fizer sentido)",
-    type: "multi",
-    options: [
-      "4 ou mais suítes",
-      "Área gourmet completa",
-      "Piscina",
-      "Home office com vista",
-      "Casa de hóspedes / caseiro",
-      "Estrutura náutica"
-    ]
-  },
-  {
-    id: 7,
-    question: "Você já tem alguma região de preferência em Ilhabela?",
-    type: "single",
-    options: [
-      "Sul (Curral, Feiticeira, Julião)",
-      "Norte (Siriúba, Armação)",
-      "Centro (Vila, Engenho D’Água)",
-      "Costeira mais isolada",
-      "Ainda estou aberto a sugestões"
-    ]
-  },
-  {
-    id: 8,
-    question: "Antes de agendar uma visita presencial, você gostaria de ver um tour virtual imersivo da casa?",
-    type: "single",
-    options: [
-      "Sim, gostaria de conhecer primeiro online",
-      "Prefiro ir direto para a visita presencial"
-    ]
-  },
-  {
-    id: 9,
-    question: "Como prefere que entremos em contato?",
-    type: "single",
-    options: [
-      "WhatsApp",
-      "Ligação",
-      "E-mail"
-    ]
-  },
-  {
-    id: 10,
-    question: "Quase lá! Como podemos te chamar?",
-    type: "final"
-  }
-];
+// Multi-select step is index 5; final step is the last one
+const MULTI_STEP_INDEX = 5;
 
 export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
+  const t = useT();
+  const stepCount = t.leadForm.steps.length;
+  const FINAL_STEP_INDEX = stepCount - 1;
+  const getStepType = (i: number): "single" | "multi" | "final" =>
+    i === FINAL_STEP_INDEX ? "final" : i === MULTI_STEP_INDEX ? "multi" : "single";
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<number, any>>({});
   const [formData, setFormData] = useState({
@@ -125,21 +27,21 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleOptionSelect = (option: string) => {
-    const step = steps[currentStep];
-    if (step.type === "single") {
-      setAnswers({ ...answers, [step.id]: option });
+    const stepType = getStepType(currentStep);
+    if (stepType === "single") {
+      setAnswers({ ...answers, [currentStep]: option });
       setTimeout(() => nextStep(), 300);
-    } else if (step.type === "multi") {
-      const currentAnswers = answers[step.id] || [];
+    } else if (stepType === "multi") {
+      const currentAnswers = answers[currentStep] || [];
       const newAnswers = currentAnswers.includes(option)
         ? currentAnswers.filter((a: string) => a !== option)
         : [...currentAnswers, option];
-      setAnswers({ ...answers, [step.id]: newAnswers });
+      setAnswers({ ...answers, [currentStep]: newAnswers });
     }
   };
 
   const nextStep = () => {
-    if (currentStep < steps.length - 1) {
+    if (currentStep < stepCount - 1) {
       setCurrentStep(currentStep + 1);
     }
   };
@@ -152,18 +54,17 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    
-    // Format answers for email
+
     const emailData: Record<string, string> = {
-      _subject: `Novo Lead - Siriúba 2 - ${formData.nome}`,
-      Nome: formData.nome,
-      Telefone: formData.telefone,
-      Cidade: formData.cidade,
+      _subject: `${t.leadForm.emailSubject} - ${formData.nome}`,
+      [t.leadForm.fieldLabels.name]: formData.nome,
+      [t.leadForm.fieldLabels.phone]: formData.telefone,
+      [t.leadForm.fieldLabels.city]: formData.cidade,
     };
 
-    steps.forEach(step => {
-      if (step.type !== "final") {
-        const answer = answers[step.id];
+    t.leadForm.steps.forEach((step, i) => {
+      if (getStepType(i) !== "final") {
+        const answer = answers[i];
         if (answer) {
           emailData[step.question] = Array.isArray(answer) ? answer.join(", ") : answer;
         }
@@ -171,7 +72,6 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
     });
 
     try {
-      // Send email in the background using formsubmit.co
       await fetch("https://formsubmit.co/ajax/opaimoveisilhabela@gmail.com", {
         method: "POST",
         headers: {
@@ -184,11 +84,9 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
       console.error("Erro ao enviar formulário:", error);
     }
 
-    // Redirect to WhatsApp with a simple message
-    const whatsappMessage = "Olá! Gostaria de mais informações sobre a casa Siriúba 2 em Ilhabela.";
-    const encodedMessage = encodeURIComponent(whatsappMessage);
+    const encodedMessage = encodeURIComponent(t.leadForm.whatsappMessage);
     window.open(`https://wa.me/5512974068058?text=${encodedMessage}`, "_blank");
-    
+
     setIsSubmitted(true);
     setTimeout(() => {
       onClose();
@@ -199,7 +97,10 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
     }, 3000);
   };
 
-  const progress = ((currentStep + 1) / steps.length) * 100;
+  const progress = ((currentStep + 1) / stepCount) * 100;
+  const currentStepData = t.leadForm.steps[currentStep];
+  const currentStepType = getStepType(currentStep);
+  const showSubtitle = currentStepType === "multi";
 
   return (
     <AnimatePresence>
@@ -223,9 +124,9 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
             <div className="p-4 md:p-8 flex items-center justify-between border-b border-primary-1/5 shrink-0">
               <div className="flex items-center gap-3 md:gap-4">
                 <div className="w-8 h-8 md:w-10 md:h-10 bg-primary-2/10 rounded-full flex items-center justify-center text-primary-2 shrink-0">
-                  <span className="font-bold text-xs md:text-sm">{currentStep + 1}/{steps.length}</span>
+                  <span className="font-bold text-xs md:text-sm">{currentStep + 1}/{stepCount}</span>
                 </div>
-                <h3 className="font-serif text-primary-1 text-lg md:text-xl truncate">Consultoria Personalizada</h3>
+                <h3 className="font-serif text-primary-1 text-lg md:text-xl truncate">{t.leadForm.headerTitle}</h3>
               </div>
               <button 
                 onClick={onClose}
@@ -258,14 +159,14 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
                   >
                     <div>
                       <h4 className="text-2xl md:text-3xl font-serif text-primary-1 mb-2 leading-tight">
-                        {steps[currentStep].question}
+                        {currentStepData.question}
                       </h4>
-                      {steps[currentStep].subtitle && (
-                        <p className="text-primary-1/40 text-sm italic">{steps[currentStep].subtitle}</p>
+                      {showSubtitle && (
+                        <p className="text-primary-1/40 text-sm italic">{t.leadForm.multiHint}</p>
                       )}
                     </div>
 
-                    {steps[currentStep].type === "final" ? (
+                    {currentStepType === "final" ? (
                       <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="space-y-4">
                           <div className="relative">
@@ -273,7 +174,7 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
                             <input
                               required
                               type="text"
-                              placeholder="Seu nome completo"
+                              placeholder={t.leadForm.namePlaceholder}
                               value={formData.nome}
                               onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
                               className="w-full pl-12 pr-4 py-4 rounded-2xl bg-primary-1/5 border-2 border-transparent focus:border-primary-2 outline-none transition-all text-primary-1 font-medium"
@@ -284,7 +185,7 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
                             <input
                               required
                               type="tel"
-                              placeholder="Telefone / WhatsApp"
+                              placeholder={t.leadForm.phonePlaceholder}
                               value={formData.telefone}
                               onChange={(e) => setFormData({ ...formData, telefone: e.target.value })}
                               className="w-full pl-12 pr-4 py-4 rounded-2xl bg-primary-1/5 border-2 border-transparent focus:border-primary-2 outline-none transition-all text-primary-1 font-medium"
@@ -295,7 +196,7 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
                             <input
                               required
                               type="text"
-                              placeholder="Cidade onde mora"
+                              placeholder={t.leadForm.cityPlaceholder}
                               value={formData.cidade}
                               onChange={(e) => setFormData({ ...formData, cidade: e.target.value })}
                               className="w-full pl-12 pr-4 py-4 rounded-2xl bg-primary-1/5 border-2 border-transparent focus:border-primary-2 outline-none transition-all text-primary-1 font-medium"
@@ -306,16 +207,16 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
                           type="submit"
                           className="w-full bg-primary-2 text-white py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 hover:bg-primary-2/90 transition-all shadow-lg hover:shadow-primary-2/20"
                         >
-                          Finalizar e Enviar <Send size={20} />
+                          {t.leadForm.submitLabel} <Send size={20} />
                         </button>
                       </form>
                     ) : (
                       <div className="grid grid-cols-1 gap-3">
-                        {steps[currentStep].options?.map((option) => {
-                          const isSelected = steps[currentStep].type === "multi" 
-                            ? (answers[steps[currentStep].id] || []).includes(option)
-                            : answers[steps[currentStep].id] === option;
-                          
+                        {currentStepData.options?.map((option) => {
+                          const isSelected = currentStepType === "multi"
+                            ? (answers[currentStep] || []).includes(option)
+                            : answers[currentStep] === option;
+
                           return (
                             <button
                               key={option}
@@ -349,9 +250,9 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
                     <div className="w-24 h-24 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
                       <Check size={48} strokeWidth={3} />
                     </div>
-                    <h4 className="text-3xl font-serif text-primary-1">Solicitação Enviada!</h4>
+                    <h4 className="text-3xl font-serif text-primary-1">{t.leadForm.successTitle}</h4>
                     <p className="text-text-sec text-lg max-w-sm">
-                      Obrigado pelo seu interesse. Marco Henrique entrará em contato em breve com as informações solicitadas.
+                      {t.leadForm.successBody}
                     </p>
                   </motion.div>
                 )}
@@ -368,16 +269,16 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
                     currentStep === 0 ? "opacity-0 pointer-events-none" : "text-primary-1/40 hover:text-primary-1"
                   }`}
                 >
-                  <ChevronLeft size={20} /> Voltar
+                  <ChevronLeft size={20} /> {t.leadForm.backLabel}
                 </button>
-                
-                {steps[currentStep].type === "multi" && (
+
+                {currentStepType === "multi" && (
                   <button
                     onClick={nextStep}
-                    disabled={(answers[steps[currentStep].id] || []).length === 0}
+                    disabled={(answers[currentStep] || []).length === 0}
                     className={`flex items-center gap-2 bg-primary-1 text-white px-8 py-3 rounded-xl font-bold text-sm uppercase tracking-widest transition-all hover:bg-primary-1/90 disabled:opacity-50 disabled:cursor-not-allowed`}
                   >
-                    Continuar <ChevronRight size={20} />
+                    {t.leadForm.continueLabel} <ChevronRight size={20} />
                   </button>
                 )}
               </div>
