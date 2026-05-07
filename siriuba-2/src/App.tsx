@@ -21,7 +21,7 @@ import MarcosView from "./components/MarcosView";
 import FinalCTA from "./components/FinalCTA";
 import Footer from "./components/Footer";
 import LeadFormModal from "./components/LeadFormModal";
-import CookieConsent from "@/src/components/CookieConsent";
+import CookieConsent from "./components/CookieConsent";
 
 export default function App() {
   const [isLeadFormOpen, setIsLeadFormOpen] = useState(false);

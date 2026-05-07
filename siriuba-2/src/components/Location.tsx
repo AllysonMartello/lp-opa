@@ -1,12 +1,61 @@
-import { motion } from "motion/react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { MapPin, Anchor, Sailboat, UtensilsCrossed, Landmark, Navigation, Compass } from "lucide-react";
 
 const distances = [
-  { label: "Praia da Siriúba", time: "2 min", icon: Anchor },
-  { label: "Praia da Baleia", time: "4 min", icon: Sailboat },
-  { label: "Praia do Viana", time: "5 min", icon: UtensilsCrossed },
-  { label: "Vila (Centro Histórico)", time: "12 min", icon: Landmark },
-  { label: "Yacht Club Ilhabela", time: "10 min", icon: Sailboat },
+  { 
+    label: "Praia da Siriúba", 
+    time: "2 min", 
+    icon: Anchor,
+    image: "/assets/siriuba-2/praia-da-siriuba.jpg",
+    description: [
+      "A Praia da Siriúba é conhecida por sua extensa faixa de areia e mar calmo, o que a torna ideal para famílias e praticantes de esportes como o kitesurf. O ambiente é cercado por coqueiros e conta com quiosques e bares que oferecem conforto aos visitantes.",
+      "Destaque: Águas rasas e tranquilas.",
+      "Ambiente: Familiar e propício para o descanso."
+    ]
+  },
+  { 
+    label: "Praia da Pedra do Sino", 
+    time: "4 min", 
+    icon: Sailboat, 
+    image: "/assets/siriuba-2/praia-pedra-do-sino.jpg",
+    description: [
+      "Famosa pelas pedras que emitem um som metálico ao serem batidas, esta praia é uma das mais populares do norte da ilha. Possui uma ótima infraestrutura de quiosques e restaurantes, com águas muito paradas que lembram uma piscina.",
+      "Curiosidade: As pedras que \"tocam\" como sinos.",
+      "Facilidade de acesso e serviços."
+    ]
+  },
+  { 
+    label: "Praia do Viana", 
+    time: "5 min", 
+    icon: UtensilsCrossed,
+    image: "/assets/siriuba-2/praia-do-viana.jpg",
+    description: [
+      "Uma praia pequena e extremamente charmosa, com águas cristalinas e sem ondas. É o local perfeito para quem busca um ambiente mais reservado e sofisticado, sendo muito conhecida pelo excelente restaurante que leva o mesmo nome."
+    ]
+  },
+  { 
+    label: "Vila (Centro Histórico)", 
+    time: "12 min", 
+    icon: Landmark,
+    image: "/assets/siriuba-2/vila-centro-histórico.jpg",
+    description: [
+      "O coração social e cultural de Ilhabela. A Vila preserva construções coloniais e é repleta de lojas de artesanato, sorveterias, bares e restaurantes charmosos. É o ponto de encontro principal para passeios noturnos.",
+      "Atrações: Pier, Igreja Matriz e apresentações culturais.",
+      "Estilo: Urbano, histórico e muito vibrante."
+    ]
+  },
+  { 
+    label: "Yacht Club Ilhabela", 
+    time: "10 min", 
+    icon: Sailboat,
+    image: "/assets/siriuba-2/yatch-club-ilhabela.jpg",
+    description: [
+      "Um dos clubes náuticos mais prestigiados do Brasil, localizado próximo à Vila. É a sede de importantes eventos de vela, incluindo a Semana de Vela de Ilhabela, e oferece uma vista privilegiada do Canal de São Sebastião.",
+      "Foco: Náutica e eventos esportivos de alto padrão.",
+      "Visual: Ponto icônico com muitas embarcações e infraestrutura completa para sócios e velejadores."
+    ]
+  },
 ];
 
 const containerVariants = {
@@ -26,6 +75,12 @@ const itemVariants = {
 };
 
 export default function Location() {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const toggleAccordion = (index: number) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
+
   return (
     <section className="py-24 md:py-32 bg-bg-main relative overflow-hidden">
       {/* Decorative background elements */}
@@ -79,19 +134,59 @@ export default function Location() {
               >
                 {distances.map((item, index) => {
                   const Icon = item.icon;
+                  const isExpanded = expandedIndex === index;
+                  const hasAccordion = !!item.image;
+
                   return (
                     <motion.li 
                       key={index} 
                       variants={itemVariants}
-                      className="group flex items-center justify-between border-b border-border-main/30 pb-4 last:border-0 last:pb-0 hover:border-primary-2/30 transition-colors"
+                      className={`group flex flex-col border-b border-border-main/30 pb-4 last:border-0 last:pb-0 hover:border-primary-2/30 transition-colors ${hasAccordion ? 'cursor-pointer' : ''}`}
+                      onClick={() => hasAccordion && toggleAccordion(index)}
                     >
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-full bg-primary-1/5 flex items-center justify-center text-primary-2 group-hover:bg-primary-2 group-hover:text-white transition-all duration-300 shadow-sm">
-                          <Icon size={18} />
+                      <div className="flex items-center justify-between w-full">
+                        <div className="flex items-center gap-4">
+                          <div className="w-10 h-10 rounded-full bg-primary-1/5 flex items-center justify-center text-primary-2 group-hover:bg-primary-2 group-hover:text-white transition-all duration-300 shadow-sm">
+                            <Icon size={18} />
+                          </div>
+                          <span className="text-text-main font-medium group-hover:text-primary-1 transition-colors">{item.label}</span>
                         </div>
-                        <span className="text-text-main font-medium group-hover:text-primary-1 transition-colors">{item.label}</span>
+                        <span className="text-primary-2 font-bold bg-primary-1/5 px-4 py-1.5 rounded-full text-sm group-hover:bg-primary-2 group-hover:text-white transition-all duration-300">{item.time}</span>
                       </div>
-                      <span className="text-primary-2 font-bold bg-primary-1/5 px-4 py-1.5 rounded-full text-sm group-hover:bg-primary-2 group-hover:text-white transition-all duration-300">{item.time}</span>
+
+                      <AnimatePresence>
+                        {isExpanded && hasAccordion && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0, marginTop: 0 }}
+                            animate={{ height: "auto", opacity: 1, marginTop: 16 }}
+                            exit={{ height: 0, opacity: 0, marginTop: 0 }}
+                            className="overflow-hidden rounded-xl w-full"
+                          >
+                            <img 
+                              src={item.image} 
+                              alt={item.label} 
+                              className="w-full h-48 object-cover rounded-xl shadow-md mb-4"
+                            />
+                            {item.description && (
+                              <div className="space-y-3 text-sm text-text-sec pb-2 px-1">
+                                {item.description.map((desc, i) => {
+                                  const parts = desc.split(':');
+                                  if (parts.length > 1 && (parts[0].trim() === 'Destaque' || parts[0].trim() === 'Ambiente' || parts[0].trim() === 'Curiosidade' || parts[0].trim() === 'Atrações' || parts[0].trim() === 'Estilo' || parts[0].trim() === 'Foco' || parts[0].trim() === 'Visual')) {
+                                    const boldPart = parts.shift();
+                                    const rest = parts.join(':');
+                                    return (
+                                      <p key={i}>
+                                        <span className="font-bold text-primary-1">{boldPart}:</span>{rest}
+                                      </p>
+                                    );
+                                  }
+                                  return <p key={i}>{desc}</p>;
+                                })}
+                              </div>
+                            )}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </motion.li>
                   );
                 })}
