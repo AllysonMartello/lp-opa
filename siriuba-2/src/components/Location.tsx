@@ -1,60 +1,65 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { MapPin, Anchor, Sailboat, UtensilsCrossed, Landmark, Navigation, Compass } from "lucide-react";
+import { MapPin, Anchor, Sailboat, UtensilsCrossed, Landmark, Compass } from "lucide-react";
 
-const distances = [
-  { 
-    label: "Praia da Siriúba", 
-    time: "2 min", 
-    icon: Anchor,
-    image: "/assets/siriuba-2/praia-da-siriuba.jpg",
-    description: [
-      "A Praia da Siriúba é conhecida por sua extensa faixa de areia e mar calmo, o que a torna ideal para famílias e praticantes de esportes como o kitesurf. O ambiente é cercado por coqueiros e conta com quiosques e bares que oferecem conforto aos visitantes.",
-      "Destaque: Águas rasas e tranquilas.",
-      "Ambiente: Familiar e propício para o descanso."
-    ]
-  },
-  { 
-    label: "Praia da Pedra do Sino", 
-    time: "4 min", 
-    icon: Sailboat, 
-    image: "/assets/siriuba-2/praia-pedra-do-sino.jpg",
-    description: [
-      "Famosa pelas pedras que emitem um som metálico ao serem batidas, esta praia é uma das mais populares do norte da ilha. Possui uma ótima infraestrutura de quiosques e restaurantes, com águas muito paradas que lembram uma piscina.",
-      "Curiosidade: As pedras que \"tocam\" como sinos.",
-      "Facilidade de acesso e serviços."
-    ]
-  },
-  { 
-    label: "Praia do Viana", 
-    time: "5 min", 
+type Distance = {
+  label: string;
+  time: string;
+  icon: typeof Anchor;
+  images: { src: string; caption?: string }[];
+  description?: string[];
+};
+
+const distances: Distance[] = [
+  {
+    label: "Praia do Viana",
+    time: "3 min",
     icon: UtensilsCrossed,
-    image: "/assets/siriuba-2/praia-do-viana.jpg",
+    images: [
+      { src: "/assets/siriuba-2/locais/praia-do-viana.jpg", caption: "Praia do Viana" },
+      { src: "/assets/siriuba-2/locais/praia-do-viana-quiosque.jpg", caption: "Quiosque" },
+    ],
     description: [
-      "Uma praia pequena e extremamente charmosa, com águas cristalinas e sem ondas. É o local perfeito para quem busca um ambiente mais reservado e sofisticado, sendo muito conhecida pelo excelente restaurante que leva o mesmo nome."
-    ]
+      "Praia pequena, charmosa e de águas calmas, com clima reservado e sofisticado. O quiosque local é parada obrigatória — boa gastronomia pé na areia, a poucos minutos da casa.",
+    ],
   },
-  { 
-    label: "Vila (Centro Histórico)", 
-    time: "12 min", 
-    icon: Landmark,
-    image: "/assets/siriuba-2/vila-centro-histórico.jpg",
+  {
+    label: "Praia do Siriúba",
+    time: "2 min",
+    icon: Anchor,
+    images: [
+      { src: "/assets/siriuba-2/locais/praia-do-siriuba.jpg", caption: "Praia do Siriúba" },
+      { src: "/assets/siriuba-2/locais/praia-do-siriuba-quiosque.jpg", caption: "Quiosque" },
+    ],
     description: [
-      "O coração social e cultural de Ilhabela. A Vila preserva construções coloniais e é repleta de lojas de artesanato, sorveterias, bares e restaurantes charmosos. É o ponto de encontro principal para passeios noturnos.",
-      "Atrações: Pier, Igreja Matriz e apresentações culturais.",
-      "Estilo: Urbano, histórico e muito vibrante."
-    ]
+      "Extensa faixa de areia, mar calmo e coqueiros — ideal para famílias e para o dia a dia de praia. Quiosque com infraestrutura completa logo na descida.",
+    ],
   },
-  { 
-    label: "Yacht Club Ilhabela", 
-    time: "10 min", 
+  {
+    label: "Praia da Armação",
+    time: "7 min",
     icon: Sailboat,
-    image: "/assets/siriuba-2/yatch-club-ilhabela.jpg",
+    images: [
+      { src: "/assets/siriuba-2/locais/praia-da-armacao.jpg", caption: "Praia da Armação" },
+      { src: "/assets/siriuba-2/locais/escola-de-vela-bl3.jpg", caption: "Escola de Vela BL3" },
+    ],
     description: [
-      "Um dos clubes náuticos mais prestigiados do Brasil, localizado próximo à Vila. É a sede de importantes eventos de vela, incluindo a Semana de Vela de Ilhabela, e oferece uma vista privilegiada do Canal de São Sebastião.",
-      "Foco: Náutica e eventos esportivos de alto padrão.",
-      "Visual: Ponto icônico com muitas embarcações e infraestrutura completa para sócios e velejadores."
-    ]
+      "Mar protegido e ventos consistentes, referência para vela e esportes náuticos no norte da ilha. Sede da BL3, escola de vela reconhecida — aulas, eventos e estrutura para velejadores.",
+    ],
+  },
+  {
+    label: "Centro Histórico (Vila)",
+    time: "12 min",
+    icon: Landmark,
+    images: [
+      { src: "/assets/siriuba-2/locais/centro-historico.jpg", caption: "Centro Histórico" },
+      { src: "/assets/siriuba-2/locais/rua-do-meio.jpg", caption: "Rua do Meio" },
+      { src: "/assets/siriuba-2/locais/chegada-de-barco.jpg", caption: "Chegada de barco" },
+    ],
+    description: [
+      "Coração social e cultural de Ilhabela: construções coloniais, lojas, sorveterias, bares e restaurantes. A Rua do Meio concentra o melhor da gastronomia e do passeio a pé.",
+      "Diferencial: também é possível chegar de barco, atracando no pier da Vila.",
+    ],
   },
 ];
 
@@ -135,11 +140,11 @@ export default function Location() {
                 {distances.map((item, index) => {
                   const Icon = item.icon;
                   const isExpanded = expandedIndex === index;
-                  const hasAccordion = !!item.image;
+                  const hasAccordion = item.images.length > 0 || !!item.description;
 
                   return (
-                    <motion.li 
-                      key={index} 
+                    <motion.li
+                      key={index}
                       variants={itemVariants}
                       className={`group flex flex-col border-b border-border-main/30 pb-4 last:border-0 last:pb-0 hover:border-primary-2/30 transition-colors ${hasAccordion ? 'cursor-pointer' : ''}`}
                       onClick={() => hasAccordion && toggleAccordion(index)}
@@ -162,16 +167,30 @@ export default function Location() {
                             exit={{ height: 0, opacity: 0, marginTop: 0 }}
                             className="overflow-hidden rounded-xl w-full"
                           >
-                            <img 
-                              src={item.image} 
-                              alt={item.label} 
-                              className="w-full h-48 object-cover rounded-xl shadow-md mb-4"
-                            />
+                            {item.images.length > 0 && (
+                              <div className={`grid gap-3 mb-4 ${item.images.length === 1 ? 'grid-cols-1' : item.images.length === 2 ? 'grid-cols-2' : 'grid-cols-2 sm:grid-cols-3'}`}>
+                                {item.images.map((img, i) => (
+                                  <figure key={i} className="relative overflow-hidden rounded-xl shadow-md">
+                                    <img
+                                      src={img.src}
+                                      alt={img.caption ?? item.label}
+                                      loading="lazy"
+                                      className="w-full h-40 object-cover"
+                                    />
+                                    {img.caption && (
+                                      <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white text-xs font-medium px-3 py-2">
+                                        {img.caption}
+                                      </figcaption>
+                                    )}
+                                  </figure>
+                                ))}
+                              </div>
+                            )}
                             {item.description && (
                               <div className="space-y-3 text-sm text-text-sec pb-2 px-1">
                                 {item.description.map((desc, i) => {
                                   const parts = desc.split(':');
-                                  if (parts.length > 1 && (parts[0].trim() === 'Destaque' || parts[0].trim() === 'Ambiente' || parts[0].trim() === 'Curiosidade' || parts[0].trim() === 'Atrações' || parts[0].trim() === 'Estilo' || parts[0].trim() === 'Foco' || parts[0].trim() === 'Visual')) {
+                                  if (parts.length > 1 && ['Destaque', 'Ambiente', 'Curiosidade', 'Atrações', 'Estilo', 'Foco', 'Visual', 'Diferencial'].includes(parts[0].trim())) {
                                     const boldPart = parts.shift();
                                     const rest = parts.join(':');
                                     return (
