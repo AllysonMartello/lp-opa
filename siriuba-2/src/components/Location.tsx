@@ -70,7 +70,6 @@ export default function Location() {
               <p>{t.location.paragraphFinal}</p>
             </div>
 
-            {false && (
             <div className="bg-white/80 backdrop-blur-sm p-8 rounded-[2rem] shadow-lg shadow-black/5 border border-white">
               <h3 className="text-primary-1 font-serif text-2xl mb-6 flex items-center gap-3">
                 <span className="w-8 h-8 rounded-full bg-primary-2/10 flex items-center justify-center text-primary-2">
@@ -158,6 +157,18 @@ export default function Location() {
                                 })}
                               </div>
                             )}
+                            {item.tags && item.tags.length > 0 && (
+                              <div className="flex flex-wrap gap-2 pt-2 px-1">
+                                {item.tags.map((tag, i) => (
+                                  <span
+                                    key={i}
+                                    className="inline-flex items-center text-xs font-medium text-primary-1 bg-primary-2/10 border border-primary-2/20 px-3 py-1.5 rounded-full"
+                                  >
+                                    {tag}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
                           </motion.div>
                         )}
                       </AnimatePresence>
@@ -166,7 +177,6 @@ export default function Location() {
                 })}
               </motion.ul>
             </div>
-            )}
           </motion.div>
 
           <motion.div
