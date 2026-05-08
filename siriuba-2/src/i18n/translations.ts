@@ -47,55 +47,32 @@ const pt = {
         time: "3 min",
         captions: ["Praia do Viana", "Quiosque"],
         description: [
-          "Mar calmo, pedras que formam piscinas naturais e o Bar do Viana com cardápio de frutos do mar, espreguiçadeiras e bebida gelada com vista para o Canal. O tipo de lugar que os moradores do norte guardam para si.",
-        ],
-        tags: [
-          "🍤 Frutos do mar",
-          "🪨 Piscinas naturais",
-          "⛵ Atracação de barcos",
-          "🌅 Vista para o Canal",
+          "Praia pequena, charmosa e de águas calmas, com clima reservado e sofisticado. O quiosque local é parada obrigatória — boa gastronomia pé na areia, a poucos minutos da casa.",
         ],
       },
       {
-        label: "Praia da Siriúba",
+        label: "Praia do Siriúba",
         time: "2 min",
         captions: ["Praia do Siriúba", "Quiosque"],
         description: [
-          "Quatrocentos metros de areia larga, coqueiros, mar verde e calmo. O quiosque pé na areia serve com qualidade e tem serviço de praia. Estrutura e tranquilidade no mesmo lugar.",
-        ],
-        tags: [
-          "🌴 400m de areia",
-          "🍹 Quiosque pé na areia",
-          "👨‍👩‍👧 Ideal para família",
-          "⛵ Atracação de barcos",
+          "Extensa faixa de areia, mar calmo e coqueiros — ideal para famílias e para o dia a dia de praia. Quiosque com infraestrutura completa logo na descida.",
         ],
       },
       {
-        label: "Praia da Armação + BL3",
+        label: "Praia da Armação",
         time: "7 min",
         captions: ["Praia da Armação", "Escola de Vela BL3"],
         description: [
-          "O principal polo náutico do litoral norte paulista fica a poucos minutos daqui. A BL3 oferece aulas de vela, windsurf e kitesurf para adultos e crianças a partir de 7 anos. Para quem tem filhos, isso muda a rotina de férias de forma permanente.",
-        ],
-        tags: [
-          "⛵ Escola de vela desde 1994",
-          "🏄 Windsurf e kitesurf",
-          "👶 A partir de 7 anos",
-          "🏆 Campeões olímpicos treinam aqui",
+          "Mar protegido e ventos consistentes, referência para vela e esportes náuticos no norte da ilha. Sede da BL3, escola de vela reconhecida — aulas, eventos e estrutura para velejadores.",
         ],
       },
       {
-        label: "Centro Histórico — A Vila",
+        label: "Centro Histórico (Vila)",
         time: "12 min",
         captions: ["Centro Histórico", "Rua do Meio", "Chegada de barco"],
         description: [
-          "A seis quilômetros, a Vila concentra os melhores restaurantes da ilha, comércio, eventos culturais e o píer central. De lá é possível chegar de barco, sem depender do trânsito da Perimetral nos feriados.",
-        ],
-        tags: [
-          "🍽️ Gastronomia",
-          "🛥️ Chegada de barco",
-          "🎭 Eventos culturais",
-          "📍 6 km da casa",
+          "Coração social e cultural de Ilhabela: construções coloniais, lojas, sorveterias, bares e restaurantes. A Rua do Meio concentra o melhor da gastronomia e do passeio a pé.",
+          "Diferencial: também é possível chegar de barco, atracando no pier da Vila.",
         ],
       },
     ],
@@ -472,13 +449,7 @@ const en: Dictionary = {
         time: "3 min",
         captions: ["Viana Beach", "Beach kiosk"],
         description: [
-          "Calm sea, rocks forming natural pools and Bar do Viana, with a seafood menu, sun loungers and cold drinks overlooking the Channel. The kind of place locals from the north keep to themselves.",
-        ],
-        tags: [
-          "🍤 Seafood",
-          "🪨 Natural pools",
-          "⛵ Boat mooring",
-          "🌅 Channel view",
+          "A small, charming beach with calm water and a quiet, refined atmosphere. The local kiosk is a must — great food right on the sand, just minutes from the house.",
         ],
       },
       {
@@ -486,41 +457,24 @@ const en: Dictionary = {
         time: "2 min",
         captions: ["Siriúba Beach", "Beach kiosk"],
         description: [
-          "Four hundred meters of wide sand, coconut palms and a calm green sea. The beachfront kiosk delivers quality food and full beach service. Structure and tranquility in the same place.",
-        ],
-        tags: [
-          "🌴 400m of sand",
-          "🍹 Beachfront kiosk",
-          "👨‍👩‍👧 Family-friendly",
-          "⛵ Boat mooring",
+          "A long stretch of sand, calm sea and coconut palms — ideal for families and everyday beach life. A fully equipped kiosk is right at the entrance.",
         ],
       },
       {
-        label: "Armação Beach + BL3",
+        label: "Armação Beach",
         time: "7 min",
         captions: ["Armação Beach", "BL3 Sailing School"],
         description: [
-          "The leading sailing hub on São Paulo's north coast is just minutes away. BL3 offers sailing, windsurf and kitesurf lessons for adults and children from age 7. For families with kids, it permanently changes the holiday routine.",
-        ],
-        tags: [
-          "⛵ Sailing school since 1994",
-          "🏄 Windsurf & kitesurf",
-          "👶 From age 7",
-          "🏆 Olympic champions train here",
+          "Sheltered waters and steady winds — a reference for sailing and water sports on the north side of the island. Home to BL3, a renowned sailing school offering classes, events and full infrastructure for sailors.",
         ],
       },
       {
-        label: "Historic Center — A Vila",
+        label: "Historic Center (Vila)",
         time: "12 min",
         captions: ["Historic Center", "Rua do Meio", "Arrival by boat"],
         description: [
-          "Six kilometers away, the Vila concentrates the island's best restaurants, shops, cultural events and the central pier. From there you can arrive by boat, without depending on the Perimetral traffic on holidays.",
-        ],
-        tags: [
-          "🍽️ Dining",
-          "🛥️ Arrival by boat",
-          "🎭 Cultural events",
-          "📍 6 km from the house",
+          "Ilhabela's social and cultural heart: colonial architecture, shops, ice cream parlors, bars and restaurants. Rua do Meio concentrates the best of dining and the walking tour.",
+          "A nice extra: you can also arrive by boat, mooring at the Vila pier.",
         ],
       },
     ],
