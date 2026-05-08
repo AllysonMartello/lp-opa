@@ -4,13 +4,18 @@ import { MapPin, Anchor, Sailboat, UtensilsCrossed, Landmark, Compass } from "lu
 import { useT } from "../i18n/LanguageContext";
 
 const itemImages = [
-  ["/assets/siriuba-2/locais/praia-do-viana.jpg", "/assets/siriuba-2/locais/praia-do-viana-quiosque.jpg"],
-  ["/assets/siriuba-2/locais/praia-do-siriuba.jpg", "/assets/siriuba-2/locais/praia-do-siriuba-quiosque.jpg"],
-  ["/assets/siriuba-2/locais/praia-da-armacao.jpg", "/assets/siriuba-2/locais/escola-de-vela-bl3.jpg"],
+  ["/assets/siriuba-2/redor-da-casa/praia-viana-ilhabela-opa.jpg"],
   [
-    "/assets/siriuba-2/locais/centro-historico.jpg",
-    "/assets/siriuba-2/locais/rua-do-meio.jpg",
-    "/assets/siriuba-2/locais/chegada-de-barco.jpg",
+    "/assets/siriuba-2/redor-da-casa/praia-siriuba-opa.jpg",
+    "/assets/siriuba-2/redor-da-casa/praia-siriuba-drone-opa.jpg",
+  ],
+  [
+    "/assets/siriuba-2/redor-da-casa/Praia-armacao.jpg",
+    "/assets/siriuba-2/redor-da-casa/bl3-ilhabela.jpg",
+  ],
+  [
+    "/assets/siriuba-2/redor-da-casa/Centro-Histórico-A-Vila.jpg",
+    "/assets/siriuba-2/redor-da-casa/Centro-Histórico-A-Vila-opa.jpg",
   ],
 ];
 
@@ -70,7 +75,6 @@ export default function Location() {
               <p>{t.location.paragraphFinal}</p>
             </div>
 
-            {false && (
             <div className="bg-white/80 backdrop-blur-sm p-8 rounded-[2rem] shadow-lg shadow-black/5 border border-white">
               <h3 className="text-primary-1 font-serif text-2xl mb-6 flex items-center gap-3">
                 <span className="w-8 h-8 rounded-full bg-primary-2/10 flex items-center justify-center text-primary-2">
@@ -117,7 +121,7 @@ export default function Location() {
                             className="overflow-hidden rounded-xl w-full"
                           >
                             {images.length > 0 && (
-                              <div className={`grid gap-3 mb-4 ${images.length === 1 ? 'grid-cols-1' : images.length === 2 ? 'grid-cols-2' : 'grid-cols-2 sm:grid-cols-3'}`}>
+                              <div className="flex flex-col gap-3 mb-4">
                                 {images.map((src, i) => {
                                   const caption = item.captions?.[i];
                                   return (
@@ -126,7 +130,7 @@ export default function Location() {
                                         src={src}
                                         alt={caption ?? item.label}
                                         loading="lazy"
-                                        className="w-full h-40 object-cover"
+                                        className="w-full h-56 sm:h-64 object-cover"
                                       />
                                       {caption && (
                                         <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white text-xs font-medium px-3 py-2">
@@ -166,7 +170,6 @@ export default function Location() {
                 })}
               </motion.ul>
             </div>
-            )}
           </motion.div>
 
           <motion.div

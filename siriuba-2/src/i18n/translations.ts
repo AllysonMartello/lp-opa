@@ -47,7 +47,7 @@ const pt = {
         time: "3 min",
         captions: ["Praia do Viana", "Quiosque"],
         description: [
-          "Praia pequena, charmosa e de águas calmas, com clima reservado e sofisticado. O quiosque local é parada obrigatória — boa gastronomia pé na areia, a poucos minutos da casa.",
+          "Praia pequena, charmosa e de águas calmas, com clima reservado e sofisticado. O quiosque local é parada obrigatória, boa gastronomia pé na areia, a poucos minutos da casa.",
         ],
       },
       {
@@ -55,7 +55,7 @@ const pt = {
         time: "2 min",
         captions: ["Praia do Siriúba", "Quiosque"],
         description: [
-          "Extensa faixa de areia, mar calmo e coqueiros — ideal para famílias e para o dia a dia de praia. Quiosque com infraestrutura completa logo na descida.",
+          "Extensa faixa de areia, mar calmo e coqueiros, ideal para famílias e para o dia a dia de praia. Quiosque com infraestrutura completa logo na descida.",
         ],
       },
       {
@@ -63,7 +63,7 @@ const pt = {
         time: "7 min",
         captions: ["Praia da Armação", "Escola de Vela BL3"],
         description: [
-          "Mar protegido e ventos consistentes, referência para vela e esportes náuticos no norte da ilha. Sede da BL3, escola de vela reconhecida — aulas, eventos e estrutura para velejadores.",
+          "Mar protegido e ventos consistentes, referência para vela e esportes náuticos no norte da ilha. Sede da BL3, escola de vela reconhecida, aulas, eventos e estrutura para velejadores.",
         ],
       },
       {
@@ -133,7 +133,7 @@ const pt = {
       "Dois pavimentos com núcleos independentes de sala e cozinha",
       "Espaço gourmet com churrasqueira integrado à área externa",
       "Piscina generosa integrada à área externa",
-      "Ar-condicionado central — casa 100% climatizada",
+      "Ar-condicionado central, casa 100% climatizada",
       "Lavabo no pavimento térreo",
       "Projeto contemporâneo e clean, pronto para receber",
       "Energia solar instalada",
@@ -229,7 +229,7 @@ const pt = {
       { label: "Salas", value: "2 Salas" },
       {
         label: "Climatização",
-        value: "Ar-condicionado central — 100% climatizada",
+        value: "Ar-condicionado central, 100% climatizada",
       },
       {
         label: "Pavimentos",
@@ -245,7 +245,7 @@ const pt = {
         value: "Casa para família, convivência e recepção",
       },
       { label: "Ano de Construção", value: "2015" },
-      { label: "Localização", value: "Siriúba 2 – Ilhabela" },
+      { label: "Localização", value: "Siriúba 2, Ilhabela" },
       { label: "IPTU", value: "R$ 10.184/ano" },
       { label: "Valor de Venda", value: "R$ 5.000.000" },
     ],
@@ -267,7 +267,7 @@ const pt = {
     eyebrow: "Atendimento",
     name: "Marco Henrique",
     role: "Arquiteto · Curadoria OPA Imóveis",
-    audioTitle: "Análise Técnica – Siriúba 2",
+    audioTitle: "Análise Técnica, Siriúba 2",
     quote:
       "Responsável por conduzir a visita e traduzir o que, muitas vezes, não aparece na primeira impressão.",
     talkCta: "Falar com o Marco",
@@ -435,7 +435,7 @@ const en: Dictionary = {
     eyebrow: "Strategic Location in Ilhabela",
     title: "Siriúba 2, north of Ilhabela",
     paragraphs: [
-      "The house is in Siriúba 2, in a very interesting position on the north side of the island. Not the far north — and not glued to the town center either.",
+      "The house is in Siriúba 2, in a very interesting position on the north side of the island. Not the far north, and not glued to the town center either.",
       "It sits halfway between the Vila and Ponta das Canas. That delivers a rare combination: access to the best beaches up north, a real connection to water sports, and still a comfortable distance to the historic center.",
     ],
     highlight: "Another important point: how the lot relates to the main road.",
@@ -449,7 +449,7 @@ const en: Dictionary = {
         time: "3 min",
         captions: ["Viana Beach", "Beach kiosk"],
         description: [
-          "A small, charming beach with calm water and a quiet, refined atmosphere. The local kiosk is a must — great food right on the sand, just minutes from the house.",
+          "A small, charming beach with calm water and a quiet, refined atmosphere. The local kiosk is a must, great food right on the sand, just minutes from the house.",
         ],
       },
       {
@@ -457,7 +457,7 @@ const en: Dictionary = {
         time: "2 min",
         captions: ["Siriúba Beach", "Beach kiosk"],
         description: [
-          "A long stretch of sand, calm sea and coconut palms — ideal for families and everyday beach life. A fully equipped kiosk is right at the entrance.",
+          "A long stretch of sand, calm sea and coconut palms, ideal for families and everyday beach life. A fully equipped kiosk is right at the entrance.",
         ],
       },
       {
@@ -465,7 +465,7 @@ const en: Dictionary = {
         time: "7 min",
         captions: ["Armação Beach", "BL3 Sailing School"],
         description: [
-          "Sheltered waters and steady winds — a reference for sailing and water sports on the north side of the island. Home to BL3, a renowned sailing school offering classes, events and full infrastructure for sailors.",
+          "Sheltered waters and steady winds, a reference for sailing and water sports on the north side of the island. Home to BL3, a renowned sailing school offering classes, events and full infrastructure for sailors.",
         ],
       },
       {
@@ -490,7 +490,7 @@ const en: Dictionary = {
     },
   },
   theHouse: {
-    galleryTitle: "A contemporary home — spacious and ready to host",
+    galleryTitle: "A contemporary home, spacious and ready to host",
     galleryDescription:
       "This is a cleaner, brighter, more current take on a beach house. Two complete floors, each with its own living room, kitchen and lounge. The ground floor flows seamlessly with direct access to the pool. Upstairs, a second self-contained core works independently. A house designed for comfortable everyday living and for bringing people together.",
     differentialsEyebrow: "Highlights",
@@ -514,7 +514,7 @@ const en: Dictionary = {
       },
       {
         title: "Outdoor area",
-        desc: "Pool, sun loungers, gourmet area with built-in barbecue and outdoor dining — all integrated with Siriúba's lush greenery.",
+        desc: "Pool, sun loungers, gourmet area with built-in barbecue and outdoor dining, all integrated with Siriúba's lush greenery.",
       },
       {
         title: "Details",
@@ -535,9 +535,9 @@ const en: Dictionary = {
       "Two floors with independent living + kitchen cores",
       "Gourmet area with built-in barbecue, integrated with the outdoor space",
       "Generous pool integrated with the outdoor area",
-      "Central air conditioning — house is 100% climatized",
+      "Central air conditioning, house is 100% climatized",
       "Powder room on the ground floor",
-      "Contemporary, clean design — move-in ready",
+      "Contemporary, clean design, move-in ready",
       "Solar power installed",
       "Clear title and registered deed",
     ],
@@ -547,7 +547,7 @@ const en: Dictionary = {
     title: "A property aligned with today's buyer profile",
     paragraphs: [
       "The north side of the island has been changing. Better access, a more demanding buyer profile, and growing demand for move-in-ready homes that don't require renovation.",
-      "This kind of property stands out in today's market — not only because of Ilhabela's steady real-estate appreciation, but mainly because of the liquidity and security a contemporary, up-to-date project offers over time.",
+      "This kind of property stands out in today's market, not only because of Ilhabela's steady real-estate appreciation, but mainly because of the liquidity and security a contemporary, up-to-date project offers over time.",
     ],
     growthValue: "+79%",
     growthPeriod: "in 5 years",
@@ -564,7 +564,7 @@ const en: Dictionary = {
       {
         time: "Morning",
         title: "A quiet start",
-        desc: "The house wakes up quietly. The light comes in soft. The sea is still calm. It's the moment to open everything up, let the air flow through, and have coffee looking out — no rush.",
+        desc: "The house wakes up quietly. The light comes in soft. The sea is still calm. It's the moment to open everything up, let the air flow through, and have coffee looking out, no rush.",
       },
       {
         time: "Afternoon",
@@ -578,11 +578,11 @@ const en: Dictionary = {
       },
     ],
     quote:
-      "Because in the end, it isn't about how the house looks — it's about how it works through your day.",
+      "Because in the end, it isn't about how the house looks, it's about how it works through your day.",
   },
   forWho: {
     eyebrow: "A Day in the House",
-    title: "Built to bring family together — and create memory",
+    title: "Built to bring family together and create memory",
     intro:
       "This is a house where the whole family can gather comfortably. Parents. Children. Grandchildren. Close friends. Plenty of room without losing the connection.",
     profiles: [
@@ -610,7 +610,7 @@ const en: Dictionary = {
     cta: "See if this is right for my family",
   },
   virtualTour: {
-    title: "Step inside the house — right from your screen.",
+    title: "Step inside the house, right from your screen.",
     previewAlt: "Virtual tour preview",
     features: [
       "See every corner with no filters",
@@ -631,7 +631,7 @@ const en: Dictionary = {
       { label: "Living Rooms", value: "2 living rooms" },
       {
         label: "Climate",
-        value: "Central A/C — fully climatized",
+        value: "Central A/C, fully climatized",
       },
       {
         label: "Floors",
@@ -647,7 +647,7 @@ const en: Dictionary = {
         value: "Family home for gathering and hosting",
       },
       { label: "Year Built", value: "2015" },
-      { label: "Location", value: "Siriúba 2 – Ilhabela" },
+      { label: "Location", value: "Siriúba 2, Ilhabela" },
       { label: "Property Tax", value: "R$ 10,184/year" },
       { label: "Asking Price", value: "R$ 5,000,000" },
     ],
@@ -659,7 +659,7 @@ const en: Dictionary = {
     titleEnd: "simple market.",
     paragraphs: [
       "Each neighborhood behaves differently. Each house performs differently over time. And not everything you see in a photo is what defines a property's true value.",
-      "When OPA presents a home, it has already passed our technical reading — based on how it's actually used and its real relationship to the ocean. You're not looking at a listing. You're looking at a curated selection.",
+      "When OPA presents a home, it has already passed our technical reading, based on how it's actually used and its real relationship to the ocean. You're not looking at a listing. You're looking at a curated selection.",
     ],
     badgeLabel: "Experience",
     badgeValue: "+20 years",
@@ -669,7 +669,7 @@ const en: Dictionary = {
     eyebrow: "Your Contact",
     name: "Marco Henrique",
     role: "Architect · OPA Imóveis Curator",
-    audioTitle: "Technical Walkthrough – Siriúba 2",
+    audioTitle: "Technical Walkthrough, Siriúba 2",
     quote:
       "Responsible for guiding the visit and translating what, often, doesn't show up on first impression.",
     talkCta: "Talk to Marco",
@@ -678,7 +678,7 @@ const en: Dictionary = {
   finalCTA: {
     title: "Ready for a different kind of experience?",
     subtitle:
-      "Let's talk — not to sell, but to understand whether this is the kind of home you're looking for.",
+      "Let's talk, not to sell, but to understand whether this is the kind of home you're looking for.",
     button: "Get in touch with OPA",
     footer: "Direct service with Marco Henrique.",
   },
