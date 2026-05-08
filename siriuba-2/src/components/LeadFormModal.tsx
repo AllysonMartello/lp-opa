@@ -84,6 +84,21 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
       console.error("Erro ao enviar formulário:", error);
     }
 
+    // GTM dataLayer push — caminho confiável p/ rastrear o lead em SPAs
+    if (typeof window !== "undefined") {
+      const w = window as any;
+      w.dataLayer = w.dataLayer || [];
+      w.dataLayer.push({
+        event: "lead_form_submit",
+        form_id: "lead-form-siriuba-2",
+        form_name: "Lead Siriúba 2",
+        form_destination: "whatsapp+email",
+        lead_name: formData.nome,
+        lead_phone: formData.telefone,
+        lead_city: formData.cidade,
+      });
+    }
+
     const encodedMessage = encodeURIComponent(t.leadForm.whatsappMessage);
     window.open(`https://wa.me/5512974068058?text=${encodedMessage}`, "_blank");
 
@@ -167,7 +182,13 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
                     </div>
 
                     {currentStepType === "final" ? (
-                      <form onSubmit={handleSubmit} className="space-y-6">
+                      <form
+                        id="lead-form-siriuba-2"
+                        name="lead-form-siriuba-2"
+                        onSubmit={handleSubmit}
+                        className="lead-form space-y-6"
+                        data-form-name="lead-siriuba-2"
+                      >
                         <div className="space-y-4">
                           <div className="relative">
                             <User className="absolute left-4 top-1/2 -translate-y-1/2 text-primary-1/30" size={20} />
