@@ -1,27 +1,24 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
-import { useState, useEffect } from "react";
-import Preloader from "./components/Preloader";
-import CustomCursor from "./components/CustomCursor";
+import { useState, useEffect, lazy, Suspense } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import ZoomShowcase from "./components/ZoomShowcase";
-import Location from "./components/Location";
-import Investment from "./components/Investment";
-import TheHouse from "./components/TheHouse";
-import Experience from "./components/Experience";
-import VirtualTour from "./components/VirtualTour";
-import ForWho from "./components/ForWho";
-import TechnicalSpecs from "./components/TechnicalSpecs";
-import TheOPA from "./components/TheOPA";
-import MarcosView from "./components/MarcosView";
-import FinalCTA from "./components/FinalCTA";
-import Footer from "./components/Footer";
-import LeadFormModal from "./components/LeadFormModal";
-import CookieConsent from "./components/CookieConsent";
+
+const VirtualTour = lazy(() => import("./components/VirtualTour"));
+const ZoomShowcase = lazy(() => import("./components/ZoomShowcase"));
+const Location = lazy(() => import("./components/Location"));
+const TheHouse = lazy(() => import("./components/TheHouse"));
+const Investment = lazy(() => import("./components/Investment"));
+const Experience = lazy(() => import("./components/Experience"));
+const ForWho = lazy(() => import("./components/ForWho"));
+const TechnicalSpecs = lazy(() => import("./components/TechnicalSpecs"));
+const TheOPA = lazy(() => import("./components/TheOPA"));
+const MarcosView = lazy(() => import("./components/MarcosView"));
+const FinalCTA = lazy(() => import("./components/FinalCTA"));
+const Footer = lazy(() => import("./components/Footer"));
+const LeadFormModal = lazy(() => import("./components/LeadFormModal"));
+const CookieConsent = lazy(() => import("./components/CookieConsent"));
+const CustomCursor = lazy(() => import("./components/CustomCursor"));
+
+const SectionFallback = () => <div className="min-h-[40vh]" aria-hidden="true" />;
 
 export default function App() {
   const [isLeadFormOpen, setIsLeadFormOpen] = useState(false);
@@ -34,28 +31,29 @@ export default function App() {
 
   return (
     <main className="w-full min-h-screen bg-bg-main relative">
-      <Preloader />
-      <CustomCursor />
       <Header />
       <Hero />
-      <VirtualTour />
-      <ZoomShowcase />
-      <Location />
-      <TheHouse />
-      <Investment />
-      <Experience />
-      <ForWho />
-      <TechnicalSpecs />
-      <TheOPA />
-      <MarcosView />
-      <FinalCTA />
-      <Footer />
-      <CookieConsent />
-      
-      <LeadFormModal 
-        isOpen={isLeadFormOpen} 
-        onClose={() => setIsLeadFormOpen(false)} 
-      />
+
+      <Suspense fallback={<SectionFallback />}>
+        <VirtualTour />
+        <ZoomShowcase />
+        <Location />
+        <TheHouse />
+        <Investment />
+        <Experience />
+        <ForWho />
+        <TechnicalSpecs />
+        <TheOPA />
+        <MarcosView />
+        <FinalCTA />
+        <Footer />
+        <CookieConsent />
+        <CustomCursor />
+        <LeadFormModal
+          isOpen={isLeadFormOpen}
+          onClose={() => setIsLeadFormOpen(false)}
+        />
+      </Suspense>
     </main>
   );
 }

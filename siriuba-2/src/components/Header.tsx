@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { Menu, X } from "lucide-react";
 import { useT } from "../i18n/LanguageContext";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -13,27 +13,28 @@ export default function Header() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <>
-      <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.8, delay: 1.5 }} // wait for preloader
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+      <header
+        className={`fixed top-0 left-0 w-full z-50 transition-[background,padding] duration-300 ${
           scrolled ? "bg-bg-main/95 backdrop-blur-md py-4 shadow-sm" : "bg-transparent py-6"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-          <a href="#" className="flex items-center z-50 relative">
+          <a href="#" className="flex items-center z-50 relative" aria-label="OPA Imóveis - Início">
             <img
               src="https://smabio.com.br/wp-content/uploads/2026/04/Logo_OPA-1.png"
-              alt="OPA Logo"
-              className={`h-8 transition-all duration-300 ${scrolled || mobileMenuOpen ? 'brightness-100' : 'brightness-0 invert'}`}
+              alt="OPA Imóveis"
+              width={96}
+              height={32}
+              loading="eager"
+              decoding="async"
               referrerPolicy="no-referrer"
+              className={`h-8 w-auto transition-[filter] duration-300 ${scrolled || mobileMenuOpen ? 'brightness-100' : 'brightness-0 invert'}`}
             />
           </a>
 
@@ -65,7 +66,7 @@ export default function Header() {
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
-      </motion.header>
+      </header>
 
       <AnimatePresence>
         {mobileMenuOpen && (

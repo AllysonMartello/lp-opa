@@ -123,6 +123,8 @@ const MediaItem = ({ item, className, onClick }: { item: MediaItemType, classNam
             onClick={onClick}
             loading="lazy"
             decoding="async"
+            width={1280}
+            height={720}
         />
     );
 };
@@ -357,7 +359,7 @@ const InteractiveBentoGallery: React.FC<InteractiveBentoGalleryProps> = ({ media
                                         }
                                     }
                                 }}
-                                whileHover={{ scale: window.innerWidth > 768 ? 1.02 : 1, zIndex: 10 }}
+                                whileHover={{ zIndex: 10 }}
                             >
                                 <MediaItem
                                     item={item}

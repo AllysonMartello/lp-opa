@@ -34,7 +34,7 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" as const } }
 };
 
 export default function Location() {
@@ -47,9 +47,8 @@ export default function Location() {
 
   return (
     <section className="py-24 md:py-32 bg-bg-main relative overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary-2/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-1/5 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3 pointer-events-none"></div>
+      <div className="hidden md:block absolute top-0 right-0 w-[500px] h-[500px] bg-primary-2/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+      <div className="hidden md:block absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-1/5 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
@@ -130,6 +129,9 @@ export default function Location() {
                                         src={src}
                                         alt={caption ?? item.label}
                                         loading="lazy"
+                                        decoding="async"
+                                        width={1280}
+                                        height={720}
                                         className="w-full h-56 sm:h-64 object-cover"
                                       />
                                       {caption && (
@@ -179,16 +181,18 @@ export default function Location() {
             transition={{ duration: 1 }}
             className="lg:col-span-7 relative h-[600px] lg:h-[800px] rounded-[2.5rem] overflow-hidden shadow-2xl bg-bg-alt border-4 border-white"
           >
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14569.1!2d-45.34!3d-23.74!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94d2a6e051415555%3A0x1234567890!2sSiriuba%2C%20Ilhabela%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1"
-              width="100%"
-              height="100%"
-              style={{ border: 0, filter: "grayscale(100%) invert(92%) contrast(83%)" }}
-              allowFullScreen={false}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="absolute inset-0 pointer-events-none"
-            ></iframe>
+            <a
+              href="https://www.google.com/maps/place/Praia+do+Siri%C3%BAba,+Ilhabela+-+SP/@-23.7403,-45.3347,15z"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t.location.openInMaps ?? "Abrir no Google Maps"}
+              className="absolute inset-0 group bg-gradient-to-br from-[#1F3A37] via-primary-1 to-[#0F1F25] flex items-center justify-center"
+            >
+              <span className="sr-only">{t.location.mapAlt ?? "Mapa de Siriúba, Ilhabela"}</span>
+              <span className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white text-primary-1 px-6 py-3 rounded-full font-bold text-sm shadow-xl group-hover:scale-105 transition-transform z-30">
+                {t.location.openInMaps ?? "Abrir no Google Maps"}
+              </span>
+            </a>
 
             {/* Floating Glass Card */}
             <motion.div

@@ -1,4 +1,4 @@
-import { useState, FormEvent } from "react";
+import { useState, useEffect, useRef, FormEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X, ChevronRight, ChevronLeft, Check, Send, Phone, User, MapPin } from "lucide-react";
 import { useT } from "../i18n/LanguageContext";
@@ -8,8 +8,16 @@ interface LeadFormModalProps {
   onClose: () => void;
 }
 
-// Multi-select step is index 5; final step is the last one
 const MULTI_STEP_INDEX = 5;
+
+const maskPhoneBR = (raw: string) => {
+  const d = raw.replace(/\D/g, "").slice(0, 11);
+  if (d.length <= 2) return d.length ? `(${d}` : "";
+  if (d.length <= 7) return `(${d.slice(0, 2)}) ${d.slice(2)}`;
+  return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
+};
+
+const isValidPhoneBR = (v: string) => v.replace(/\D/g, "").length >= 10;
 
 export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
   const t = useT();
@@ -25,6 +33,25 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
     cidade: ""
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<{ nome?: string; telefone?: string; cidade?: string }>({});
+  const dialogRef = useRef<HTMLDivElement | null>(null);
+  const previousActive = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    previousActive.current = document.activeElement as HTMLElement | null;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      document.removeEventListener("keydown", onKey);
+      previousActive.current?.focus?.();
+    };
+  }, [isOpen, onClose]);
 
   const handleOptionSelect = (option: string) => {
     const stepType = getStepType(currentStep);
@@ -54,6 +81,18 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
+
+    const newErrors: typeof errors = {};
+    if (formData.nome.trim().length < 2) newErrors.nome = t.leadForm.errors?.name ?? "Informe seu nome";
+    if (!isValidPhoneBR(formData.telefone)) newErrors.telefone = t.leadForm.errors?.phone ?? "Telefone inválido";
+    if (formData.cidade.trim().length < 2) newErrors.cidade = t.leadForm.errors?.city ?? "Informe sua cidade";
+    if (Object.keys(newErrors).length) {
+      setErrors(newErrors);
+      return;
+    }
+    setErrors({});
+    setIsSubmitting(true);
 
     const emailData: Record<string, string> = {
       _subject: `${t.leadForm.emailSubject} - ${formData.nome}`,
@@ -103,6 +142,7 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
     window.open(`https://wa.me/5512974068058?text=${encodedMessage}`, "_blank");
 
     setIsSubmitted(true);
+    setIsSubmitting(false);
     setTimeout(() => {
       onClose();
       setIsSubmitted(false);
@@ -130,6 +170,10 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
           />
           
           <motion.div
+            ref={dialogRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="lead-form-title"
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -141,13 +185,15 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
                 <div className="w-8 h-8 md:w-10 md:h-10 bg-primary-2/10 rounded-full flex items-center justify-center text-primary-2 shrink-0">
                   <span className="font-bold text-xs md:text-sm">{currentStep + 1}/{stepCount}</span>
                 </div>
-                <h3 className="font-serif text-primary-1 text-lg md:text-xl truncate">{t.leadForm.headerTitle}</h3>
+                <h3 id="lead-form-title" className="font-serif text-primary-1 text-lg md:text-xl truncate">{t.leadForm.headerTitle}</h3>
               </div>
-              <button 
+              <button
+                type="button"
                 onClick={onClose}
+                aria-label={t.leadForm.closeLabel ?? "Fechar"}
                 className="p-2 hover:bg-primary-1/5 rounded-full transition-colors text-primary-1/40 hover:text-primary-1 shrink-0"
               >
-                <X size={20} className="md:w-6 md:h-6" />
+                <X size={20} className="md:w-6 md:h-6" aria-hidden="true" />
               </button>
             </div>
 
@@ -190,45 +236,72 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
                         data-form-name="lead-siriuba-2"
                       >
                         <div className="space-y-4">
-                          <div className="relative">
-                            <User className="absolute left-4 top-1/2 -translate-y-1/2 text-primary-1/30" size={20} />
-                            <input
-                              required
-                              type="text"
-                              placeholder={t.leadForm.namePlaceholder}
-                              value={formData.nome}
-                              onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
-                              className="w-full pl-12 pr-4 py-4 rounded-2xl bg-primary-1/5 border-2 border-transparent focus:border-primary-2 outline-none transition-all text-primary-1 font-medium"
-                            />
+                          <div>
+                            <label htmlFor="lf-nome" className="sr-only">{t.leadForm.namePlaceholder}</label>
+                            <div className="relative">
+                              <User className="absolute left-4 top-1/2 -translate-y-1/2 text-primary-1/30" size={20} aria-hidden="true" />
+                              <input
+                                id="lf-nome"
+                                required
+                                type="text"
+                                autoComplete="name"
+                                aria-invalid={!!errors.nome}
+                                aria-describedby={errors.nome ? "lf-nome-err" : undefined}
+                                placeholder={t.leadForm.namePlaceholder}
+                                value={formData.nome}
+                                onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
+                                className={`w-full pl-12 pr-4 py-4 rounded-2xl bg-primary-1/5 border-2 outline-none transition-colors text-primary-1 font-medium ${errors.nome ? "border-red-500" : "border-transparent focus:border-primary-2"}`}
+                              />
+                            </div>
+                            {errors.nome && <p id="lf-nome-err" className="text-red-600 text-xs mt-1 ml-2">{errors.nome}</p>}
                           </div>
-                          <div className="relative">
-                            <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-primary-1/30" size={20} />
-                            <input
-                              required
-                              type="tel"
-                              placeholder={t.leadForm.phonePlaceholder}
-                              value={formData.telefone}
-                              onChange={(e) => setFormData({ ...formData, telefone: e.target.value })}
-                              className="w-full pl-12 pr-4 py-4 rounded-2xl bg-primary-1/5 border-2 border-transparent focus:border-primary-2 outline-none transition-all text-primary-1 font-medium"
-                            />
+                          <div>
+                            <label htmlFor="lf-tel" className="sr-only">{t.leadForm.phonePlaceholder}</label>
+                            <div className="relative">
+                              <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-primary-1/30" size={20} aria-hidden="true" />
+                              <input
+                                id="lf-tel"
+                                required
+                                type="tel"
+                                inputMode="tel"
+                                autoComplete="tel"
+                                aria-invalid={!!errors.telefone}
+                                aria-describedby={errors.telefone ? "lf-tel-err" : undefined}
+                                placeholder={t.leadForm.phonePlaceholder}
+                                value={formData.telefone}
+                                onChange={(e) => setFormData({ ...formData, telefone: maskPhoneBR(e.target.value) })}
+                                className={`w-full pl-12 pr-4 py-4 rounded-2xl bg-primary-1/5 border-2 outline-none transition-colors text-primary-1 font-medium ${errors.telefone ? "border-red-500" : "border-transparent focus:border-primary-2"}`}
+                              />
+                            </div>
+                            {errors.telefone && <p id="lf-tel-err" className="text-red-600 text-xs mt-1 ml-2">{errors.telefone}</p>}
                           </div>
-                          <div className="relative">
-                            <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-primary-1/30" size={20} />
-                            <input
-                              required
-                              type="text"
-                              placeholder={t.leadForm.cityPlaceholder}
-                              value={formData.cidade}
-                              onChange={(e) => setFormData({ ...formData, cidade: e.target.value })}
-                              className="w-full pl-12 pr-4 py-4 rounded-2xl bg-primary-1/5 border-2 border-transparent focus:border-primary-2 outline-none transition-all text-primary-1 font-medium"
-                            />
+                          <div>
+                            <label htmlFor="lf-cidade" className="sr-only">{t.leadForm.cityPlaceholder}</label>
+                            <div className="relative">
+                              <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-primary-1/30" size={20} aria-hidden="true" />
+                              <input
+                                id="lf-cidade"
+                                required
+                                type="text"
+                                autoComplete="address-level2"
+                                aria-invalid={!!errors.cidade}
+                                aria-describedby={errors.cidade ? "lf-cid-err" : undefined}
+                                placeholder={t.leadForm.cityPlaceholder}
+                                value={formData.cidade}
+                                onChange={(e) => setFormData({ ...formData, cidade: e.target.value })}
+                                className={`w-full pl-12 pr-4 py-4 rounded-2xl bg-primary-1/5 border-2 outline-none transition-colors text-primary-1 font-medium ${errors.cidade ? "border-red-500" : "border-transparent focus:border-primary-2"}`}
+                              />
+                            </div>
+                            {errors.cidade && <p id="lf-cid-err" className="text-red-600 text-xs mt-1 ml-2">{errors.cidade}</p>}
                           </div>
                         </div>
                         <button
                           type="submit"
-                          className="w-full bg-primary-2 text-white py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 hover:bg-primary-2/90 transition-all shadow-lg hover:shadow-primary-2/20"
+                          disabled={isSubmitting}
+                          className="w-full bg-primary-2 text-white py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 hover:bg-primary-2/90 transition-colors shadow-lg disabled:opacity-60 disabled:cursor-not-allowed"
                         >
-                          {t.leadForm.submitLabel} <Send size={20} />
+                          {isSubmitting ? (t.leadForm.submittingLabel ?? "Enviando...") : t.leadForm.submitLabel}
+                          {!isSubmitting && <Send size={20} aria-hidden="true" />}
                         </button>
                       </form>
                     ) : (

@@ -41,6 +41,8 @@ const pt = {
       "A casa tem uma vista aberta para o mar e um pôr do sol muito bonito, sem exigir uma subida excessiva. Em Ilhabela, isso faz diferença.",
     aroundTitle: "Ao redor da casa",
     coordinatesLabel: "Coordenadas",
+    mapAlt: "Mapa de Siriúba 2, Ilhabela",
+    openInMaps: "Abrir no Google Maps",
     items: [
       {
         label: "Praia do Viana",
@@ -290,8 +292,10 @@ const pt = {
   },
   cookieConsent: {
     title: "Privacidade e Cookies",
-    body: "Utilizamos cookies e tecnologias semelhantes para melhorar a sua experiência, analisar o tráfego do site e personalizar conteúdo e anúncios (Meta Ads, Google, etc). Ao continuar navegando, você concorda com a nossa política de privacidade e uso de cookies em conformidade com a LGPD.",
-    accept: "Aceitar e fechar",
+    body: "Utilizamos cookies para melhorar sua experiência, analisar tráfego e personalizar anúncios. Saiba mais em nossa",
+    accept: "Aceitar todos",
+    reject: "Recusar",
+    policyLink: "Política de Privacidade",
   },
   leadForm: {
     headerTitle: "Consultoria Personalizada",
@@ -301,6 +305,13 @@ const pt = {
     phonePlaceholder: "Telefone / WhatsApp",
     cityPlaceholder: "Cidade onde mora",
     submitLabel: "Finalizar e Enviar",
+    submittingLabel: "Enviando...",
+    closeLabel: "Fechar",
+    errors: {
+      name: "Informe seu nome",
+      phone: "Telefone inválido",
+      city: "Informe sua cidade",
+    },
     successTitle: "Solicitação Enviada!",
     successBody:
       "Obrigado pelo seu interesse. Marco Henrique entrará em contato em breve com as informações solicitadas.",
@@ -443,6 +454,8 @@ const en: Dictionary = {
       "The house has an open ocean view and a beautiful sunset, without requiring a steep climb. In Ilhabela, that makes a real difference.",
     aroundTitle: "Around the house",
     coordinatesLabel: "Coordinates",
+    mapAlt: "Map of Siriúba 2, Ilhabela",
+    openInMaps: "Open in Google Maps",
     items: [
       {
         label: "Viana Beach",
@@ -692,8 +705,10 @@ const en: Dictionary = {
   },
   cookieConsent: {
     title: "Privacy & Cookies",
-    body: "We use cookies and similar technologies to improve your experience, analyze site traffic, and personalize content and ads (Meta Ads, Google, etc.). By continuing to browse, you agree to our privacy and cookie policy in compliance with Brazil's LGPD.",
-    accept: "Accept and close",
+    body: "We use cookies to improve your experience, analyze traffic, and personalize ads. Learn more in our",
+    accept: "Accept all",
+    reject: "Reject",
+    policyLink: "Privacy Policy",
   },
   leadForm: {
     headerTitle: "Personalized Consultation",
@@ -703,6 +718,13 @@ const en: Dictionary = {
     phonePlaceholder: "Phone / WhatsApp",
     cityPlaceholder: "City of residence",
     submitLabel: "Finish and Send",
+    submittingLabel: "Sending...",
+    closeLabel: "Close",
+    errors: {
+      name: "Enter your name",
+      phone: "Invalid phone",
+      city: "Enter your city",
+    },
     successTitle: "Request Sent!",
     successBody:
       "Thank you for your interest. Marco Henrique will be in touch shortly with the information you requested.",

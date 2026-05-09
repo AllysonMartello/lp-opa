@@ -77,7 +77,15 @@ export default function Experience() {
                 className="w-full lg:w-1/2"
               >
                 <div className="relative h-[400px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
-                  <img src={exp.img} alt={exp.title} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <img
+                    src={exp.img}
+                    alt={exp.title}
+                    width={1280}
+                    height={960}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </motion.div>
               

@@ -40,8 +40,12 @@ export default function TheOPA() {
                   <img
                     src="https://smabio.com.br/wp-content/uploads/2026/04/Frame-83.png"
                     alt={t.theOPA.logoAlt}
-                    className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700 hover:scale-105"
+                    width={400}
+                    height={400}
+                    loading="lazy"
+                    decoding="async"
                     referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-[filter,transform] duration-700 hover:scale-105"
                   />
                 </div>
                 

@@ -89,9 +89,12 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
               <div className={`relative overflow-hidden rounded-2xl shadow-2xl ${pic.className} ${pic.wrapperClass} will-change-transform`}>
                 <img
                   src={src || "/placeholder.svg"}
-                  alt={alt || `Parallax image ${index + 1}`}
+                  alt={alt || `Imagem ${index + 1}`}
+                  width={800}
+                  height={600}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  decoding="async"
                   className="h-full w-full object-cover"
-                  referrerPolicy="no-referrer"
                 />
               </div>
             </motion.div>

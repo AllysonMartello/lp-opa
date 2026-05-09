@@ -9,13 +9,15 @@ export default function MarcosView() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const togglePlay = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (!audio.src) {
+      audio.src = "/assets/siriuba-2/audio-marco.mp3";
+    }
+    if (isPlaying) {
+      audio.pause();
+    } else {
+      audio.play().catch(() => setIsPlaying(false));
     }
   };
 
@@ -30,11 +32,15 @@ export default function MarcosView() {
             className="w-40 h-40 md:w-48 md:h-48 shrink-0 relative"
           >
             <div className="absolute inset-0 bg-primary-2/5 rounded-full blur-xl -z-10"></div>
-            <img 
-              src="https://smabio.com.br/wp-content/uploads/2026/04/Marco-2.png" 
-              alt="Marco Henrique" 
-              className="w-full h-full object-cover object-top rounded-full border-2 border-white shadow-md grayscale-[20%] hover:grayscale-0 transition-all duration-500"
+            <img
+              src="https://smabio.com.br/wp-content/uploads/2026/04/Marco-2.png"
+              alt="Marco Henrique"
+              width={400}
+              height={400}
+              loading="lazy"
+              decoding="async"
               referrerPolicy="no-referrer"
+              className="w-full h-full object-cover object-top rounded-full border-2 border-white shadow-md grayscale-[20%] hover:grayscale-0 transition-[filter] duration-500"
             />
           </motion.div>
           
@@ -49,9 +55,9 @@ export default function MarcosView() {
               <p className="text-text-sec text-xs font-medium tracking-wider mb-8">{t.marcosView.role}</p>
               
               <div className="bg-bg-alt/50 rounded-2xl p-5 flex flex-col sm:flex-row items-center gap-5 mb-8 border border-border-main/40">
-                <audio 
-                  ref={audioRef} 
-                  src="/assets/siriuba-2/audio-marco.mp3" 
+                <audio
+                  ref={audioRef}
+                  preload="none"
                   onEnded={() => setIsPlaying(false)}
                   onPause={() => setIsPlaying(false)}
                   onPlay={() => setIsPlaying(true)}
@@ -65,24 +71,9 @@ export default function MarcosView() {
                 <div className="flex-1 text-left w-full">
                   <p className="text-xs font-bold text-primary-1 mb-1">{t.marcosView.audioTitle}</p>
                   
-                  {/* Waveform */}
-                  <div className="flex items-center gap-0.5 h-4 w-full overflow-hidden">
-                    {[...Array(40)].map((_, i) => (
-                      <motion.div 
-                        key={i}
-                        className="w-0.5 bg-primary-1/20 rounded-full flex-shrink-0"
-                        animate={{ 
-                          height: isPlaying ? ["20%", "100%", "40%", "80%", "20%"] : "20%",
-                          backgroundColor: isPlaying ? ["#8C6B4F", "#2A3C4F", "#8C6B4F"] : "#D1D5DB"
-                        }}
-                        transition={{
-                          duration: 1 + Math.random(),
-                          repeat: Infinity,
-                          delay: i * 0.02,
-                          ease: "easeInOut"
-                        }}
-                        style={{ height: "20%" }}
-                      />
+                  <div className={`waveform flex items-center gap-0.5 h-4 w-full overflow-hidden ${isPlaying ? "is-playing" : ""}`} aria-hidden="true">
+                    {Array.from({ length: 24 }).map((_, i) => (
+                      <span key={i} className="waveform-bar" style={{ animationDelay: `${i * 0.06}s` }} />
                     ))}
                   </div>
                 </div>

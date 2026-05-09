@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { ArrowRight, Play } from "lucide-react";
 import { useT } from "../i18n/LanguageContext";
 
@@ -9,20 +8,20 @@ export default function Hero() {
       <div className="absolute inset-0 z-0">
         <img
           src="/assets/siriuba-2/Inicio-desktop-siriuba2.jpg"
+          srcSet="/assets/siriuba-2/Inicio-mobile-siriuba2.jpg 640w, /assets/siriuba-2/Inicio-desktop-siriuba2.jpg 1920w"
+          sizes="100vw"
           alt={t.hero.imageAlt}
+          width={1920}
+          height={1080}
+          fetchPriority="high"
+          decoding="async"
           className="w-full h-full object-cover"
-          referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
       </div>
 
       <div className="relative z-10 px-6 md:px-12 lg:px-24 max-w-7xl w-full mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="max-w-3xl"
-        >
+        <div className="max-w-3xl">
           <span className="text-white/80 uppercase tracking-[0.3em] text-xs md:text-sm font-medium mb-4 block">
             {t.hero.eyebrow}
           </span>
@@ -36,15 +35,18 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row items-start gap-4">
             <button
               onClick={() => window.dispatchEvent(new CustomEvent("open-lead-form"))}
-              className="bg-white text-primary-1 hover:bg-white/90 px-8 py-4 rounded-full flex items-center justify-center gap-2 transition-all duration-300 text-sm md:text-base font-medium w-full sm:w-auto"
+              className="bg-white text-primary-1 hover:bg-white/90 px-8 py-4 rounded-full flex items-center justify-center gap-2 transition-colors duration-300 text-sm md:text-base font-medium w-full sm:w-auto"
             >
               {t.hero.primaryCta} <ArrowRight size={18} />
             </button>
-            <a href="#tour" className="bg-white/10 backdrop-blur-md hover:bg-white/20 text-white px-8 py-4 rounded-full flex items-center justify-center gap-2 transition-all duration-300 text-sm md:text-base font-medium border border-white/20 w-full sm:w-auto">
+            <a
+              href="#tour"
+              className="bg-white/10 backdrop-blur-md hover:bg-white/20 text-white px-8 py-4 rounded-full flex items-center justify-center gap-2 transition-colors duration-300 text-sm md:text-base font-medium border border-white/20 w-full sm:w-auto"
+            >
               <Play size={18} /> {t.hero.secondaryCta}
             </a>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
