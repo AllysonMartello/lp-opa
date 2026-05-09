@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "optimize-images": "node scripts/optimize-images.mjs",
+    "optimize-images:dry": "node scripts/optimize-images.mjs --dry",
+    "optimize-images:force": "node scripts/optimize-images.mjs --force"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",
@@ -33,6 +36,7 @@
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^5.0.4",
     "autoprefixer": "^10.4.21",
+    "sharp": "^0.33.5",
     "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",
     "typescript": "~5.8.2",
