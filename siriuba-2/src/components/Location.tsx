@@ -10,12 +10,12 @@ const itemImages = [
     "/assets/siriuba-2/redor-da-casa/praia-siriuba-drone-opa.jpg",
   ],
   [
-    "/assets/siriuba-2/redor-da-casa/Praia-armacao.jpg",
+    "/assets/siriuba-2/redor-da-casa/praia-armacao.jpg",
     "/assets/siriuba-2/redor-da-casa/bl3-ilhabela.jpg",
   ],
   [
-    "/assets/siriuba-2/redor-da-casa/Centro-Histórico-A-Vila.jpg",
-    "/assets/siriuba-2/redor-da-casa/Centro-Histórico-A-Vila-opa.jpg",
+    "/assets/siriuba-2/redor-da-casa/centro-historico-a-vila.jpg",
+    "/assets/siriuba-2/redor-da-casa/centro-historico-a-vila-opa.jpg",
   ],
 ];
 
