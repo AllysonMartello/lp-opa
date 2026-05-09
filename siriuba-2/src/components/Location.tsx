@@ -4,18 +4,18 @@ import { MapPin, Anchor, Sailboat, UtensilsCrossed, Landmark, Compass } from "lu
 import { useT } from "../i18n/LanguageContext";
 
 const itemImages = [
-  ["/assets/siriuba-2/Vista para o Mar.jpg"],
+  ["/assets/siriuba-2/viana-v2.jpg"],
   [
-    "/assets/siriuba-2/praia-siriuba-opa.jpg",
-    "/assets/siriuba-2/praia-siriuba-drone-opa.jpg",
+    "/assets/siriuba-2/siriuba-v2.jpg",
+    "/assets/siriuba-2/siriuba-drone-v2.jpg",
   ],
   [
-    "/assets/siriuba-2/praia-armacao.jpg",
-    "/assets/siriuba-2/bl3-ilhabela.jpg",
+    "/assets/siriuba-2/armacao-v2.jpg",
+    "/assets/siriuba-2/bl3-v2.jpg",
   ],
   [
-    "/assets/siriuba-2/centro-historico-a-vila.jpg",
-    "/assets/siriuba-2/centro-historico-a-vila-opa.jpg",
+    "/assets/siriuba-2/vila-v2.jpg",
+    "/assets/siriuba-2/vila-opa-v2.jpg",
   ],
 ];
 
