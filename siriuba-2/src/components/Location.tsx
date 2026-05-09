@@ -4,18 +4,18 @@ import { MapPin, Anchor, Sailboat, UtensilsCrossed, Landmark, Compass } from "lu
 import { useT } from "../i18n/LanguageContext";
 
 const itemImages = [
-  ["/assets/siriuba-2/redor-da-casa/praia-viana-ilhabela-opa.jpg"],
+  ["/assets/siriuba-2/praia-viana-ilhabela-opa.jpg"],
   [
-    "/assets/siriuba-2/redor-da-casa/praia-siriuba-opa.jpg",
-    "/assets/siriuba-2/redor-da-casa/praia-siriuba-drone-opa.jpg",
+    "/assets/siriuba-2/praia-siriuba-opa.jpg",
+    "/assets/siriuba-2/praia-siriuba-drone-opa.jpg",
   ],
   [
-    "/assets/siriuba-2/redor-da-casa/praia-armacao.jpg",
-    "/assets/siriuba-2/redor-da-casa/bl3-ilhabela.jpg",
+    "/assets/siriuba-2/praia-armacao.jpg",
+    "/assets/siriuba-2/bl3-ilhabela.jpg",
   ],
   [
-    "/assets/siriuba-2/redor-da-casa/centro-historico-a-vila.jpg",
-    "/assets/siriuba-2/redor-da-casa/centro-historico-a-vila-opa.jpg",
+    "/assets/siriuba-2/centro-historico-a-vila.jpg",
+    "/assets/siriuba-2/centro-historico-a-vila-opa.jpg",
   ],
 ];
 
