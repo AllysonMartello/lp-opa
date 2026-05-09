@@ -4,7 +4,7 @@ import { MapPin, Anchor, Sailboat, UtensilsCrossed, Landmark, Compass } from "lu
 import { useT } from "../i18n/LanguageContext";
 
 const itemImages = [
-  ["/assets/siriuba-2/praia-viana-ilhabela-opa.jpg"],
+  ["/assets/siriuba-2/Vista para o Mar.jpg"],
   [
     "/assets/siriuba-2/praia-siriuba-opa.jpg",
     "/assets/siriuba-2/praia-siriuba-drone-opa.jpg",
