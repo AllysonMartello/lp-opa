@@ -16,24 +16,22 @@ const directoryIndexPlugin = () => ({
 });
 
 /**
- * Converte <link rel="stylesheet" ...> em padrão non-blocking
- * (preload + onload swap) somente para o CSS principal do bundle siriuba-2.
- * Reduz "Render-blocking requests" no PageSpeed.
+ * Mantém o CSS principal do siriuba-2 bloqueante (necessário para
+ * evitar FOUC com Tailwind), mas adiciona um <link rel="preload">
+ * antes pra o navegador começar a buscar o CSS o mais cedo possível.
+ * Ganho menor que non-blocking total, mas zero risco de layout quebrado.
  */
-const nonBlockingCssPlugin = () => ({
-  name: 'non-blocking-css',
+const cssPreloadPlugin = () => ({
+  name: 'css-preload',
   enforce: 'post',
   transformIndexHtml(html, ctx) {
     if (!ctx.path?.includes('siriuba-2')) return html;
-    // Apenas o stylesheet local do bundle (que começa com /assets/).
-    // Ignora os links que já estão non-blocking (com media="print" / onload já presente).
     return html.replace(
       /<link rel="stylesheet"([^>]*?)href="(\/assets\/[^"]+\.css)"([^>]*?)>/g,
       (match, before, href, after) => {
-        if (match.includes('media="print"') || match.includes('onload=')) return match;
+        if (match.includes('rel="preload"')) return match;
         return (
-          `<link rel="preload" as="style"${before}href="${href}"${after} onload="this.onload=null;this.rel='stylesheet'">` +
-          `<noscript><link rel="stylesheet"${before}href="${href}"${after}></noscript>`
+          `<link rel="preload" as="style" href="${href}">` + match
         );
       }
     );
@@ -43,7 +41,7 @@ const nonBlockingCssPlugin = () => ({
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
   return {
-    plugins: [react(), tailwindcss(), directoryIndexPlugin(), nonBlockingCssPlugin()],
+    plugins: [react(), tailwindcss(), directoryIndexPlugin(), cssPreloadPlugin()],
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
     },

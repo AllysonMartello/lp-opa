@@ -33,7 +33,8 @@ export default function Header() {
               height={32}
               loading="eager"
               decoding="async"
-              className={`h-8 w-auto transition-[filter] duration-300 ${
+              style={{ height: "32px", width: "auto", maxWidth: "96px" }}
+              className={`transition-[filter] duration-300 ${
                 scrolled || mobileMenuOpen ? "invert" : ""
               }`}
             />
