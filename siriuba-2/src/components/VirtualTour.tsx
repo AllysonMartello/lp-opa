@@ -39,21 +39,21 @@ export default function VirtualTour() {
                 <picture>
                   <source
                     type="image/avif"
-                    srcSet="/assets/siriuba-2/tour-preview-mobile.avif 480w, /assets/siriuba-2/tour-preview-desktop.avif 960w"
+                    srcSet="/assets/siriuba-2/tour-preview-mobile.avif 400w, /assets/siriuba-2/tour-preview-desktop.avif 720w"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <source
                     type="image/webp"
-                    srcSet="/assets/siriuba-2/tour-preview-mobile.webp 480w, /assets/siriuba-2/tour-preview-desktop.webp 960w"
+                    srcSet="/assets/siriuba-2/tour-preview-mobile.webp 400w, /assets/siriuba-2/tour-preview-desktop.webp 720w"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <img
                     src="/assets/siriuba-2/tour-preview-desktop.jpg"
-                    srcSet="/assets/siriuba-2/tour-preview-mobile.jpg 480w, /assets/siriuba-2/tour-preview-desktop.jpg 960w"
+                    srcSet="/assets/siriuba-2/tour-preview-mobile.jpg 400w, /assets/siriuba-2/tour-preview-desktop.jpg 720w"
                     sizes="(max-width: 768px) 100vw, 50vw"
                     alt={t.virtualTour.previewAlt}
-                    width={960}
-                    height={540}
+                    width={720}
+                    height={405}
                     loading="lazy"
                     decoding="async"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"

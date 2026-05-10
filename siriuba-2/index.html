@@ -39,6 +39,18 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap" /></noscript>
 
+    <!-- Critical inline CSS — evita FOUC enquanto bundle CSS carrega -->
+    <style>
+      *,*::before,*::after{box-sizing:border-box}
+      html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+      body{margin:0;background:#F4F7F7;color:#1A2226;font-family:"Inter","Inter Fallback",-apple-system,system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
+      img,video{max-width:100%;height:auto;display:block}
+      h1,h2,h3,h4,h5,h6{font-family:"Playfair Display","Playfair Fallback",Georgia,serif;margin:0}
+      @font-face{font-family:"Inter Fallback";src:local("Arial");size-adjust:107%;ascent-override:90%;descent-override:22%;line-gap-override:0%}
+      @font-face{font-family:"Playfair Fallback";src:local("Georgia");size-adjust:107%;ascent-override:95%;descent-override:25%;line-gap-override:0%}
+      #root{min-height:100vh;background:#F4F7F7}
+    </style>
+
     <!-- LCP image preload (AVIF responsivo) -->
     <link rel="preload" as="image"
           href="/assets/siriuba-2/hero-desktop.avif"

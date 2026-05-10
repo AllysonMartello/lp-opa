@@ -134,8 +134,8 @@ const MANIFEST = [
     input: "tour-preview.jpg",
     output: "tour-preview",
     sizes: [
-      { name: "mobile", width: 480 },
-      { name: "desktop", width: 960 },
+      { name: "mobile", width: 400 },
+      { name: "desktop", width: 720 },
     ],
   },
   {
