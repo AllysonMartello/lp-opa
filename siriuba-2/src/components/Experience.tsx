@@ -76,7 +76,7 @@ export default function Experience() {
                 transition={{ duration: 0.8 }}
                 className="w-full lg:w-1/2"
               >
-                <div className="relative h-[400px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
+                <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
                   <picture>
                     <source
                       type="image/avif"

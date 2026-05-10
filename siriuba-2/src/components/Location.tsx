@@ -183,7 +183,7 @@ export default function Location() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "0px" }}
             transition={{ duration: 1 }}
-            className="lg:col-span-7 relative h-[600px] lg:h-[800px] rounded-[2.5rem] overflow-hidden shadow-2xl bg-bg-alt border-4 border-white"
+            className="lg:col-span-7 relative aspect-[4/5] sm:aspect-[3/2] lg:aspect-auto lg:h-[800px] rounded-[2.5rem] overflow-hidden shadow-2xl bg-bg-alt border-4 border-white"
           >
             <a
               href="https://www.google.com/maps/place/Praia+do+Siri%C3%BAba,+Ilhabela+-+SP/@-23.7403,-45.3347,15z"
