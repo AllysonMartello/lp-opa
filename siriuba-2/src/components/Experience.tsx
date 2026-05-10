@@ -41,7 +41,7 @@ export default function Experience() {
   );
 
   return (
-    <section id="experiencia" ref={containerRef} className="py-24 md:py-32 bg-bg-main relative overflow-hidden">
+    <section id="experiencia" ref={containerRef} className="py-16 md:py-24 lg:py-32 bg-bg-main relative overflow-hidden">
       {/* Efeito de Iluminação Ambiente */}
       <motion.div 
         className="absolute left-0 right-0 mx-auto w-[600px] h-[600px] md:w-[800px] md:h-[800px] rounded-full pointer-events-none z-0 blur-[80px] md:blur-[150px] will-change-transform"
@@ -54,21 +54,21 @@ export default function Experience() {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 md:mb-20">
           <span className="text-primary-2 uppercase tracking-widest text-xs font-bold mb-4 block">{t.experience.eyebrow}</span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "0px" }}
-            className="text-4xl md:text-5xl lg:text-6xl font-serif text-primary-1"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-primary-1"
           >
             {t.experience.title}
           </motion.h2>
         </div>
 
-        <div className="space-y-24 md:space-y-32">
+        <div className="space-y-16 md:space-y-24 lg:space-y-32">
           {experiences.map((exp, index) => (
-            <div key={index} className={`flex flex-col ${index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 lg:gap-20 items-center`}>
+            <div key={index} className={`flex flex-col ${index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 md:gap-12 lg:gap-20 items-center`}>
               <motion.div 
                 initial={{ opacity: 0, x: index % 2 === 1 ? 30 : -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -110,9 +110,9 @@ export default function Experience() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="w-full lg:w-1/2 lg:px-8"
               >
-                <span className="text-primary-2 font-medium tracking-widest uppercase text-sm mb-4 block">{exp.time}</span>
-                <h3 className="text-3xl md:text-4xl font-serif text-primary-1 mb-6 leading-tight">{exp.title}</h3>
-                <p className="text-text-sec text-lg font-light leading-relaxed">{exp.desc}</p>
+                <span className="text-primary-2 font-medium tracking-widest uppercase text-xs sm:text-sm mb-3 md:mb-4 block">{exp.time}</span>
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif text-primary-1 mb-4 md:mb-6 leading-tight">{exp.title}</h3>
+                <p className="text-text-sec text-base md:text-lg font-light leading-relaxed">{exp.desc}</p>
               </motion.div>
             </div>
           ))}

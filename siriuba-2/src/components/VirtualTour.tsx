@@ -10,14 +10,14 @@ export default function VirtualTour() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <section id="tour" className="py-24 bg-primary-1 text-white relative overflow-hidden">
+    <section id="tour" className="py-16 md:py-24 bg-primary-1 text-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-4xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-serif mb-12"
+            className="text-3xl sm:text-4xl md:text-5xl font-serif mb-8 md:mb-12"
           >
             {t.virtualTour.title}
           </motion.h2>
@@ -27,7 +27,7 @@ export default function VirtualTour() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative w-full max-w-4xl mx-auto aspect-video rounded-2xl overflow-hidden shadow-2xl group border border-white/10 mb-10"
+            className="relative w-full max-w-4xl mx-auto aspect-video rounded-2xl overflow-hidden shadow-2xl group border border-white/10 mb-8 md:mb-10"
           >
             {!isPlaying ? (
               <button
@@ -82,12 +82,12 @@ export default function VirtualTour() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="flex flex-wrap justify-center items-center gap-3 md:gap-6 mb-10"
+            className="flex flex-wrap justify-center items-center gap-2 md:gap-6 mb-8 md:mb-10"
           >
             {t.virtualTour.features.map((feature, i) => {
               const Icon = featureIcons[i] ?? Eye;
               return (
-                <div key={i} className="flex items-center gap-2 bg-white/5 border border-white/10 px-5 py-2.5 rounded-full text-white/90 text-sm font-medium">
+                <div key={i} className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-white/90 text-xs sm:text-sm font-medium">
                   <Icon size={18} className="text-secondary" />
                   <span>{feature}</span>
                 </div>
@@ -102,7 +102,7 @@ export default function VirtualTour() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="bg-secondary text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-opacity-90 transition-all shadow-xl"
+              className="bg-secondary text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-bold text-base md:text-lg hover:bg-opacity-90 transition-all shadow-xl"
             >
               {t.virtualTour.button}
             </motion.button>

@@ -15,7 +15,7 @@ export default function ForWho() {
   };
 
   return (
-    <section className="py-24 md:py-40 bg-bg-main relative overflow-hidden">
+    <section className="py-16 md:py-24 lg:py-40 bg-bg-main relative overflow-hidden">
       {/* Decorative background elements */}
       <div className="hidden md:block absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden opacity-20">
         <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary-2/10 rounded-full blur-3xl" />
@@ -23,12 +23,12 @@ export default function ForWho() {
       </div>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 md:mb-20">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-primary-2 uppercase tracking-[0.4em] text-xs font-bold mb-6 block"
+            className="text-primary-2 uppercase tracking-[0.4em] text-xs font-bold mb-4 md:mb-6 block"
           >
             {t.forWho.eyebrow}
           </motion.span>
@@ -37,7 +37,7 @@ export default function ForWho() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl font-serif text-primary-1 mb-8 leading-tight"
+            className="text-3xl sm:text-5xl md:text-7xl font-serif text-primary-1 mb-6 md:mb-8 leading-tight"
           >
             {t.forWho.title}
           </motion.h2>
@@ -46,7 +46,7 @@ export default function ForWho() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-text-sec text-xl font-light max-w-2xl mx-auto leading-relaxed"
+            className="text-text-sec text-base md:text-xl font-light max-w-2xl mx-auto leading-relaxed"
           >
             {t.forWho.intro}
           </motion.p>
@@ -63,7 +63,7 @@ export default function ForWho() {
                 viewport={{ once: true, margin: "0px" }}
                 transition={{ delay: index * 0.1 + 0.3 }}
                 onClick={() => toggleProfile(profile.id)}
-                className={`group relative p-8 md:p-10 rounded-[2rem] cursor-pointer transition-all duration-500 border-2 ${
+                className={`group relative p-6 sm:p-8 md:p-10 rounded-[2rem] cursor-pointer transition-all duration-500 border-2 ${
                   isSelected 
                     ? "bg-primary-1 border-primary-1 shadow-2xl scale-[1.02]" 
                     : "bg-white border-transparent hover:border-primary-2/30 shadow-sm hover:shadow-xl"
@@ -76,7 +76,7 @@ export default function ForWho() {
                     }`}>
                       {profile.tag}
                     </span>
-                    <p className={`text-xl md:text-2xl font-light leading-snug transition-colors duration-300 ${
+                    <p className={`text-lg sm:text-xl md:text-2xl font-light leading-snug transition-colors duration-300 ${
                       isSelected ? "text-white" : "text-text-main"
                     }`}>
                       "{profile.text}"
@@ -126,15 +126,15 @@ export default function ForWho() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.8 }}
-          className="mt-20 text-center"
+          className="mt-12 md:mt-20 text-center"
         >
           <div className="space-y-6">
-            <p className="text-text-sec font-serif italic text-2xl">
+            <p className="text-text-sec font-serif italic text-xl md:text-2xl px-4">
               "{t.forWho.quote}"
             </p>
             <button
               onClick={() => window.dispatchEvent(new CustomEvent("open-lead-form"))}
-              className="mt-8 bg-primary-2 text-white px-8 py-4 rounded-full font-bold hover:bg-opacity-90 transition-all shadow-lg"
+              className="mt-6 md:mt-8 bg-primary-2 text-white px-6 md:px-8 py-3.5 md:py-4 rounded-full font-bold hover:bg-opacity-90 transition-all shadow-lg"
             >
               {t.forWho.cta}
             </button>

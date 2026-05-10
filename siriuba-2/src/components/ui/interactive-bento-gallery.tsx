@@ -309,9 +309,9 @@ const InteractiveBentoGallery: React.FC<InteractiveBentoGalleryProps> = ({ media
 
     return (
         <div className="w-full max-w-6xl mx-auto">
-            <div className="mb-12 text-center">
+            <div className="mb-8 md:mb-12 text-center">
                 <motion.h2
-                    className="text-4xl md:text-5xl font-serif text-primary-1 mb-6"
+                    className="text-3xl sm:text-4xl md:text-5xl font-serif text-primary-1 mb-4 md:mb-6"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -341,7 +341,7 @@ const InteractiveBentoGallery: React.FC<InteractiveBentoGalleryProps> = ({ media
                     />
                 ) : (
                     <motion.div
-                        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 auto-rows-[110px] sm:auto-rows-[120px] md:auto-rows-[160px] grid-flow-dense"
+                        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 auto-rows-[90px] sm:auto-rows-[120px] md:auto-rows-[160px] grid-flow-dense"
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, margin: "0px" }}

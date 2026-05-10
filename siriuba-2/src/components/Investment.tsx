@@ -31,9 +31,9 @@ export default function Investment() {
   const { lang } = useLanguage();
   const locale = lang === "pt" ? "pt-BR" : "en-US";
   return (
-    <section className="py-24 bg-bg-alt relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-bg-alt relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-12 lg:gap-20 items-center">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -42,10 +42,10 @@ export default function Investment() {
             className="lg:col-span-5"
           >
             <span className="text-primary-2 uppercase tracking-widest text-xs font-bold mb-4 block">{t.investment.eyebrow}</span>
-            <h2 className="text-4xl md:text-5xl font-serif text-primary-1 mb-8 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-primary-1 mb-6 md:mb-8 leading-tight">
               {t.investment.title}
             </h2>
-            <div className="space-y-6 text-text-sec text-lg font-light leading-relaxed mb-10">
+            <div className="space-y-5 md:space-y-6 text-text-sec text-base md:text-lg font-light leading-relaxed mb-8 md:mb-10">
               {t.investment.paragraphs.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}

@@ -46,12 +46,12 @@ export default function Location() {
   };
 
   return (
-    <section className="py-24 md:py-32 bg-bg-main relative overflow-hidden">
+    <section className="py-16 md:py-24 lg:py-32 bg-bg-main relative overflow-hidden">
       <div className="hidden md:block absolute top-0 right-0 w-[500px] h-[500px] bg-primary-2/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
       <div className="hidden md:block absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-1/5 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-12 lg:gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -63,10 +63,10 @@ export default function Location() {
               <Compass size={16} className="text-primary-2" />
               <span className="text-primary-2 uppercase tracking-widest text-xs font-bold">{t.location.eyebrow}</span>
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-primary-1 mb-8 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-primary-1 mb-6 md:mb-8 leading-tight">
               {t.location.title}
             </h2>
-            <div className="space-y-6 text-text-sec text-lg font-light leading-relaxed mb-10">
+            <div className="space-y-5 md:space-y-6 text-text-sec text-base md:text-lg font-light leading-relaxed mb-8 md:mb-10">
               {t.location.paragraphs.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
@@ -74,8 +74,8 @@ export default function Location() {
               <p>{t.location.paragraphFinal}</p>
             </div>
 
-            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-[2rem] shadow-lg shadow-black/5 border border-white">
-              <h3 className="text-primary-1 font-serif text-2xl mb-6 flex items-center gap-3">
+            <div className="bg-white/80 backdrop-blur-sm p-6 md:p-8 rounded-[2rem] shadow-lg shadow-black/5 border border-white">
+              <h3 className="text-primary-1 font-serif text-xl md:text-2xl mb-5 md:mb-6 flex items-center gap-3">
                 <span className="w-8 h-8 rounded-full bg-primary-2/10 flex items-center justify-center text-primary-2">
                   <MapPin size={16} />
                 </span>
@@ -183,7 +183,7 @@ export default function Location() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "0px" }}
             transition={{ duration: 1 }}
-            className="lg:col-span-7 relative aspect-[4/5] sm:aspect-[3/2] lg:aspect-auto lg:h-[800px] rounded-[2.5rem] overflow-hidden shadow-2xl bg-bg-alt border-4 border-white"
+            className="lg:col-span-7 relative aspect-square sm:aspect-[3/2] lg:aspect-auto lg:h-[800px] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl bg-bg-alt border-4 border-white"
           >
             <a
               href="https://www.google.com/maps/place/Praia+do+Siri%C3%BAba,+Ilhabela+-+SP/@-23.7403,-45.3347,15z"
@@ -216,14 +216,15 @@ export default function Location() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.8, duration: 0.6 }}
-              className="absolute top-6 left-6 md:top-8 md:left-8 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/50 flex items-center gap-4 z-20"
+              className="absolute top-4 left-4 md:top-8 md:left-8 bg-white/90 backdrop-blur-md p-3 md:p-4 rounded-2xl shadow-xl border border-white/50 flex items-center gap-3 md:gap-4 z-20 max-w-[calc(100%-2rem)]"
             >
-              <div className="w-12 h-12 bg-primary-1 rounded-full flex items-center justify-center text-white shadow-inner">
-                <Compass size={24} />
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-primary-1 rounded-full flex items-center justify-center text-white shadow-inner flex-shrink-0">
+                <Compass size={20} className="md:hidden" />
+                <Compass size={24} className="hidden md:block" />
               </div>
-              <div>
-                <p className="text-xs font-bold text-primary-2 uppercase tracking-wider mb-0.5">{t.location.coordinatesLabel}</p>
-                <p className="text-sm font-mono text-primary-1 font-semibold">23°44'25"S 45°20'05"W</p>
+              <div className="min-w-0">
+                <p className="text-[10px] md:text-xs font-bold text-primary-2 uppercase tracking-wider mb-0.5">{t.location.coordinatesLabel}</p>
+                <p className="text-xs md:text-sm font-mono text-primary-1 font-semibold whitespace-nowrap">23°44'25"S 45°20'05"W</p>
               </div>
             </motion.div>
 

@@ -5,7 +5,7 @@ import { useT } from "../i18n/LanguageContext";
 export default function FinalCTA() {
   const t = useT();
   return (
-    <section id="contato" className="py-32 bg-bg-main relative overflow-hidden">
+    <section id="contato" className="py-20 md:py-32 bg-bg-main relative overflow-hidden">
       <div className="hidden md:block absolute top-0 left-0 w-full h-full overflow-hidden z-0 opacity-30 pointer-events-none">
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary-2/10 rounded-full blur-3xl"></div>
         <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
@@ -16,7 +16,7 @@ export default function FinalCTA() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-6xl font-serif text-primary-1 mb-8"
+          className="text-3xl sm:text-4xl md:text-6xl font-serif text-primary-1 mb-6 md:mb-8"
         >
           {t.finalCTA.title}
         </motion.h2>
@@ -26,7 +26,7 @@ export default function FinalCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-text-sec text-xl mb-12 max-w-2xl mx-auto"
+          className="text-text-sec text-base md:text-xl mb-8 md:mb-12 max-w-2xl mx-auto"
         >
           {t.finalCTA.subtitle}
         </motion.p>
@@ -39,7 +39,7 @@ export default function FinalCTA() {
         >
           <button
             onClick={() => window.dispatchEvent(new CustomEvent("open-lead-form"))}
-            className="inline-flex items-center justify-center gap-3 bg-secondary hover:bg-secondary/90 text-white px-10 py-5 rounded-full text-lg font-medium transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            className="inline-flex items-center justify-center gap-3 bg-secondary hover:bg-secondary/90 text-white px-8 md:px-10 py-4 md:py-5 rounded-full text-base md:text-lg font-medium transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
           >
             <MessageCircle size={24} />
             {t.finalCTA.button}
