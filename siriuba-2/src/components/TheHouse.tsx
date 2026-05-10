@@ -23,7 +23,7 @@ const detailIcons = [
 const mediaConfig: { url: string; span: string }[] = [
   {
     url: "/assets/siriuba-2/vista-mar",
-    span: "col-span-2 row-span-2 sm:col-span-1 sm:row-span-2 md:col-span-1 md:row-span-3",
+    span: "col-span-2 row-span-2 sm:col-span-1 sm:row-span-2 md:col-span-2 md:row-span-2",
   },
   {
     url: "/assets/siriuba-2/area-externa",
@@ -31,7 +31,7 @@ const mediaConfig: { url: string; span: string }[] = [
   },
   {
     url: "/assets/siriuba-2/ambientes-integrados",
-    span: "col-span-2 row-span-2 sm:col-span-2 sm:row-span-2 md:col-span-1 md:row-span-3",
+    span: "col-span-2 row-span-2 sm:col-span-2 sm:row-span-2 md:col-span-2 md:row-span-2",
   },
   {
     url: "/assets/siriuba-2/luz-natural",
@@ -39,7 +39,7 @@ const mediaConfig: { url: string; span: string }[] = [
   },
   {
     url: "/assets/siriuba-2/piscina-deck",
-    span: "col-span-2 row-span-2 sm:col-span-1 sm:row-span-2 md:col-span-1 md:row-span-3",
+    span: "col-span-2 row-span-2 sm:col-span-1 sm:row-span-2 md:col-span-2 md:row-span-2",
   },
   {
     url: "/assets/siriuba-2/pavimento-2",
@@ -47,7 +47,7 @@ const mediaConfig: { url: string; span: string }[] = [
   },
   {
     url: "/assets/siriuba-2/estrutura",
-    span: "col-span-2 row-span-2 sm:col-span-1 sm:row-span-2 md:col-span-1 md:row-span-3",
+    span: "col-span-2 row-span-2 sm:col-span-1 sm:row-span-2 md:col-span-2 md:row-span-2",
   },
 ];
 
