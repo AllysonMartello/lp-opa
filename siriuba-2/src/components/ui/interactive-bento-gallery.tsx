@@ -116,7 +116,7 @@ const MediaItem = ({ item, className, onClick }: { item: MediaItemType, classNam
     }
 
     return (
-        <picture>
+        <picture className={`${className} block`}>
             <source
                 type="image/avif"
                 srcSet={`${item.url}-mobile.avif 640w, ${item.url}-desktop.avif 1280w`}
@@ -132,7 +132,7 @@ const MediaItem = ({ item, className, onClick }: { item: MediaItemType, classNam
                 srcSet={`${item.url}-mobile.jpg 640w, ${item.url}-desktop.jpg 1280w`}
                 sizes="(max-width: 768px) 100vw, 50vw"
                 alt={item.title}
-                className={`${className} object-cover object-center cursor-pointer`}
+                className="w-full h-full object-cover object-center cursor-pointer"
                 onClick={onClick}
                 loading="lazy"
                 decoding="async"
