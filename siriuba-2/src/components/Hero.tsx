@@ -28,7 +28,7 @@ export default function Hero() {
             height={1080}
             fetchPriority="high"
             decoding="async"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center"
           />
         </picture>
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />

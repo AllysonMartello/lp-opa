@@ -107,7 +107,7 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
                     height={600}
                     loading={index === 0 ? "eager" : "lazy"}
                     decoding="async"
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover object-center"
                   />
                 </picture>
               </div>

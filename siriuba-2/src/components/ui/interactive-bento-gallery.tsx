@@ -132,7 +132,7 @@ const MediaItem = ({ item, className, onClick }: { item: MediaItemType, classNam
                 srcSet={`${item.url}-mobile.jpg 640w, ${item.url}-desktop.jpg 1280w`}
                 sizes="(max-width: 768px) 100vw, 50vw"
                 alt={item.title}
-                className={`${className} object-cover cursor-pointer`}
+                className={`${className} object-cover object-center cursor-pointer`}
                 onClick={onClick}
                 loading="lazy"
                 decoding="async"
@@ -341,7 +341,7 @@ const InteractiveBentoGallery: React.FC<InteractiveBentoGalleryProps> = ({ media
                     />
                 ) : (
                     <motion.div
-                        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 auto-rows-[90px] sm:auto-rows-[120px] md:auto-rows-[160px] grid-flow-dense"
+                        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 auto-rows-[100px] sm:auto-rows-[120px] md:auto-rows-[160px] grid-flow-dense"
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, margin: "0px" }}
