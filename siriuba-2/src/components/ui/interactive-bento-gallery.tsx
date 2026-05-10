@@ -116,30 +116,32 @@ const MediaItem = ({ item, className, onClick }: { item: MediaItemType, classNam
     }
 
     return (
-        <picture className={`${className} block`}>
-            <source
-                type="image/avif"
-                srcSet={`${item.url}-mobile.avif 640w, ${item.url}-desktop.avif 1280w`}
-                sizes="(max-width: 768px) 100vw, 50vw"
-            />
-            <source
-                type="image/webp"
-                srcSet={`${item.url}-mobile.webp 640w, ${item.url}-desktop.webp 1280w`}
-                sizes="(max-width: 768px) 100vw, 50vw"
-            />
-            <img
-                src={`${item.url}-desktop.jpg`}
-                srcSet={`${item.url}-mobile.jpg 640w, ${item.url}-desktop.jpg 1280w`}
-                sizes="(max-width: 768px) 100vw, 50vw"
-                alt={item.title}
-                className="w-full h-full object-cover object-center cursor-pointer"
-                onClick={onClick}
-                loading="lazy"
-                decoding="async"
-                width={1280}
-                height={720}
-            />
-        </picture>
+        <div className={className}>
+            <picture className="block w-full h-full">
+                <source
+                    type="image/avif"
+                    srcSet={`${item.url}-mobile.avif 640w, ${item.url}-desktop.avif 1280w`}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                <source
+                    type="image/webp"
+                    srcSet={`${item.url}-mobile.webp 640w, ${item.url}-desktop.webp 1280w`}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                <img
+                    src={`${item.url}-desktop.jpg`}
+                    srcSet={`${item.url}-mobile.jpg 640w, ${item.url}-desktop.jpg 1280w`}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    alt={item.title}
+                    className="w-full h-full object-cover object-center cursor-pointer"
+                    onClick={onClick}
+                    loading="lazy"
+                    decoding="async"
+                    width={1280}
+                    height={720}
+                />
+            </picture>
+        </div>
     );
 };
 
