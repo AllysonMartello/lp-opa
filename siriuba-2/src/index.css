@@ -1,5 +1,27 @@
 @import "tailwindcss";
 
+/*
+  Font fallback metrics (Google "size-adjust" technique).
+  Mantém o layout estável enquanto Inter/Playfair carregam,
+  eliminando "Atraso na renderização do elemento" do LCP.
+*/
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial");
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Playfair Fallback";
+  src: local("Georgia");
+  size-adjust: 107%;
+  ascent-override: 95%;
+  descent-override: 25%;
+  line-gap-override: 0%;
+}
+
 @theme {
   --color-primary-1: #253A47;
   --color-primary-2: #809C9E;
@@ -11,8 +33,8 @@
   --color-border-main: #D5DCE2;
   --color-alert: #C47A2C;
 
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  --font-sans: "Inter", "Inter Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", "Playfair Fallback", ui-serif, Georgia, serif;
 }
 
 @layer base {

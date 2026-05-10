@@ -133,7 +133,10 @@ const MANIFEST = [
     group: "single",
     input: "tour-preview.jpg",
     output: "tour-preview",
-    sizes: [{ name: null, width: 1280 }],
+    sizes: [
+      { name: "mobile", width: 480 },
+      { name: "desktop", width: 960 },
+    ],
   },
   {
     group: "single",

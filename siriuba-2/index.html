@@ -83,11 +83,29 @@
         'wait_for_update': 500
       });
     </script>
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5XNTPNB9');</script>
+    <script>
+      // Lazy GTM — só carrega após interação do usuário ou 4s.
+      // Mantém Consent Mode v2 default (denied) já configurado acima.
+      (function(){
+        var loaded = false;
+        function loadGTM(){
+          if (loaded) return;
+          loaded = true;
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-5XNTPNB9');
+        }
+        var events = ['scroll','mousemove','touchstart','keydown','click'];
+        function once(){
+          loadGTM();
+          events.forEach(function(e){window.removeEventListener(e, once);});
+        }
+        events.forEach(function(e){window.addEventListener(e, once, {passive:true, once:true});});
+        setTimeout(loadGTM, 4000);
+      })();
+    </script>
   </head>
   <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5XNTPNB9"

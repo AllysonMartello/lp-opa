@@ -70,9 +70,9 @@ export default function MarcosView() {
                 <div className="flex-1 text-left w-full">
                   <p className="text-xs font-bold text-primary-1 mb-1">{t.marcosView.audioTitle}</p>
                   
-                  <div className={`waveform flex items-center gap-0.5 h-4 w-full overflow-hidden ${isPlaying ? "is-playing" : ""}`} aria-hidden="true">
-                    {Array.from({ length: 24 }).map((_, i) => (
-                      <span key={i} className="waveform-bar" style={{ animationDelay: `${i * 0.06}s` }} />
+                  <div className={`waveform flex items-center gap-1 h-4 w-full overflow-hidden ${isPlaying ? "is-playing" : ""}`} aria-hidden="true">
+                    {Array.from({ length: 12 }).map((_, i) => (
+                      <span key={i} className="waveform-bar" style={{ animationDelay: `${i * 0.1}s` }} />
                     ))}
                   </div>
                 </div>
