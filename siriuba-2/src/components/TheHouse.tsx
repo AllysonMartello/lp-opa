@@ -22,31 +22,31 @@ const detailIcons = [
 
 const mediaConfig: { url: string; span: string }[] = [
   {
-    url: "/assets/siriuba-2/Vista para o Mar.jpg",
+    url: "/assets/siriuba-2/vista-mar",
     span: "col-span-1 sm:col-span-1 md:col-span-1 row-span-2 sm:row-span-2 md:row-span-3",
   },
   {
-    url: "/assets/siriuba-2/Area Externa.jpg",
+    url: "/assets/siriuba-2/area-externa",
     span: "col-span-1 sm:col-span-2 md:col-span-2 row-span-2 sm:row-span-2 md:row-span-2",
   },
   {
-    url: "/assets/siriuba-2/Ambientes integrados.jpg",
+    url: "/assets/siriuba-2/ambientes-integrados",
     span: "col-span-1 sm:col-span-2 md:col-span-1 row-span-2 sm:row-span-2 md:row-span-3",
   },
   {
-    url: "/assets/siriuba-2/Luz natural.jpg",
+    url: "/assets/siriuba-2/luz-natural",
     span: "col-span-1 sm:col-span-1 md:col-span-2 row-span-2 sm:row-span-2 md:row-span-2",
   },
   {
-    url: "/assets/siriuba-2/Piscina com Deck.jpg",
+    url: "/assets/siriuba-2/piscina-deck",
     span: "col-span-1 sm:col-span-1 md:col-span-1 row-span-2 sm:row-span-2 md:row-span-3",
   },
   {
-    url: "/assets/siriuba-2/2 pavimento.jpg",
+    url: "/assets/siriuba-2/pavimento-2",
     span: "col-span-1 sm:col-span-1 md:col-span-2 row-span-2 sm:row-span-2 md:row-span-2",
   },
   {
-    url: "/assets/siriuba-2/Estrutura.jpg",
+    url: "/assets/siriuba-2/estrutura",
     span: "col-span-1 sm:col-span-1 md:col-span-1 row-span-2 sm:row-span-2 md:row-span-3",
   },
 ];

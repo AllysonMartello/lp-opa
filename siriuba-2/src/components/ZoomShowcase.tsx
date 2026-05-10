@@ -2,13 +2,13 @@ import { ZoomParallax } from "./ui/zoom-parallax";
 import { useT } from "../i18n/LanguageContext";
 
 const parallaxSrcs = [
-  "/assets/siriuba-2/imagem-efeito-1.jpg",
-  "/assets/siriuba-2/imagem-efeito-2.jpg",
-  "/assets/siriuba-2/imagem-efeito-3.jpg",
-  "/assets/siriuba-2/imagem-efeito-4.jpg",
-  "/assets/siriuba-2/imagem-efeito-5.jpg",
-  "/assets/siriuba-2/imagem-efeito-6.jpg",
-  "/assets/siriuba-2/imagem-efeito-7.jpg",
+  "/assets/siriuba-2/efeito-1",
+  "/assets/siriuba-2/efeito-2",
+  "/assets/siriuba-2/efeito-3",
+  "/assets/siriuba-2/efeito-4",
+  "/assets/siriuba-2/efeito-5",
+  "/assets/siriuba-2/efeito-6",
+  "/assets/siriuba-2/efeito-7",
 ];
 
 export default function ZoomShowcase() {

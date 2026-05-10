@@ -87,15 +87,29 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
               className="absolute top-0 flex h-full w-full items-center justify-center will-change-transform"
             >
               <div className={`relative overflow-hidden rounded-2xl shadow-2xl ${pic.className} ${pic.wrapperClass} will-change-transform`}>
-                <img
-                  src={src || "/placeholder.svg"}
-                  alt={alt || `Imagem ${index + 1}`}
-                  width={800}
-                  height={600}
-                  loading={index === 0 ? "eager" : "lazy"}
-                  decoding="async"
-                  className="h-full w-full object-cover"
-                />
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcSet={`${src}-mobile.avif 640w, ${src}-desktop.avif 1280w`}
+                    sizes="(max-width: 768px) 50vw, 30vw"
+                  />
+                  <source
+                    type="image/webp"
+                    srcSet={`${src}-mobile.webp 640w, ${src}-desktop.webp 1280w`}
+                    sizes="(max-width: 768px) 50vw, 30vw"
+                  />
+                  <img
+                    src={`${src}-desktop.jpg`}
+                    srcSet={`${src}-mobile.jpg 640w, ${src}-desktop.jpg 1280w`}
+                    sizes="(max-width: 768px) 50vw, 30vw"
+                    alt={alt || `Imagem ${index + 1}`}
+                    width={800}
+                    height={600}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                    className="h-full w-full object-cover"
+                  />
+                </picture>
               </div>
             </motion.div>
           );

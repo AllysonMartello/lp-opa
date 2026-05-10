@@ -17,7 +17,7 @@
  */
 
 import sharp from "sharp";
-import { readdir, stat, mkdir, access } from "node:fs/promises";
+import { readdir, stat, mkdir, access, copyFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -25,7 +25,14 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const INPUT = path.join(__dirname, "input");
-const OUTPUT = path.join(ROOT, "siriuba-2", "public", "assets", "siriuba-2");
+
+// Por causa do build monorepo (Vite raiz), as imagens precisam
+// estar em AMBAS as pastas — public/ raiz é a que vai pro dist final.
+const OUTPUTS = [
+  path.join(ROOT, "siriuba-2", "public", "assets", "siriuba-2"),
+  path.join(ROOT, "public", "assets", "siriuba-2"),
+];
+const OUTPUT = OUTPUTS[0];
 const LOGO_OUTPUT = path.join(ROOT, "siriuba-2", "public", "assets", "logo");
 
 const args = process.argv.slice(2);
@@ -185,10 +192,11 @@ async function fileExists(p) {
 async function processVariant({ pipeline, output, format, suffix }) {
   const ext = format === "jpg" ? "jpg" : format;
   const outName = suffix ? `${output}-${suffix}.${ext}` : `${output}.${ext}`;
-  const outPath = path.join(OUTPUT, outName);
+  const primary = path.join(OUTPUTS[0], outName);
 
-  if (!FORCE && (await fileExists(outPath))) {
-    return { skipped: true, outName, size: (await stat(outPath)).size };
+  const allExist = (await Promise.all(OUTPUTS.map((d) => fileExists(path.join(d, outName))))).every(Boolean);
+  if (!FORCE && allExist) {
+    return { skipped: true, outName, size: (await stat(primary)).size };
   }
 
   let p = pipeline.clone();
@@ -200,8 +208,16 @@ async function processVariant({ pipeline, output, format, suffix }) {
     return { dry: true, outName };
   }
 
-  await p.toFile(outPath);
-  const size = (await stat(outPath)).size;
+  await p.toFile(primary);
+  const size = (await stat(primary)).size;
+
+  // Espelha pros outros destinos (cópia binária, sem re-encode)
+  for (let i = 1; i < OUTPUTS.length; i++) {
+    const dest = path.join(OUTPUTS[i], outName);
+    await mkdir(path.dirname(dest), { recursive: true });
+    await copyFile(primary, dest);
+  }
+
   return { outName, size };
 }
 
@@ -244,7 +260,9 @@ async function processEntry(entry) {
 async function main() {
   console.log(color("cyan", `\n📦 Otimizando imagens do Siriúba 2\n`));
   console.log(color("dim", `   input:  ${path.relative(ROOT, INPUT)}`));
-  console.log(color("dim", `   output: ${path.relative(ROOT, OUTPUT)}`));
+  for (const d of OUTPUTS) {
+    console.log(color("dim", `   output: ${path.relative(ROOT, d)}`));
+  }
   if (DRY) console.log(color("yellow", "\n   [DRY RUN — nenhum arquivo será escrito]"));
   if (FORCE) console.log(color("yellow", "   [FORCE — reprocessando tudo]"));
   if (ONLY) console.log(color("yellow", `   [filtrado: --only=${ONLY}]`));
@@ -258,7 +276,7 @@ async function main() {
     return;
   }
 
-  await ensureDir(OUTPUT);
+  for (const d of OUTPUTS) await ensureDir(d);
   await ensureDir(LOGO_OUTPUT);
 
   const filtered = ONLY ? MANIFEST.filter((e) => e.group === ONLY) : MANIFEST;

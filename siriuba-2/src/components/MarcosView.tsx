@@ -33,13 +33,12 @@ export default function MarcosView() {
           >
             <div className="absolute inset-0 bg-primary-2/5 rounded-full blur-xl -z-10"></div>
             <img
-              src="https://smabio.com.br/wp-content/uploads/2026/04/Marco-2.png"
+              src="/assets/siriuba-2/marco.jpg"
               alt="Marco Henrique"
               width={400}
               height={400}
               loading="lazy"
               decoding="async"
-              referrerPolicy="no-referrer"
               className="w-full h-full object-cover object-top rounded-full border-2 border-white shadow-md grayscale-[20%] hover:grayscale-0 transition-[filter] duration-500"
             />
           </motion.div>

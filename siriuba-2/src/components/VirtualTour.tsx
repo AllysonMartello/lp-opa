@@ -36,15 +36,19 @@ export default function VirtualTour() {
                 className="cursor-pointer h-full w-full block"
                 aria-label={t.virtualTour.button}
               >
-                <img
-                  src="/assets/siriuba-2/Ambientes integrados.jpg"
-                  alt={t.virtualTour.previewAlt}
-                  width={1280}
-                  height={720}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+                <picture>
+                  <source srcSet="/assets/siriuba-2/tour-preview.avif" type="image/avif" />
+                  <source srcSet="/assets/siriuba-2/tour-preview.webp" type="image/webp" />
+                  <img
+                    src="/assets/siriuba-2/tour-preview.jpg"
+                    alt={t.virtualTour.previewAlt}
+                    width={1280}
+                    height={720}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </picture>
                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center transition-colors duration-300 group-hover:bg-black/50">
                   <div className="w-20 h-20 bg-secondary rounded-full flex items-center justify-center text-white shadow-lg transform transition-transform duration-300 group-hover:scale-110">
                     <Play size={32} className="ml-2" fill="currentColor" />

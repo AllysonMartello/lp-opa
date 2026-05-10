@@ -1,22 +1,36 @@
 import { ArrowRight, Play } from "lucide-react";
 import { useT } from "../i18n/LanguageContext";
 
+const BASE = "/assets/siriuba-2";
+
 export default function Hero() {
   const t = useT();
   return (
     <section className="relative min-h-[100dvh] w-full flex items-end justify-start overflow-hidden pb-24 md:pb-32">
       <div className="absolute inset-0 z-0">
-        <img
-          src="/assets/siriuba-2/Inicio-desktop-siriuba2.jpg"
-          srcSet="/assets/siriuba-2/Inicio-mobile-siriuba2.jpg 640w, /assets/siriuba-2/Inicio-desktop-siriuba2.jpg 1920w"
-          sizes="100vw"
-          alt={t.hero.imageAlt}
-          width={1920}
-          height={1080}
-          fetchPriority="high"
-          decoding="async"
-          className="w-full h-full object-cover"
-        />
+        <picture>
+          <source
+            type="image/avif"
+            srcSet={`${BASE}/hero-mobile.avif 640w, ${BASE}/hero-tablet.avif 1024w, ${BASE}/hero-desktop.avif 1920w`}
+            sizes="100vw"
+          />
+          <source
+            type="image/webp"
+            srcSet={`${BASE}/hero-mobile.webp 640w, ${BASE}/hero-tablet.webp 1024w, ${BASE}/hero-desktop.webp 1920w`}
+            sizes="100vw"
+          />
+          <img
+            src={`${BASE}/hero-desktop.jpg`}
+            srcSet={`${BASE}/hero-mobile.jpg 640w, ${BASE}/hero-tablet.jpg 1024w, ${BASE}/hero-desktop.jpg 1920w`}
+            sizes="100vw"
+            alt={t.hero.imageAlt}
+            width={1920}
+            height={1080}
+            fetchPriority="high"
+            decoding="async"
+            className="w-full h-full object-cover"
+          />
+        </picture>
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
       </div>
 

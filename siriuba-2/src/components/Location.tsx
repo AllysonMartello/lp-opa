@@ -4,18 +4,18 @@ import { MapPin, Anchor, Sailboat, UtensilsCrossed, Landmark, Compass } from "lu
 import { useT } from "../i18n/LanguageContext";
 
 const itemImages = [
-  ["/assets/siriuba-2/viana-v2.jpg"],
+  ["/assets/siriuba-2/viana"],
   [
-    "/assets/siriuba-2/siriuba-v2.jpg",
-    "/assets/siriuba-2/siriuba-drone-v2.jpg",
+    "/assets/siriuba-2/siriuba",
+    "/assets/siriuba-2/siriuba-drone",
   ],
   [
-    "/assets/siriuba-2/armacao-v2.jpg",
-    "/assets/siriuba-2/bl3-v2.jpg",
+    "/assets/siriuba-2/armacao",
+    "/assets/siriuba-2/bl3",
   ],
   [
-    "/assets/siriuba-2/vila-v2.jpg",
-    "/assets/siriuba-2/vila-opa-v2.jpg",
+    "/assets/siriuba-2/vila",
+    "/assets/siriuba-2/vila-opa",
   ],
 ];
 
@@ -125,15 +125,19 @@ export default function Location() {
                                   const caption = item.captions?.[i];
                                   return (
                                     <figure key={i} className="relative overflow-hidden rounded-xl shadow-md">
-                                      <img
-                                        src={src}
-                                        alt={caption ?? item.label}
-                                        loading="lazy"
-                                        decoding="async"
-                                        width={1280}
-                                        height={720}
-                                        className="w-full h-56 sm:h-64 object-cover"
-                                      />
+                                      <picture>
+                                        <source srcSet={`${src}.avif`} type="image/avif" />
+                                        <source srcSet={`${src}.webp`} type="image/webp" />
+                                        <img
+                                          src={`${src}.jpg`}
+                                          alt={caption ?? item.label}
+                                          loading="lazy"
+                                          decoding="async"
+                                          width={1280}
+                                          height={720}
+                                          className="w-full h-56 sm:h-64 object-cover"
+                                        />
+                                      </picture>
                                       {caption && (
                                         <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white text-xs font-medium px-3 py-2">
                                           {caption}
@@ -186,9 +190,21 @@ export default function Location() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={t.location.openInMaps ?? "Abrir no Google Maps"}
-              className="absolute inset-0 group bg-gradient-to-br from-[#1F3A37] via-primary-1 to-[#0F1F25] flex items-center justify-center"
+              className="absolute inset-0 group"
             >
-              <span className="sr-only">{t.location.mapAlt ?? "Mapa de Siriúba, Ilhabela"}</span>
+              <picture>
+                <source srcSet="/assets/siriuba-2/map-static.avif" type="image/avif" />
+                <source srcSet="/assets/siriuba-2/map-static.webp" type="image/webp" />
+                <img
+                  src="/assets/siriuba-2/map-static.jpg"
+                  alt={t.location.mapAlt ?? "Mapa de Siriúba, Ilhabela"}
+                  width={1280}
+                  height={1600}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                />
+              </picture>
               <span className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white text-primary-1 px-6 py-3 rounded-full font-bold text-sm shadow-xl group-hover:scale-105 transition-transform z-30">
                 {t.location.openInMaps ?? "Abrir no Google Maps"}
               </span>

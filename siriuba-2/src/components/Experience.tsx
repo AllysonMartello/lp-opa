@@ -3,9 +3,9 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { useT } from "../i18n/LanguageContext";
 
 const experienceImages = [
-  "/assets/siriuba-2/Manhã.jpg",
-  "/assets/siriuba-2/Tarde.jpg",
-  "/assets/siriuba-2/Noite.jpg",
+  "/assets/siriuba-2/manha",
+  "/assets/siriuba-2/tarde",
+  "/assets/siriuba-2/noite",
 ];
 
 export default function Experience() {
@@ -77,15 +77,29 @@ export default function Experience() {
                 className="w-full lg:w-1/2"
               >
                 <div className="relative h-[400px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
-                  <img
-                    src={exp.img}
-                    alt={exp.title}
-                    width={1280}
-                    height={960}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover"
-                  />
+                  <picture>
+                    <source
+                      type="image/avif"
+                      srcSet={`${exp.img}-mobile.avif 640w, ${exp.img}-desktop.avif 1280w`}
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                    <source
+                      type="image/webp"
+                      srcSet={`${exp.img}-mobile.webp 640w, ${exp.img}-desktop.webp 1280w`}
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                    <img
+                      src={`${exp.img}-desktop.jpg`}
+                      srcSet={`${exp.img}-mobile.jpg 640w, ${exp.img}-desktop.jpg 1280w`}
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      alt={exp.title}
+                      width={1280}
+                      height={960}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover"
+                    />
+                  </picture>
                 </div>
               </motion.div>
               
