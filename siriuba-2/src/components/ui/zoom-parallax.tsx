@@ -33,20 +33,33 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
         className="relative w-[80vw] h-[55vh] md:w-[60vw] md:h-[70vh] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl will-change-transform"
       >
         <picture className="block w-full h-full">
+          {/* Mobile: media query força uso independente de DPR */}
           <source
             type="image/avif"
-            srcSet={`${first.src}-mobile.avif 640w, ${first.src}-desktop.avif 1280w`}
-            sizes="(max-width: 768px) 88vw, 70vw"
+            media="(max-width: 767px)"
+            srcSet={`${first.src}-mobile.avif`}
           />
           <source
             type="image/webp"
-            srcSet={`${first.src}-mobile.webp 640w, ${first.src}-desktop.webp 1280w`}
-            sizes="(max-width: 768px) 88vw, 70vw"
+            media="(max-width: 767px)"
+            srcSet={`${first.src}-mobile.webp`}
+          />
+          <source
+            type="image/jpeg"
+            media="(max-width: 767px)"
+            srcSet={`${first.src}-mobile.jpg`}
+          />
+          {/* Tablet/Desktop */}
+          <source
+            type="image/avif"
+            srcSet={`${first.src}-desktop.avif`}
+          />
+          <source
+            type="image/webp"
+            srcSet={`${first.src}-desktop.webp`}
           />
           <img
             src={`${first.src}-desktop.jpg`}
-            srcSet={`${first.src}-mobile.jpg 640w, ${first.src}-desktop.jpg 1280w`}
-            sizes="(max-width: 768px) 88vw, 70vw"
             alt={first.alt || "Imagem"}
             width={1280}
             height={800}
