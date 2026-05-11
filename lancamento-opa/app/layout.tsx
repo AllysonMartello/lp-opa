@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import { Playfair_Display, Poppins } from 'next/font/google';
 import Header from '@/components/Header';
+import { LanguageProvider } from '@/src/i18n/LanguageContext';
 import './globals.css';
 
 const playfair = Playfair_Display({
@@ -24,8 +25,10 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="pt-BR" className={`${playfair.variable} ${poppins.variable} scroll-smooth`}>
       <body className="font-sans bg-[#F7F6F3] text-[#2B2B2B] antialiased" suppressHydrationWarning>
-        <Header />
-        {children}
+        <LanguageProvider>
+          <Header />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

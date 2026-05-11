@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext, useContext, useEffect, useMemo, useState, ReactNode } from "react";
 import { translations, type Lang, type Dictionary } from "./translations";
 
