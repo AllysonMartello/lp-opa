@@ -13,17 +13,17 @@ export default function Hero() {
           <source
             type="image/avif"
             media="(max-width: 767px)"
-            srcSet={`${BASE}/hero-mobile-v2.avif`}
+            srcSet={`${BASE}/hero-mobile-v3.avif`}
           />
           <source
             type="image/webp"
             media="(max-width: 767px)"
-            srcSet={`${BASE}/hero-mobile-v2.webp`}
+            srcSet={`${BASE}/hero-mobile-v3.webp`}
           />
           <source
             type="image/jpeg"
             media="(max-width: 767px)"
-            srcSet={`${BASE}/hero-mobile-v2.jpg`}
+            srcSet={`${BASE}/hero-mobile-v3.jpg`}
           />
           {/* Tablet/Desktop */}
           <source
