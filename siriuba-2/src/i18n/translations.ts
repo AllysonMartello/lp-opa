@@ -142,21 +142,6 @@ const pt = {
       "Escritura definitiva e matrícula regular",
     ],
   },
-  investment: {
-    eyebrow: "Segurança Patrimonial",
-    title: "Um imóvel alinhado com o novo perfil de compra",
-    paragraphs: [
-      "O norte da ilha vem mudando. Acesso melhor, perfil de comprador mais exigente e uma busca maior por casas prontas, bem resolvidas e com menos necessidade de intervenção.",
-      "Este tipo de imóvel se destaca no mercado atual. Não só pela valorização imobiliária constante de Ilhabela, mas principalmente pela liquidez e segurança que um projeto contemporâneo e atualizado oferece ao longo do tempo.",
-    ],
-    growthValue: "+79%",
-    growthPeriod: "em 5 anos",
-    growthLabel: "Crescimento médio do m² na região",
-    chartLabel: "Evolução do m² (R$)",
-    chartFrom: "2019: 9.500",
-    chartTo: "2024: 17.000",
-    tooltipUnit: "/m²",
-  },
   experience: {
     eyebrow: "Como seria viver aqui…",
     title: "A Vivência",
@@ -554,21 +539,6 @@ const en: Dictionary = {
       "Solar power installed",
       "Clear title and registered deed",
     ],
-  },
-  investment: {
-    eyebrow: "A Sound Investment",
-    title: "A property aligned with today's buyer profile",
-    paragraphs: [
-      "The north side of the island has been changing. Better access, a more demanding buyer profile, and growing demand for move-in-ready homes that don't require renovation.",
-      "This kind of property stands out in today's market, not only because of Ilhabela's steady real-estate appreciation, but mainly because of the liquidity and security a contemporary, up-to-date project offers over time.",
-    ],
-    growthValue: "+79%",
-    growthPeriod: "in 5 years",
-    growthLabel: "Average price-per-m² growth in the region",
-    chartLabel: "Price per m² (BRL)",
-    chartFrom: "2019: 9,500",
-    chartTo: "2024: 17,000",
-    tooltipUnit: "/m²",
   },
   experience: {
     eyebrow: "What it's like to live here…",

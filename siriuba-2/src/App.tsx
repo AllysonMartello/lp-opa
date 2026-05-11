@@ -6,7 +6,6 @@ const VirtualTour = lazy(() => import("./components/VirtualTour"));
 const ZoomShowcase = lazy(() => import("./components/ZoomShowcase"));
 const Location = lazy(() => import("./components/Location"));
 const TheHouse = lazy(() => import("./components/TheHouse"));
-const Investment = lazy(() => import("./components/Investment"));
 const Experience = lazy(() => import("./components/Experience"));
 const ForWho = lazy(() => import("./components/ForWho"));
 const TechnicalSpecs = lazy(() => import("./components/TechnicalSpecs"));
@@ -39,7 +38,6 @@ export default function App() {
         <ZoomShowcase />
         <Location />
         <TheHouse />
-        <Investment />
         <Experience />
         <ForWho />
         <TechnicalSpecs />
