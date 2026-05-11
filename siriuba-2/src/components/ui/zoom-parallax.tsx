@@ -21,7 +21,7 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
     offset: ["start end", "end start"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.75, 1.1]);
 
   const first = images[0];
   if (!first) return null;
@@ -30,7 +30,7 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
     <div ref={container} className="relative h-[80vh] md:h-screen bg-bg-alt overflow-hidden flex items-center justify-center">
       <motion.div
         style={{ scale }}
-        className="relative w-[88vw] h-[60vh] md:w-[70vw] md:h-[80vh] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl will-change-transform"
+        className="relative w-[80vw] h-[55vh] md:w-[60vw] md:h-[70vh] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl will-change-transform"
       >
         <picture className="block w-full h-full">
           <source
