@@ -112,8 +112,8 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
       }
     });
 
-    try {
-      await fetch("https://formsubmit.co/ajax/opaimoveisilhabela@gmail.com", {
+    const sendTo = (email: string) =>
+      fetch(`https://formsubmit.co/ajax/${email}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -121,6 +121,12 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
         },
         body: JSON.stringify(emailData)
       });
+
+    try {
+      await Promise.allSettled([
+        sendTo("contato@opailhabela.com.br"),
+        sendTo("opaimoveisilhabela@gmail.com")
+      ]);
     } catch (error) {
       console.error("Erro ao enviar formulário:", error);
     }
