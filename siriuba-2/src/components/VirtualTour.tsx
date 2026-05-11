@@ -17,7 +17,7 @@ export default function VirtualTour() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl md:text-5xl font-serif mb-8 md:mb-12"
+            className="section-title text-3xl sm:text-4xl md:text-5xl font-serif"
           >
             {t.virtualTour.title}
           </motion.h2>

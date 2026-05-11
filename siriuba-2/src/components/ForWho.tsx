@@ -37,7 +37,7 @@ export default function ForWho() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-5xl md:text-7xl font-serif text-primary-1 mb-6 md:mb-8 leading-tight"
+            className="section-title text-3xl sm:text-5xl md:text-7xl font-serif text-primary-1 leading-tight"
           >
             {t.forWho.title}
           </motion.h2>

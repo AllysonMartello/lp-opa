@@ -38,7 +38,7 @@ export default function TechnicalSpecs() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl md:text-5xl font-serif mb-4 md:mb-6"
+            className="section-title text-3xl sm:text-4xl md:text-5xl font-serif"
           >
             {t.technicalSpecs.title}
           </motion.h2>

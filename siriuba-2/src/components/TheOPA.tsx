@@ -72,7 +72,7 @@ export default function TheOPA() {
                 <span className="text-primary-2 uppercase tracking-[0.3em] text-[10px] font-black">{t.theOPA.eyebrow}</span>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-serif text-primary-1 mb-6 md:mb-8 leading-[1.1]">
+              <h2 className="section-title text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-serif text-primary-1 leading-[1.1]">
                 {t.theOPA.titleStart} <span className="italic">{t.theOPA.titleEnd}</span>
               </h2>
 

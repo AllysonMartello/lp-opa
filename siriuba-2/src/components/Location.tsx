@@ -63,7 +63,7 @@ export default function Location() {
               <Compass size={16} className="text-primary-2" />
               <span className="text-primary-2 uppercase tracking-widest text-xs font-bold">{t.location.eyebrow}</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-primary-1 mb-6 md:mb-8 leading-tight">
+            <h2 className="section-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-primary-1 leading-tight">
               {t.location.title}
             </h2>
             <div className="space-y-5 md:space-y-6 text-text-sec text-base md:text-lg font-light leading-relaxed mb-8 md:mb-10">
@@ -75,7 +75,7 @@ export default function Location() {
             </div>
 
             <div className="bg-white/80 backdrop-blur-sm p-6 md:p-8 rounded-[2rem] shadow-lg shadow-black/5 border border-white">
-              <h3 className="text-primary-1 font-serif text-xl md:text-2xl mb-5 md:mb-6 flex items-center gap-3">
+              <h3 className="section-subtitle text-primary-1 font-serif text-xl md:text-2xl flex items-center gap-3">
                 <span className="w-8 h-8 rounded-full bg-primary-2/10 flex items-center justify-center text-primary-2">
                   <MapPin size={16} />
                 </span>

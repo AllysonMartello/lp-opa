@@ -111,7 +111,7 @@ export default function Experience() {
                 className="w-full lg:w-1/2 lg:px-8"
               >
                 <span className="text-primary-2 font-medium tracking-widest uppercase text-xs sm:text-sm mb-3 md:mb-4 block">{exp.time}</span>
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif text-primary-1 mb-4 md:mb-6 leading-tight">{exp.title}</h3>
+                <h3 className="section-subtitle text-2xl sm:text-3xl md:text-4xl font-serif text-primary-1 leading-tight">{exp.title}</h3>
                 <p className="text-text-sec text-base md:text-lg font-light leading-relaxed">{exp.desc}</p>
               </motion.div>
             </div>

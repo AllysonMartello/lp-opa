@@ -16,7 +16,7 @@ export default function FinalCTA() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl sm:text-4xl md:text-6xl font-serif text-primary-1 mb-6 md:mb-8"
+          className="section-title text-3xl sm:text-4xl md:text-6xl font-serif text-primary-1"
         >
           {t.finalCTA.title}
         </motion.h2>

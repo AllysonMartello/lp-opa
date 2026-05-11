@@ -56,7 +56,7 @@ export default function Hero() {
           <span className="text-white/80 uppercase tracking-[0.3em] text-xs md:text-sm font-medium mb-4 block">
             {t.hero.eyebrow}
           </span>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-4 md:mb-6 leading-[1.1]">
+          <h1 className="section-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-white leading-[1.1]">
             {t.hero.title}
           </h1>
           <p className="text-base md:text-xl text-white/90 font-light mb-8 md:mb-10 max-w-2xl">
