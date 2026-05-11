@@ -52,7 +52,7 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
             height={800}
             loading="lazy"
             decoding="async"
-            className="w-full h-full object-cover object-center"
+            className="image-cover"
           />
         </picture>
       </motion.div>

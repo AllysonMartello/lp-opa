@@ -56,7 +56,7 @@ export default function VirtualTour() {
                     height={405}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                    className="image-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </picture>
                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center transition-colors duration-300 group-hover:bg-black/50">

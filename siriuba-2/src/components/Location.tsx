@@ -135,7 +135,7 @@ export default function Location() {
                                           decoding="async"
                                           width={1280}
                                           height={720}
-                                          className="w-full h-full object-cover object-center"
+                                          className="image-cover"
                                         />
                                       </picture>
                                       {caption && (
@@ -202,7 +202,7 @@ export default function Location() {
                   height={1600}
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"
+                  className="image-cover transition-transform duration-700 group-hover:scale-[1.02]"
                 />
               </picture>
               <span className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white text-primary-1 px-6 py-3 rounded-full font-bold text-sm shadow-xl group-hover:scale-105 transition-transform z-30">

@@ -97,7 +97,7 @@ export default function Experience() {
                       height={960}
                       loading="lazy"
                       decoding="async"
-                      className="w-full h-full object-cover object-center"
+                      className="image-cover"
                     />
                   </picture>
                 </div>

@@ -91,7 +91,7 @@ const MediaItem = ({ item, className, onClick }: { item: MediaItemType, classNam
             <div className={`${className} relative overflow-hidden`}>
                 <video
                     ref={videoRef}
-                    className="w-full h-full object-cover"
+                    className="image-cover"
                     onClick={onClick}
                     playsInline
                     muted
@@ -133,7 +133,7 @@ const MediaItem = ({ item, className, onClick }: { item: MediaItemType, classNam
                     srcSet={`${item.url}-mobile.jpg 640w, ${item.url}-desktop.jpg 1280w`}
                     sizes="(max-width: 768px) 100vw, 50vw"
                     alt={item.title}
-                    className="w-full h-full object-cover object-center cursor-pointer"
+                    className="image-cover cursor-pointer"
                     onClick={onClick}
                     loading="lazy"
                     decoding="async"
