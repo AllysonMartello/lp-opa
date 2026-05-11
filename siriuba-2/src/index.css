@@ -109,6 +109,10 @@
     display: block;
   }
 
+  button {
+    transform-origin: center;
+  }
+
   ::-webkit-scrollbar {
     width: 8px;
   }
@@ -147,5 +151,26 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
+  }
+}
+
+button {
+  transition-property: transform, filter, color, background-color, border-color, text-decoration-color, fill, stroke, box-shadow, opacity;
+  transition-duration: 300ms;
+  transition-timing-function: ease-out;
+}
+button:hover:not(:disabled) {
+  transform: scale(1.03);
+  filter: brightness(0.92);
+}
+button:active:not(:disabled) {
+  transform: scale(0.98);
+  filter: brightness(0.88);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button:hover:not(:disabled),
+  button:active:not(:disabled) {
+    transform: none;
   }
 }
