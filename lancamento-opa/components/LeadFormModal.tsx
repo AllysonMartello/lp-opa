@@ -362,12 +362,12 @@ export default function LeadFormModal({ isOpen, onClose, variant }: LeadFormModa
                   </span>
                 </div>
                 <div className="min-w-0">
-                  <p className="text-[10px] uppercase tracking-[0.3em] font-extrabold text-[#2F5D82]">
+                  <p className="text-[11px] uppercase tracking-[0.2em] font-extrabold text-[#2F5D82]">
                     Aplicação
                   </p>
                   <h3
                     id="lead-form-title"
-                    className="font-sans text-[#0F2A44] text-base md:text-lg font-bold truncate"
+                    className="font-sans text-[#0F2A44] text-[17px] md:text-[19px] font-bold truncate"
                   >
                     {config.title}
                   </h3>
@@ -409,11 +409,11 @@ export default function LeadFormModal({ isOpen, onClose, variant }: LeadFormModa
                     className="space-y-8"
                   >
                     <div>
-                      <h4 className="font-sans text-2xl md:text-3xl text-[#0F2A44] font-bold leading-[1.2] tracking-tight">
+                      <h4 className="font-sans text-[26px] md:text-[32px] text-[#0F2A44] font-bold leading-[1.25]">
                         {step.question}
                       </h4>
                       {step.hint && (
-                        <p className="mt-3 text-[14px] text-[#2B2B2B]/60 font-light italic leading-relaxed">
+                        <p className="mt-3 text-[15px] md:text-[16px] text-[#2B2B2B]/80 font-normal leading-relaxed">
                           {step.hint}
                         </p>
                       )}
@@ -433,7 +433,7 @@ export default function LeadFormModal({ isOpen, onClose, variant }: LeadFormModa
                             value={contact.nome}
                             onChange={(e) => setContact({ ...contact, nome: e.target.value })}
                             aria-invalid={!!contactErrors.nome}
-                            className={`w-full px-5 py-4 rounded-2xl bg-[#F7F6F3] border-2 outline-none transition-colors text-[#0F2A44] font-medium placeholder:text-[#0F2A44]/30 ${
+                            className={`w-full px-5 py-4 rounded-2xl bg-[#F7F6F3] border-2 outline-none transition-colors text-[16px] text-[#0F2A44] font-semibold placeholder:text-[#0F2A44]/55 placeholder:font-medium ${
                               contactErrors.nome
                                 ? "border-red-500"
                                 : "border-transparent focus:border-[#2F5D82]"
@@ -458,7 +458,7 @@ export default function LeadFormModal({ isOpen, onClose, variant }: LeadFormModa
                               setContact({ ...contact, telefone: maskPhoneBR(e.target.value) })
                             }
                             aria-invalid={!!contactErrors.telefone}
-                            className={`w-full px-5 py-4 rounded-2xl bg-[#F7F6F3] border-2 outline-none transition-colors text-[#0F2A44] font-medium placeholder:text-[#0F2A44]/30 ${
+                            className={`w-full px-5 py-4 rounded-2xl bg-[#F7F6F3] border-2 outline-none transition-colors text-[16px] text-[#0F2A44] font-semibold placeholder:text-[#0F2A44]/55 placeholder:font-medium ${
                               contactErrors.telefone
                                 ? "border-red-500"
                                 : "border-transparent focus:border-[#2F5D82]"
@@ -486,7 +486,7 @@ export default function LeadFormModal({ isOpen, onClose, variant }: LeadFormModa
                                   : "bg-[#F7F6F3] border-transparent hover:border-[#2F5D82]/30 text-[#0F2A44]"
                               }`}
                             >
-                              <span className="font-medium text-[15px]">{option}</span>
+                              <span className="font-semibold text-[16px] md:text-[17px]">{option}</span>
                               <div
                                 className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all shrink-0 ml-4 ${
                                   isSelected
@@ -510,7 +510,7 @@ export default function LeadFormModal({ isOpen, onClose, variant }: LeadFormModa
                         onChange={(e) =>
                           setAnswers((prev) => ({ ...prev, [step.id]: e.target.value }))
                         }
-                        className="w-full px-5 py-4 rounded-2xl bg-[#F7F6F3] border-2 border-transparent focus:border-[#2F5D82] outline-none transition-colors text-[#0F2A44] font-medium placeholder:text-[#0F2A44]/30"
+                        className="w-full px-5 py-4 rounded-2xl bg-[#F7F6F3] border-2 border-transparent focus:border-[#2F5D82] outline-none transition-colors text-[16px] text-[#0F2A44] font-semibold placeholder:text-[#0F2A44]/55 placeholder:font-medium"
                       />
                     )}
 
@@ -522,7 +522,7 @@ export default function LeadFormModal({ isOpen, onClose, variant }: LeadFormModa
                         onChange={(e) =>
                           setAnswers((prev) => ({ ...prev, [step.id]: e.target.value }))
                         }
-                        className="w-full px-5 py-4 rounded-2xl bg-[#F7F6F3] border-2 border-transparent focus:border-[#2F5D82] outline-none transition-colors text-[#0F2A44] font-light leading-relaxed placeholder:text-[#0F2A44]/30 resize-none"
+                        className="w-full px-5 py-4 rounded-2xl bg-[#F7F6F3] border-2 border-transparent focus:border-[#2F5D82] outline-none transition-colors text-[16px] text-[#0F2A44] font-medium leading-relaxed placeholder:text-[#0F2A44]/55 placeholder:font-medium resize-none"
                       />
                     )}
                   </motion.div>
@@ -537,10 +537,10 @@ export default function LeadFormModal({ isOpen, onClose, variant }: LeadFormModa
                     <div className="w-20 h-20 bg-[#2F5D82]/10 text-[#2F5D82] rounded-full flex items-center justify-center">
                       <Check size={44} strokeWidth={3} />
                     </div>
-                    <h4 className="text-3xl font-sans font-bold text-[#0F2A44] tracking-tight">
+                    <h4 className="text-[28px] md:text-[32px] font-sans font-bold text-[#0F2A44] leading-tight">
                       Aplicação recebida.
                     </h4>
-                    <p className="text-[#2B2B2B]/70 text-[16px] max-w-sm font-light leading-relaxed">
+                    <p className="text-[#2B2B2B]/85 text-[16px] md:text-[17px] max-w-sm font-normal leading-relaxed">
                       Marco analisa cada aplicação pessoalmente. Em breve entraremos em contato pelo
                       WhatsApp.
                     </p>
@@ -556,18 +556,18 @@ export default function LeadFormModal({ isOpen, onClose, variant }: LeadFormModa
                   type="button"
                   onClick={prevStep}
                   disabled={currentStep === 0}
-                  className={`flex items-center gap-2 font-extrabold text-[11px] uppercase tracking-[0.25em] transition-all ${
+                  className={`flex items-center gap-2 font-extrabold text-[12px] uppercase tracking-[0.2em] transition-all ${
                     currentStep === 0
                       ? "opacity-0 pointer-events-none"
-                      : "text-[#0F2A44]/40 hover:text-[#0F2A44]"
+                      : "text-[#0F2A44]/65 hover:text-[#0F2A44]"
                   }`}
                 >
                   <ChevronLeft size={18} /> Voltar
                 </button>
 
                 <div className="flex items-center gap-3">
-                  <p className="hidden sm:flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-[#0F2A44]/40 font-medium">
-                    <Lock size={11} className="text-[#2F5D82]" /> Confidencial
+                  <p className="hidden sm:flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-[#0F2A44]/60 font-semibold">
+                    <Lock size={12} className="text-[#2F5D82]" /> Confidencial
                   </p>
 
                   {isLastStep ? (
@@ -575,7 +575,7 @@ export default function LeadFormModal({ isOpen, onClose, variant }: LeadFormModa
                       type="button"
                       onClick={handleSubmit}
                       disabled={isSubmitting}
-                      className="flex items-center gap-2 bg-[#2F5D82] hover:bg-[#0F2A44] text-white px-7 md:px-9 py-3.5 rounded-full font-extrabold text-[11px] uppercase tracking-[0.25em] transition-all duration-500 shadow-lg disabled:opacity-60 disabled:cursor-not-allowed"
+                      className="flex items-center gap-2 bg-[#2F5D82] hover:bg-[#0F2A44] text-white px-7 md:px-9 py-3.5 rounded-full font-extrabold text-[12px] uppercase tracking-[0.2em] transition-all duration-500 shadow-lg disabled:opacity-60 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? "Enviando..." : "Enviar aplicação"}
                       {!isSubmitting && <Send size={16} aria-hidden="true" />}
@@ -586,7 +586,7 @@ export default function LeadFormModal({ isOpen, onClose, variant }: LeadFormModa
                         type="button"
                         onClick={nextStep}
                         disabled={!canAdvance()}
-                        className="flex items-center gap-2 bg-[#0F2A44] hover:bg-[#2F5D82] text-white px-7 md:px-9 py-3.5 rounded-full font-extrabold text-[11px] uppercase tracking-[0.25em] transition-all duration-500 shadow-lg disabled:opacity-40 disabled:cursor-not-allowed"
+                        className="flex items-center gap-2 bg-[#0F2A44] hover:bg-[#2F5D82] text-white px-7 md:px-9 py-3.5 rounded-full font-extrabold text-[12px] uppercase tracking-[0.2em] transition-all duration-500 shadow-lg disabled:opacity-40 disabled:cursor-not-allowed"
                       >
                         Continuar <ChevronRight size={16} />
                       </button>
