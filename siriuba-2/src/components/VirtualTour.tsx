@@ -9,6 +9,18 @@ export default function VirtualTour() {
   const t = useT();
   const [isPlaying, setIsPlaying] = useState(false);
 
+  const handlePlay = () => {
+    setIsPlaying(true);
+    if (typeof window !== "undefined") {
+      const w = window as any;
+      w.dataLayer = w.dataLayer || [];
+      w.dataLayer.push({
+        event: "virtual_tour_start",
+        tour_name: "Siriuba 2 Virtual Tour",
+      });
+    }
+  };
+
   return (
     <section id="tour" className="py-16 md:py-24 bg-primary-1 text-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -32,7 +44,8 @@ export default function VirtualTour() {
             {!isPlaying ? (
               <button
                 type="button"
-                onClick={() => setIsPlaying(true)}
+                id="btn-virtual-tour-image"
+                onClick={handlePlay}
                 className="cursor-pointer h-full w-full block"
                 aria-label={t.virtualTour.button}
               >
@@ -97,7 +110,8 @@ export default function VirtualTour() {
 
           {!isPlaying && (
             <motion.button
-              onClick={() => setIsPlaying(true)}
+              id="btn-virtual-tour-text"
+              onClick={handlePlay}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
