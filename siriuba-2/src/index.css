@@ -1,73 +1,5 @@
 @import "tailwindcss";
 
-/* Inter (self-hosted) */
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/inter-latin-400.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/fonts/inter-latin-500.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("/fonts/inter-latin-600.woff2") format("woff2");
-}
-
-/* Playfair Display (self-hosted) */
-@font-face {
-  font-family: "Playfair Display";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/fonts/playfair-display-latin-500.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Playfair Display";
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("/fonts/playfair-display-latin-600.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Playfair Display";
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/playfair-display-latin-italic-400.woff2") format("woff2");
-}
-
-/*
-  Font fallback metrics (Google "size-adjust" technique).
-  Mantém o layout estável enquanto Inter/Playfair carregam,
-  eliminando "Atraso na renderização do elemento" do LCP.
-*/
-@font-face {
-  font-family: "Inter Fallback";
-  src: local("Arial");
-  size-adjust: 107%;
-  ascent-override: 90%;
-  descent-override: 22%;
-  line-gap-override: 0%;
-}
-@font-face {
-  font-family: "Playfair Fallback";
-  src: local("Georgia");
-  size-adjust: 107%;
-  ascent-override: 95%;
-  descent-override: 25%;
-  line-gap-override: 0%;
-}
-
 @theme {
   --color-primary-1: #253A47;
   --color-primary-2: #809C9E;
@@ -79,8 +11,8 @@
   --color-border-main: #D5DCE2;
   --color-alert: #C47A2C;
 
-  --font-sans: "Inter", "Inter Fallback", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Playfair Display", "Playfair Fallback", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Poppins", ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
@@ -152,6 +84,13 @@
       scroll-behavior: auto !important;
     }
   }
+}
+
+.section-title {
+  margin-bottom: clamp(24px, 4vw, 40px);
+}
+.section-subtitle {
+  margin-bottom: clamp(16px, 2.5vw, 24px);
 }
 
 button {
