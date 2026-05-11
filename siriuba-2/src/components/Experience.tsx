@@ -77,7 +77,7 @@ export default function Experience() {
                 className="w-full lg:w-1/2"
               >
                 <div className="relative aspect-[16/10] sm:aspect-[16/10] lg:aspect-auto lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
-                  <picture>
+                  <picture className="block absolute inset-0 w-full h-full">
                     <source
                       type="image/avif"
                       srcSet={`${exp.img}-mobile.avif 640w, ${exp.img}-desktop.avif 1280w`}
@@ -97,7 +97,7 @@ export default function Experience() {
                       height={960}
                       loading="lazy"
                       decoding="async"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-center"
                     />
                   </picture>
                 </div>

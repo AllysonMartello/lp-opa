@@ -199,7 +199,7 @@ const GalleryModal = ({ selectedItem, isOpen, onClose, setSelectedItem, mediaIte
                                 }}
                                 onClick={onClose}
                             >
-                                <MediaItem item={selectedItem} className="w-full h-full object-contain bg-black/50" onClick={onClose} />
+                                <MediaItem item={selectedItem} className="w-full h-full" onClick={onClose} />
                                 <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 
                                               bg-gradient-to-t from-black/80 via-black/40 to-transparent">
                                     <h3 className="text-white text-xl sm:text-2xl md:text-3xl font-serif">

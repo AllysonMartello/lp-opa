@@ -124,8 +124,8 @@ export default function Location() {
                                 {images.map((src, i) => {
                                   const caption = item.captions?.[i];
                                   return (
-                                    <figure key={i} className="relative overflow-hidden rounded-xl shadow-md">
-                                      <picture>
+                                    <figure key={i} className="relative overflow-hidden rounded-xl shadow-md aspect-[16/9]">
+                                      <picture className="block w-full h-full">
                                         <source srcSet={`${src}.avif`} type="image/avif" />
                                         <source srcSet={`${src}.webp`} type="image/webp" />
                                         <img
@@ -135,7 +135,7 @@ export default function Location() {
                                           decoding="async"
                                           width={1280}
                                           height={720}
-                                          className="w-full aspect-[16/9] object-cover object-center"
+                                          className="w-full h-full object-cover object-center"
                                         />
                                       </picture>
                                       {caption && (
@@ -192,7 +192,7 @@ export default function Location() {
               aria-label={t.location.openInMaps ?? "Abrir no Google Maps"}
               className="absolute inset-0 group"
             >
-              <picture>
+              <picture className="block absolute inset-0 w-full h-full">
                 <source srcSet="/assets/siriuba-2/map-static.avif" type="image/avif" />
                 <source srcSet="/assets/siriuba-2/map-static.webp" type="image/webp" />
                 <img
@@ -202,7 +202,7 @@ export default function Location() {
                   height={1600}
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"
                 />
               </picture>
               <span className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white text-primary-1 px-6 py-3 rounded-full font-bold text-sm shadow-xl group-hover:scale-105 transition-transform z-30">

@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-[100dvh] w-full flex items-end justify-start overflow-hidden pb-16 md:pb-24 lg:pb-32">
       <div className="absolute inset-0 z-0">
-        <picture>
+        <picture className="block absolute inset-0 w-full h-full">
           {/* Mobile: foto vertical dedicada (media query força uso independente de DPR) */}
           <source
             type="image/avif"
