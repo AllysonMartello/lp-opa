@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import FadeIn from '@/components/FadeIn';
+import ApplyCTAButtons from '@/components/ApplyCTAButtons';
 import ScrollytellingImpact from "@/components/ui/ScrollytellingImpact";
 import { Eye, Target, Zap, Smartphone, FileText, MousePointerClick, Layers, Search, Sparkles, Users2, Presentation, ShieldCheck, TrendingUp, Clock, Lock } from 'lucide-react';
 import { CinematicVideoVisual, VirtualTourVisual, ExclusiveSiteVisual, SegmentedCampaignVisual } from '@/components/ui/PremiumVisuals';
@@ -429,18 +430,8 @@ export default function Home() {
           </FadeIn>
 
           <FadeIn delay={0.4} className="flex flex-col items-center gap-6">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-5 w-full sm:w-auto">
-              <button className="group relative w-full sm:w-[320px] bg-white text-[#0F2A44] px-10 py-5 text-[12px] uppercase tracking-[0.2em] font-extrabold transition-all hover:bg-transparent hover:text-white border border-white rounded-full overflow-hidden shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-                <span className="relative z-10 group-hover:text-white transition-colors duration-500">Quero aplicar meu imóvel</span>
-                <div className="absolute inset-0 h-full w-full bg-[#2F5D82] -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]" />
-              </button>
-              
-              <button className="group relative w-full sm:w-[360px] bg-transparent text-white px-8 py-[19px] text-[12px] uppercase tracking-[0.15em] font-extrabold transition-all border border-[#2F5D82] rounded-full overflow-hidden shadow-[0_0_0_rgba(47,93,130,0)] hover:shadow-[0_0_30px_rgba(47,93,130,0.4)]">
-                <span className="relative z-10 transition-colors duration-500">Quero aplicar meu empreendimento</span>
-                <div className="absolute inset-0 h-full w-full bg-[#2F5D82]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </button>
-            </div>
-            
+            <ApplyCTAButtons />
+
             <p className="text-[11px] uppercase tracking-[0.2em] text-white/40 mt-6 flex items-center justify-center gap-2 font-medium">
               <Lock size={12} className="text-[#2F5D82]" /> Confidencialidade Absoluta em Análises Pretéritas
             </p>
@@ -475,8 +466,8 @@ export default function Home() {
 
             <div className="flex flex-col gap-4">
               <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/30">Ação</h4>
-              <a href="#" className="text-[11px] uppercase tracking-widest text-[#2F5D82] font-bold hover:brightness-125 transition-all">Aplicar Imóvel →</a>
-              <a href="#" className="text-[11px] uppercase tracking-widest text-[#2F5D82] font-bold hover:brightness-125 transition-all">Aplicar Empreendimento →</a>
+              <a href="#apply" className="text-[11px] uppercase tracking-widest text-[#2F5D82] font-bold hover:brightness-125 transition-all">Aplicar Imóvel →</a>
+              <a href="#apply" className="text-[11px] uppercase tracking-widest text-[#2F5D82] font-bold hover:brightness-125 transition-all">Aplicar Empreendimento →</a>
             </div>
           </div>
           
