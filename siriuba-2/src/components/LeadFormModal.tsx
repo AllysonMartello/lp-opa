@@ -95,7 +95,9 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
     setIsSubmitting(true);
 
     const emailData: Record<string, string> = {
-      _subject: `${t.leadForm.emailSubject} - ${formData.nome}`,
+      _subject: `[SITE Siriúba 2] Novo lead — ${formData.nome}`,
+      "🏠 Origem": "Landing Page Siriúba 2 (exclusivo.opailhabela.com.br/siriuba-2)",
+      "📅 Recebido em": new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" }),
       [t.leadForm.fieldLabels.name]: formData.nome,
       [t.leadForm.fieldLabels.phone]: formData.telefone,
       [t.leadForm.fieldLabels.city]: formData.cidade,
@@ -111,7 +113,7 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
     });
 
     try {
-      await fetch("https://formsubmit.co/ajax/opaimoveisilhabela@gmail.com", {
+      await fetch("https://formsubmit.co/ajax/contato@opaimoveis.com.br", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
