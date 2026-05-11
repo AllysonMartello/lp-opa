@@ -331,20 +331,19 @@ const pt = {
         ],
       },
       {
-        question: "Qual é a faixa de investimento prevista?",
+        question: "Você já conhece Ilhabela?",
         options: [
-          "Até R$ 3 milhões",
-          "De R$ 3M a R$ 5M",
-          "De R$ 5M a R$ 10M",
-          "Acima de R$ 10M",
+          "Tenho casa ou frequento com frequência",
+          "Já visitei algumas vezes",
+          "Seria minha primeira vez",
         ],
       },
       {
-        question: "Como você pretende estruturar a aquisição?",
+        question: "Quando conseguiria fazer uma visita presencial à casa?",
         options: [
-          "Recursos próprios",
-          "Financiamento",
-          "Estudo permuta parcial",
+          "Nas próximas semanas",
+          "No próximo mês",
+          "Ainda sem data definida",
         ],
       },
       {
@@ -353,35 +352,6 @@ const pt = {
           "Estou pronto para avançar agora",
           "Nos próximos 3 a 6 meses",
           "Apenas estudando o mercado",
-        ],
-      },
-      {
-        question: "Como seria a composição ideal da casa?",
-        options: [
-          "4 ou mais suítes",
-          "Área gourmet completa",
-          "Piscina",
-          "Home office com vista",
-          "Casa de hóspedes / caseiro",
-          "Estrutura náutica",
-        ],
-      },
-      {
-        question: "Você já tem alguma região de preferência em Ilhabela?",
-        options: [
-          "Sul (Curral, Feiticeira, Julião)",
-          "Norte (Siriúba, Armação)",
-          "Centro (Vila, Engenho D’Água)",
-          "Costeira mais isolada",
-          "Ainda estou aberto a sugestões",
-        ],
-      },
-      {
-        question:
-          "Antes de agendar uma visita presencial, você gostaria de ver um tour virtual imersivo da casa?",
-        options: [
-          "Sim, gostaria de conhecer primeiro online",
-          "Prefiro ir direto para a visita presencial",
         ],
       },
       {
@@ -728,20 +698,19 @@ const en: Dictionary = {
         ],
       },
       {
-        question: "What's your investment range?",
+        question: "How well do you know Ilhabela?",
         options: [
-          "Up to R$ 3 million",
-          "R$ 3M to R$ 5M",
-          "R$ 5M to R$ 10M",
-          "Above R$ 10M",
+          "I own or frequently visit a place there",
+          "I've been a few times",
+          "It would be my first time",
         ],
       },
       {
-        question: "How do you plan to structure the purchase?",
+        question: "When could you visit the house in person?",
         options: [
-          "Cash purchase",
-          "Financing",
-          "Open to partial trade-in",
+          "In the next few weeks",
+          "Next month",
+          "No set date yet",
         ],
       },
       {
@@ -750,35 +719,6 @@ const en: Dictionary = {
           "Ready to move forward now",
           "Within the next 3 to 6 months",
           "Just exploring the market",
-        ],
-      },
-      {
-        question: "What would your ideal house look like?",
-        options: [
-          "4 or more en-suite bedrooms",
-          "Full gourmet area",
-          "Pool",
-          "Home office with a view",
-          "Guest / caretaker house",
-          "Boating infrastructure",
-        ],
-      },
-      {
-        question: "Do you have a preferred area in Ilhabela?",
-        options: [
-          "South (Curral, Feiticeira, Julião)",
-          "North (Siriúba, Armação)",
-          "Center (Vila, Engenho D'Água)",
-          "More secluded coastline",
-          "Open to suggestions",
-        ],
-      },
-      {
-        question:
-          "Before scheduling an in-person visit, would you like an immersive virtual tour of the house?",
-        options: [
-          "Yes, I'd like to see it online first",
-          "I'd rather go straight to the in-person visit",
         ],
       },
       {

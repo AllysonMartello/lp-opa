@@ -8,7 +8,7 @@ interface LeadFormModalProps {
   onClose: () => void;
 }
 
-const MULTI_STEP_INDEX = 5;
+const MULTI_STEP_INDEX = 1;
 
 const maskPhoneBR = (raw: string) => {
   const d = raw.replace(/\D/g, "").slice(0, 11);
