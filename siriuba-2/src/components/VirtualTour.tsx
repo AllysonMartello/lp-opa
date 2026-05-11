@@ -9,7 +9,7 @@ export default function VirtualTour() {
   const t = useT();
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const handlePlay = () => {
+  const handlePlay = (clickId: string) => {
     setIsPlaying(true);
     if (typeof window !== "undefined") {
       const w = window as any;
@@ -17,6 +17,8 @@ export default function VirtualTour() {
       w.dataLayer.push({
         event: "virtual_tour_start",
         tour_name: "Siriuba 2 Virtual Tour",
+        click_id: clickId,
+        value: 1, // valor de conversão padrão
       });
     }
   };
@@ -45,7 +47,7 @@ export default function VirtualTour() {
               <button
                 type="button"
                 id="btn-virtual-tour-image"
-                onClick={handlePlay}
+                onClick={() => handlePlay("btn-virtual-tour-image")}
                 className="cursor-pointer h-full w-full block"
                 aria-label={t.virtualTour.button}
               >
@@ -111,7 +113,7 @@ export default function VirtualTour() {
           {!isPlaying && (
             <motion.button
               id="btn-virtual-tour-text"
-              onClick={handlePlay}
+              onClick={() => handlePlay("btn-virtual-tour-text")}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
