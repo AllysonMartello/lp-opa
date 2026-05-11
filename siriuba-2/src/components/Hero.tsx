@@ -9,19 +9,36 @@ export default function Hero() {
     <section className="relative min-h-[100dvh] w-full flex items-end justify-start overflow-hidden pb-16 md:pb-24 lg:pb-32">
       <div className="absolute inset-0 z-0">
         <picture>
+          {/* Mobile: foto vertical dedicada (media query força uso independente de DPR) */}
           <source
             type="image/avif"
-            srcSet={`${BASE}/hero-mobile-v2.avif 640w, ${BASE}/hero-tablet.avif 1024w, ${BASE}/hero-desktop.avif 1920w`}
+            media="(max-width: 767px)"
+            srcSet={`${BASE}/hero-mobile-v2.avif`}
+          />
+          <source
+            type="image/webp"
+            media="(max-width: 767px)"
+            srcSet={`${BASE}/hero-mobile-v2.webp`}
+          />
+          <source
+            type="image/jpeg"
+            media="(max-width: 767px)"
+            srcSet={`${BASE}/hero-mobile-v2.jpg`}
+          />
+          {/* Tablet/Desktop */}
+          <source
+            type="image/avif"
+            srcSet={`${BASE}/hero-tablet.avif 1024w, ${BASE}/hero-desktop.avif 1920w`}
             sizes="100vw"
           />
           <source
             type="image/webp"
-            srcSet={`${BASE}/hero-mobile-v2.webp 640w, ${BASE}/hero-tablet.webp 1024w, ${BASE}/hero-desktop.webp 1920w`}
+            srcSet={`${BASE}/hero-tablet.webp 1024w, ${BASE}/hero-desktop.webp 1920w`}
             sizes="100vw"
           />
           <img
             src={`${BASE}/hero-desktop.jpg`}
-            srcSet={`${BASE}/hero-mobile-v2.jpg 640w, ${BASE}/hero-tablet.jpg 1024w, ${BASE}/hero-desktop.jpg 1920w`}
+            srcSet={`${BASE}/hero-tablet.jpg 1024w, ${BASE}/hero-desktop.jpg 1920w`}
             sizes="100vw"
             alt={t.hero.imageAlt}
             width={1920}

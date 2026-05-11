@@ -49,9 +49,13 @@
     </style>
 
     <!-- LCP image preload (AVIF responsivo) -->
-    <link rel="preload" as="image"
+    <link rel="preload" as="image" media="(max-width: 767px)"
+          href="/assets/siriuba-2/hero-mobile-v2.avif"
+          type="image/avif"
+          fetchpriority="high" />
+    <link rel="preload" as="image" media="(min-width: 768px)"
           href="/assets/siriuba-2/hero-desktop.avif"
-          imagesrcset="/assets/siriuba-2/hero-mobile-v2.avif 640w, /assets/siriuba-2/hero-tablet.avif 1024w, /assets/siriuba-2/hero-desktop.avif 1920w"
+          imagesrcset="/assets/siriuba-2/hero-tablet.avif 1024w, /assets/siriuba-2/hero-desktop.avif 1920w"
           imagesizes="100vw"
           type="image/avif"
           fetchpriority="high" />
