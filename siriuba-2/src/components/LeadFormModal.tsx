@@ -113,7 +113,7 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
     });
 
     try {
-      await fetch("https://formsubmit.co/ajax/contato@opailhabela.com.br", {
+      await fetch("https://formsubmit.co/ajax/opaimoveisilhabela@gmail.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
