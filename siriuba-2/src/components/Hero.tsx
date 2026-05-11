@@ -2,6 +2,7 @@ import { ArrowRight, Play } from "lucide-react";
 import { useT } from "../i18n/LanguageContext";
 
 const BASE = "/assets/siriuba-2";
+const V = "?v=2";
 
 export default function Hero() {
   const t = useT();
@@ -11,17 +12,17 @@ export default function Hero() {
         <picture>
           <source
             type="image/avif"
-            srcSet={`${BASE}/hero-mobile.avif 640w, ${BASE}/hero-tablet.avif 1024w, ${BASE}/hero-desktop.avif 1920w`}
+            srcSet={`${BASE}/hero-mobile.avif${V} 640w, ${BASE}/hero-tablet.avif${V} 1024w, ${BASE}/hero-desktop.avif${V} 1920w`}
             sizes="100vw"
           />
           <source
             type="image/webp"
-            srcSet={`${BASE}/hero-mobile.webp 640w, ${BASE}/hero-tablet.webp 1024w, ${BASE}/hero-desktop.webp 1920w`}
+            srcSet={`${BASE}/hero-mobile.webp${V} 640w, ${BASE}/hero-tablet.webp${V} 1024w, ${BASE}/hero-desktop.webp${V} 1920w`}
             sizes="100vw"
           />
           <img
-            src={`${BASE}/hero-desktop.jpg`}
-            srcSet={`${BASE}/hero-mobile.jpg 640w, ${BASE}/hero-tablet.jpg 1024w, ${BASE}/hero-desktop.jpg 1920w`}
+            src={`${BASE}/hero-desktop.jpg${V}`}
+            srcSet={`${BASE}/hero-mobile.jpg${V} 640w, ${BASE}/hero-tablet.jpg${V} 1024w, ${BASE}/hero-desktop.jpg${V} 1920w`}
             sizes="100vw"
             alt={t.hero.imageAlt}
             width={1920}
