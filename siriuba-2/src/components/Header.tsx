@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useT } from "../i18n/LanguageContext";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Header() {
   const t = useT();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isOnLanding = location.pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -17,6 +21,25 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navHref = (anchor: string) => (isOnLanding ? `#${anchor}` : `/${"" /* basename adiciona /siriuba-2 */}#${anchor}`);
+
+  const handleNavClick = (anchor: string) => (e: React.MouseEvent) => {
+    if (!isOnLanding) {
+      e.preventDefault();
+      navigate(`/#${anchor}`);
+    }
+    setMobileMenuOpen(false);
+  };
+
+  const handleCtaClick = () => {
+    setMobileMenuOpen(false);
+    if (isOnLanding) {
+      window.dispatchEvent(new CustomEvent("open-lead-form"));
+    } else {
+      navigate("/", { state: { openLeadForm: true } });
+    }
+  };
+
   return (
     <>
       <header
@@ -25,7 +48,7 @@ export default function Header() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-          <a href="#" className="flex items-center z-50 relative" aria-label="OPA Imóveis - Início">
+          <Link to="/" className="flex items-center z-50 relative" aria-label="OPA Imóveis - Início">
             <img
               src="/assets/logo/logo-opa.svg"
               alt="OPA Imóveis"
@@ -38,18 +61,18 @@ export default function Header() {
                 scrolled || mobileMenuOpen ? "invert" : ""
               }`}
             />
-          </a>
+          </Link>
 
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#a-casa" className={`text-sm font-medium hover:text-secondary transition-colors ${scrolled ? 'text-text-main' : 'text-white'}`}>{t.header.nav.house}</a>
-            <a href="#experiencia" className={`text-sm font-medium hover:text-secondary transition-colors ${scrolled ? 'text-text-main' : 'text-white'}`}>{t.header.nav.experience}</a>
-            <a href="#tour" className={`text-sm font-medium hover:text-secondary transition-colors ${scrolled ? 'text-text-main' : 'text-white'}`}>{t.header.nav.tour}</a>
+            <a href={navHref("a-casa")} onClick={handleNavClick("a-casa")} className={`text-sm font-medium hover:text-secondary transition-colors ${scrolled ? 'text-text-main' : 'text-white'}`}>{t.header.nav.house}</a>
+            <a href={navHref("experiencia")} onClick={handleNavClick("experiencia")} className={`text-sm font-medium hover:text-secondary transition-colors ${scrolled ? 'text-text-main' : 'text-white'}`}>{t.header.nav.experience}</a>
+            <a href={navHref("tour")} onClick={handleNavClick("tour")} className={`text-sm font-medium hover:text-secondary transition-colors ${scrolled ? 'text-text-main' : 'text-white'}`}>{t.header.nav.tour}</a>
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
             <LanguageSwitcher variant={scrolled ? "header-dark" : "header-light"} />
             <button
-              onClick={() => window.dispatchEvent(new CustomEvent("open-lead-form"))}
+              onClick={handleCtaClick}
               className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
                 scrolled
                   ? "bg-secondary text-white hover:bg-blue-700"
@@ -80,19 +103,16 @@ export default function Header() {
             className="fixed inset-0 z-40 bg-bg-main pt-24 px-6 pb-8 flex flex-col md:hidden"
           >
             <nav className="flex flex-col gap-6 mt-8">
-              <a href="#a-casa" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif text-primary-1 border-b border-border-main pb-4">{t.header.nav.house}</a>
-              <a href="#experiencia" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif text-primary-1 border-b border-border-main pb-4">{t.header.nav.experience}</a>
-              <a href="#tour" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif text-primary-1 border-b border-border-main pb-4">{t.header.nav.tour}</a>
+              <a href={navHref("a-casa")} onClick={handleNavClick("a-casa")} className="text-2xl font-serif text-primary-1 border-b border-border-main pb-4">{t.header.nav.house}</a>
+              <a href={navHref("experiencia")} onClick={handleNavClick("experiencia")} className="text-2xl font-serif text-primary-1 border-b border-border-main pb-4">{t.header.nav.experience}</a>
+              <a href={navHref("tour")} onClick={handleNavClick("tour")} className="text-2xl font-serif text-primary-1 border-b border-border-main pb-4">{t.header.nav.tour}</a>
             </nav>
             <div className="mt-8">
               <LanguageSwitcher variant="mobile" />
             </div>
             <div className="mt-auto pb-8">
               <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  window.dispatchEvent(new CustomEvent("open-lead-form"));
-                }}
+                onClick={handleCtaClick}
                 className="w-full block text-center bg-secondary text-white px-6 py-4 rounded-full text-lg font-medium"
               >
                 {t.header.cta}

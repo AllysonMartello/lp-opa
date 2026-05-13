@@ -1,5 +1,5 @@
 import { useState, useEffect, lazy, Suspense } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 
@@ -23,12 +23,30 @@ const SectionFallback = () => <div className="min-h-[40vh]" aria-hidden="true" /
 
 function LandingPage() {
   const [isLeadFormOpen, setIsLeadFormOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleOpenForm = () => setIsLeadFormOpen(true);
     window.addEventListener("open-lead-form", handleOpenForm);
     return () => window.removeEventListener("open-lead-form", handleOpenForm);
   }, []);
+
+  useEffect(() => {
+    const state = location.state as { openLeadForm?: boolean } | null;
+    if (state?.openLeadForm) {
+      setIsLeadFormOpen(true);
+      window.history.replaceState({}, "");
+    }
+  }, [location.state]);
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.slice(1);
+      requestAnimationFrame(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      });
+    }
+  }, [location.hash]);
 
   return (
     <main className="w-full min-h-screen bg-bg-main relative">
