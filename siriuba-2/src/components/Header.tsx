@@ -71,16 +71,18 @@ export default function Header() {
 
           <div className="hidden md:flex items-center gap-4">
             <LanguageSwitcher variant={scrolled ? "header-dark" : "header-light"} />
-            <button
-              onClick={handleCtaClick}
-              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
-                scrolled
-                  ? "bg-secondary text-white hover:bg-blue-700"
-                  : "bg-white/20 text-white backdrop-blur-sm hover:bg-white/30 border border-white/30"
-              }`}
-            >
-              {t.header.cta}
-            </button>
+            {isOnLanding && (
+              <button
+                onClick={handleCtaClick}
+                className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                  scrolled
+                    ? "bg-secondary text-white hover:bg-blue-700"
+                    : "bg-white/20 text-white backdrop-blur-sm hover:bg-white/30 border border-white/30"
+                }`}
+              >
+                {t.header.cta}
+              </button>
+            )}
           </div>
 
           <button
@@ -110,14 +112,16 @@ export default function Header() {
             <div className="mt-8">
               <LanguageSwitcher variant="mobile" />
             </div>
-            <div className="mt-auto pb-8">
-              <button
-                onClick={handleCtaClick}
-                className="w-full block text-center bg-secondary text-white px-6 py-4 rounded-full text-lg font-medium"
-              >
-                {t.header.cta}
-              </button>
-            </div>
+            {isOnLanding && (
+              <div className="mt-auto pb-8">
+                <button
+                  onClick={handleCtaClick}
+                  className="w-full block text-center bg-secondary text-white px-6 py-4 rounded-full text-lg font-medium"
+                >
+                  {t.header.cta}
+                </button>
+              </div>
+            )}
           </motion.div>
         )}
       </AnimatePresence>

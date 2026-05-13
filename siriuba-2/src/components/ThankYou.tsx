@@ -2,13 +2,14 @@ import { useEffect } from "react";
 import { motion } from "motion/react";
 import { MessageCircle } from "lucide-react";
 import Header from "./Header";
+import { useT } from "../i18n/LanguageContext";
 
 const WHATSAPP_NUMBER = "5512974068058";
-const WHATSAPP_MESSAGE = encodeURIComponent(
-  "Olá! Acabei de preencher o formulário da Siriúba 2 e gostaria de falar diretamente com vocês."
-);
 
 export default function ThankYou() {
+  const t = useT();
+  const whatsappMessage = encodeURIComponent(t.thankYou.whatsappMessage);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const w = window as any;
@@ -37,7 +38,7 @@ export default function ThankYou() {
           />
           <img
             src="/assets/siriuba-2/vista-mar-desktop.jpg"
-            alt="Vista para o mar, Siriúba 2"
+            alt={t.thankYou.imageAlt}
             className="w-full h-full object-cover"
             fetchPriority="high"
           />
@@ -63,7 +64,7 @@ export default function ThankYou() {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="text-white/60 text-sm font-medium tracking-widest uppercase"
           >
-            Solicitação recebida
+            {t.thankYou.eyebrow}
           </motion.p>
 
           {/* Título */}
@@ -73,7 +74,7 @@ export default function ThankYou() {
             transition={{ delay: 0.4, duration: 0.7 }}
             className="font-serif text-white text-4xl md:text-5xl leading-tight"
           >
-            Parabéns por tomar essa decisão importante para sua vida e vamos tratar da mesma maneira!
+            {t.thankYou.title}
           </motion.h1>
 
           {/* Divisor */}
@@ -91,9 +92,9 @@ export default function ThankYou() {
             transition={{ delay: 0.7, duration: 0.6 }}
             className="text-white/70 text-lg md:text-xl leading-relaxed"
           >
-            Em breve, o nosso time vai entrar em contato com você.
+            {t.thankYou.bodyLine1}
             <br className="hidden md:block" />
-            Se preferir, pode falar diretamente com a gente agora.
+            {t.thankYou.bodyLine2}
           </motion.p>
 
           {/* Botão WhatsApp */}
@@ -103,13 +104,13 @@ export default function ThankYou() {
             transition={{ delay: 0.9, duration: 0.5 }}
           >
             <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`}
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-white text-primary-1 px-8 py-4 rounded-full font-semibold text-base hover:bg-white/90 transition-colors shadow-xl"
             >
               <MessageCircle size={20} />
-              Falar pelo WhatsApp
+              {t.thankYou.whatsappCta}
             </a>
           </motion.div>
 

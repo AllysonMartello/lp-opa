@@ -364,6 +364,17 @@ const pt = {
       },
     ],
   },
+  thankYou: {
+    eyebrow: "Solicitação recebida",
+    title:
+      "Parabéns por tomar essa decisão importante para sua vida e vamos tratar da mesma maneira!",
+    bodyLine1: "Em breve, o nosso time vai entrar em contato com você.",
+    bodyLine2: "Se preferir, pode falar diretamente com a gente agora.",
+    whatsappCta: "Falar pelo WhatsApp",
+    whatsappMessage:
+      "Olá! Acabei de preencher o formulário da Siriúba 2 e gostaria de falar diretamente com vocês.",
+    imageAlt: "Vista para o mar, Siriúba 2",
+  },
 };
 
 export type Dictionary = typeof pt;
@@ -730,6 +741,17 @@ const en: Dictionary = {
         options: [],
       },
     ],
+  },
+  thankYou: {
+    eyebrow: "Request received",
+    title:
+      "Congratulations on taking this important step — we'll treat it that way too.",
+    bodyLine1: "Our team will be in touch with you shortly.",
+    bodyLine2: "If you prefer, you can also reach us directly right now.",
+    whatsappCta: "Talk on WhatsApp",
+    whatsappMessage:
+      "Hi! I just filled out the Siriúba 2 form and would like to talk directly with you.",
+    imageAlt: "Ocean view, Siriúba 2",
   },
 };
 
