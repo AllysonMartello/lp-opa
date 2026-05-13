@@ -46,10 +46,7 @@ export default function ThankYou() {
         <div className="absolute inset-0 bg-primary-1/60" />
       </div>
 
-      {/* Header por cima */}
-      <div className="relative z-10">
-        <Header />
-      </div>
+      <Header />
 
       {/* Conteúdo centralizado */}
       <main className="relative z-10 flex-1 flex items-center justify-center px-6 py-24">
