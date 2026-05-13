@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence, useInView, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import CookieConsent from '@/src/components/CookieConsent';
 
@@ -145,10 +144,10 @@ const acessos = [
 // ── card de imóvel ───────────────────────────────────────────────────────────
 
 function ImovelCard({
-  href, img, badge, badgePulse, title, description, location, code, index,
+  href, img, badge, badgePulse, title, description, location, index,
 }: {
   href: string; img: string; badge: string; badgePulse?: boolean;
-  title: string; description: string; location: string; code: string; index: number;
+  title: string; description: string; location: string; index: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: '0px 0px -40px 0px' });
@@ -174,8 +173,8 @@ function ImovelCard({
       {/* conteúdo — direita */}
       <div className="flex flex-col justify-between gap-4 p-5 flex-1">
         <div className="flex flex-col gap-3">
-          {/* badge + código */}
-          <div className="flex items-center justify-between">
+          {/* badge */}
+          <div className="flex items-center">
             <span className="inline-flex items-center gap-1.5 bg-secondary/15 border border-secondary/30 text-secondary text-xs px-2.5 py-1 rounded-full uppercase tracking-widest">
               {badgePulse && (
                 <span className="relative flex h-1.5 w-1.5">
@@ -185,7 +184,6 @@ function ImovelCard({
               )}
               {badge}
             </span>
-            <span className="text-text-sec/50 text-xs font-mono tracking-widest">#{code}</span>
           </div>
 
           {/* título e localização */}
@@ -433,51 +431,10 @@ export default function App() {
                 img="/assets/siriuba-2/hero-desktop.avif"
                 badge="Lançamento"
                 badgePulse
-                code="OPA-001"
                 title="Residência Siriúba 2"
                 location="Siriúba, Ilhabela — SP"
                 description="Residência contemporânea com arquitetura integrada à natureza, amplas áreas externas e vista privilegiada. Projeto exclusivo em lançamento."
                 index={0}
-              />
-              <ImovelCard
-                href="#"
-                img="/assets/siriuba-2/piscina-deck-desktop.avif"
-                badge="Em aprovação"
-                code="OPA-002"
-                title="Casa Piscina & Deck"
-                location="Siriúba, Ilhabela — SP"
-                description="Imóvel de alto padrão com deck amplo, piscina de borda infinita e acabamentos premium. Em fase de aprovação."
-                index={1}
-              />
-              <ImovelCard
-                href="#"
-                img="/assets/siriuba-2/vista-mar-desktop.avif"
-                badge="Em aprovação"
-                code="OPA-003"
-                title="Residência Vista Mar"
-                location="Praia do Viana, Ilhabela — SP"
-                description="Projeto voltado para o mar com varandas generosas, integração total entre interior e exterior e acabamento de luxo."
-                index={2}
-              />
-              <ImovelCard
-                href="#"
-                img="/assets/siriuba-2/area-externa-desktop.avif"
-                badge="Em breve"
-                code="OPA-004"
-                title="Villa Área Externa"
-                location="Armação, Ilhabela — SP"
-                description="Villa com extensa área de lazer ao ar livre, jardins paisagísticos e espaços para entretenimento. Lançamento previsto em breve."
-                index={3}
-              />
-              <ImovelCard
-                href="#"
-                img="/assets/siriuba-2/manha-desktop.avif"
-                badge="Em breve"
-                code="OPA-005"
-                title="Casa da Manhã"
-                location="Vila, Ilhabela — SP"
-                description="Residência projetada para capturar a luz natural da manhã, com orientação solar estratégica e ambientes fluidos."
-                index={4}
               />
             </motion.div>
           )}
