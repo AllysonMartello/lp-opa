@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, FormEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X, ChevronRight, ChevronLeft, Check, Send, Phone, User, MapPin } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { useT } from "../i18n/LanguageContext";
 
 interface LeadFormModalProps {
@@ -21,6 +22,7 @@ const isValidPhoneBR = (v: string) => v.replace(/\D/g, "").length >= 10;
 
 export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
   const t = useT();
+  const navigate = useNavigate();
   const stepCount = t.leadForm.steps.length;
   const FINAL_STEP_INDEX = stepCount - 1;
   const getStepType = (i: number): "single" | "multi" | "final" =>
@@ -146,18 +148,9 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
       });
     }
 
-    const encodedMessage = encodeURIComponent(t.leadForm.whatsappMessage);
-    window.open(`https://wa.me/5512974068058?text=${encodedMessage}`, "_blank");
-
-    setIsSubmitted(true);
     setIsSubmitting(false);
-    setTimeout(() => {
-      onClose();
-      setIsSubmitted(false);
-      setCurrentStep(0);
-      setAnswers({});
-      setFormData({ nome: "", telefone: "", cidade: "" });
-    }, 3000);
+    onClose();
+    navigate("/obrigado");
   };
 
   const progress = ((currentStep + 1) / stepCount) * 100;

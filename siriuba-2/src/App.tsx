@@ -1,4 +1,5 @@
 import { useState, useEffect, lazy, Suspense } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 
@@ -16,10 +17,11 @@ const Footer = lazy(() => import("./components/Footer"));
 const LeadFormModal = lazy(() => import("./components/LeadFormModal"));
 const CookieConsent = lazy(() => import("./components/CookieConsent"));
 const CustomCursor = lazy(() => import("./components/CustomCursor"));
+const ThankYou = lazy(() => import("./components/ThankYou"));
 
 const SectionFallback = () => <div className="min-h-[40vh]" aria-hidden="true" />;
 
-export default function App() {
+function LandingPage() {
   const [isLeadFormOpen, setIsLeadFormOpen] = useState(false);
 
   useEffect(() => {
@@ -53,5 +55,18 @@ export default function App() {
         />
       </Suspense>
     </main>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter basename="/siriuba-2">
+      <Suspense fallback={<SectionFallback />}>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/obrigado" element={<ThankYou />} />
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
   );
 }

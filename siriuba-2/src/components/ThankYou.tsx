@@ -1,0 +1,123 @@
+import { useEffect } from "react";
+import { motion } from "motion/react";
+import { MessageCircle } from "lucide-react";
+import Header from "./Header";
+
+const WHATSAPP_NUMBER = "5512974068058";
+const WHATSAPP_MESSAGE = encodeURIComponent(
+  "Olá! Acabei de preencher o formulário da Siriúba 2 e gostaria de falar diretamente com vocês."
+);
+
+export default function ThankYou() {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const w = window as any;
+      w.dataLayer = w.dataLayer || [];
+      w.dataLayer.push({
+        event: "thank_you_page_view",
+        page_path: "/obrigado",
+      });
+    }
+  }, []);
+
+  return (
+    <div className="min-h-screen relative flex flex-col overflow-hidden">
+      {/* Imagem de fundo */}
+      <div className="absolute inset-0 z-0">
+        <picture>
+          <source
+            media="(max-width: 767px)"
+            srcSet="/assets/siriuba-2/vista-mar-mobile.avif"
+            type="image/avif"
+          />
+          <source
+            media="(min-width: 768px)"
+            srcSet="/assets/siriuba-2/vista-mar-desktop.avif"
+            type="image/avif"
+          />
+          <img
+            src="/assets/siriuba-2/vista-mar-desktop.jpg"
+            alt="Vista para o mar, Siriúba 2"
+            className="w-full h-full object-cover"
+            fetchPriority="high"
+          />
+        </picture>
+        {/* Overlay escuro suave */}
+        <div className="absolute inset-0 bg-primary-1/60" />
+      </div>
+
+      {/* Header por cima */}
+      <div className="relative z-10">
+        <Header />
+      </div>
+
+      {/* Conteúdo centralizado */}
+      <main className="relative z-10 flex-1 flex items-center justify-center px-6 py-24">
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="max-w-xl w-full text-center space-y-10"
+        >
+          {/* Eyebrow */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="text-white/60 text-sm font-medium tracking-widest uppercase"
+          >
+            Solicitação recebida
+          </motion.p>
+
+          {/* Título */}
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.7 }}
+            className="font-serif text-white text-4xl md:text-5xl leading-tight"
+          >
+            Parabéns por tomar essa decisão importante para sua vida e vamos tratar da mesma maneira!
+          </motion.h1>
+
+          {/* Divisor */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+            className="w-12 h-px bg-white/30 mx-auto origin-left"
+          />
+
+          {/* Corpo */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+            className="text-white/70 text-lg md:text-xl leading-relaxed"
+          >
+            Em breve, o nosso time vai entrar em contato com você.
+            <br className="hidden md:block" />
+            Se preferir, pode falar diretamente com a gente agora.
+          </motion.p>
+
+          {/* Botão WhatsApp */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.5 }}
+          >
+            <a
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-white text-primary-1 px-8 py-4 rounded-full font-semibold text-base hover:bg-white/90 transition-colors shadow-xl"
+            >
+              <MessageCircle size={20} />
+              Falar pelo WhatsApp
+            </a>
+          </motion.div>
+
+        </motion.div>
+      </main>
+    </div>
+  );
+}
