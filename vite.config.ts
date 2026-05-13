@@ -1,5 +1,6 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
+import fs from 'fs';
 import path from 'path';
 import {defineConfig, loadEnv} from 'vite';
 
@@ -14,6 +15,25 @@ const directoryIndexPlugin = () => ({
     });
   }
 });
+
+// Cria copias do index.html do siriuba-2 nas rotas SPA, para o Vercel
+// servir a URL diretamente em vez de retornar 404 antes do rewrite.
+const siriuba2SpaRoutesPlugin = () => {
+  const spaRoutes = ['obrigado'];
+  return {
+    name: 'siriuba2-spa-routes',
+    apply: 'build' as const,
+    closeBundle() {
+      const sourceHtml = path.resolve(__dirname, 'dist/siriuba-2/index.html');
+      if (!fs.existsSync(sourceHtml)) return;
+      for (const route of spaRoutes) {
+        const dir = path.resolve(__dirname, `dist/siriuba-2/${route}`);
+        fs.mkdirSync(dir, { recursive: true });
+        fs.copyFileSync(sourceHtml, path.join(dir, 'index.html'));
+      }
+    }
+  };
+};
 
 /**
  * Mantém o CSS principal do siriuba-2 bloqueante (necessário para
@@ -41,7 +61,7 @@ const cssPreloadPlugin = () => ({
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
   return {
-    plugins: [react(), tailwindcss(), directoryIndexPlugin(), cssPreloadPlugin()],
+    plugins: [react(), tailwindcss(), directoryIndexPlugin(), cssPreloadPlugin(), siriuba2SpaRoutesPlugin()],
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
     },
