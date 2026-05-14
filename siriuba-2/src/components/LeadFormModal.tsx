@@ -146,6 +146,17 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
         lead_phone: formData.telefone,
         lead_city: formData.cidade,
       });
+
+      // Flag p/ a /obrigado validar que veio de um submit real (evita disparo em refresh/acesso direto)
+      try {
+        sessionStorage.setItem("lead_submitted", "1");
+        sessionStorage.setItem(
+          "lead_eventID",
+          "evt_" + Date.now() + "_" + Math.random().toString(36).slice(2, 10)
+        );
+      } catch {
+        // sessionStorage pode estar indisponível (modo privado, etc.) — segue o fluxo
+      }
     }
 
     setIsSubmitting(false);

@@ -11,13 +11,34 @@ export default function ThankYou() {
   const whatsappMessage = encodeURIComponent(t.thankYou.whatsappMessage);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const w = window as any;
-      w.dataLayer = w.dataLayer || [];
-      w.dataLayer.push({
-        event: "thank_you_page_view",
-        page_path: "/obrigado",
-      });
+    if (typeof window === "undefined") return;
+
+    // Só dispara se a /obrigado foi alcançada via submit real (flag setada no LeadFormModal).
+    // Bloqueia refresh e acesso direto à URL.
+    let leadSubmitted: string | null = null;
+    let leadEventID: string | null = null;
+    try {
+      leadSubmitted = sessionStorage.getItem("lead_submitted");
+      leadEventID = sessionStorage.getItem("lead_eventID");
+    } catch {
+      return;
+    }
+
+    if (leadSubmitted !== "1") return;
+
+    const w = window as any;
+    w.dataLayer = w.dataLayer || [];
+    w.dataLayer.push({
+      event: "thank_you_page_view",
+      page_path: "/obrigado",
+      eventID: leadEventID,
+    });
+
+    try {
+      sessionStorage.removeItem("lead_submitted");
+      sessionStorage.removeItem("lead_eventID");
+    } catch {
+      // ignore
     }
   }, []);
 
