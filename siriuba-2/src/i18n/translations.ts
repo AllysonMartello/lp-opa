@@ -288,13 +288,18 @@ const pt = {
     continueLabel: "Continuar",
     namePlaceholder: "Seu nome completo",
     phonePlaceholder: "Telefone / WhatsApp",
+    emailPlaceholder: "Seu melhor e-mail",
+    emailPlaceholderOptional: "Seu melhor e-mail (opcional)",
     cityPlaceholder: "Cidade onde mora",
     submitLabel: "Finalizar e Enviar",
     submittingLabel: "Enviando...",
     closeLabel: "Fechar",
+    contactMethodEmail: "E-mail",
     errors: {
       name: "Informe seu nome",
       phone: "Telefone inválido",
+      email: "E-mail inválido",
+      emailRequired: "Informe seu e-mail",
       city: "Informe sua cidade",
       submit: "Não foi possível enviar agora. Tente novamente em instantes ou fale com a gente pelo WhatsApp.",
     },
@@ -305,6 +310,7 @@ const pt = {
     fieldLabels: {
       name: "Nome",
       phone: "Telefone",
+      email: "E-mail",
       city: "Cidade",
     },
     whatsappMessage:
@@ -668,13 +674,18 @@ const en: Dictionary = {
     continueLabel: "Continue",
     namePlaceholder: "Your full name",
     phonePlaceholder: "Phone / WhatsApp",
+    emailPlaceholder: "Your best email",
+    emailPlaceholderOptional: "Your best email (optional)",
     cityPlaceholder: "City of residence",
     submitLabel: "Finish and Send",
     submittingLabel: "Sending...",
     closeLabel: "Close",
+    contactMethodEmail: "Email",
     errors: {
       name: "Enter your name",
       phone: "Invalid phone",
+      email: "Invalid email",
+      emailRequired: "Enter your email",
       city: "Enter your city",
       submit: "Could not send right now. Please try again in a moment or reach us on WhatsApp.",
     },
@@ -685,6 +696,7 @@ const en: Dictionary = {
     fieldLabels: {
       name: "Name",
       phone: "Phone",
+      email: "Email",
       city: "City",
     },
     whatsappMessage:

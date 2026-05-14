@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, FormEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { X, ChevronRight, ChevronLeft, Check, Send, Phone, User, MapPin } from "lucide-react";
+import { X, ChevronRight, ChevronLeft, Check, Send, Phone, User, MapPin, Mail } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useT } from "../i18n/LanguageContext";
 
@@ -20,6 +20,8 @@ const maskPhoneBR = (raw: string) => {
 
 const isValidPhoneBR = (v: string) => v.replace(/\D/g, "").length >= 10;
 
+const isValidEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+
 export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
   const t = useT();
   const navigate = useNavigate();
@@ -32,11 +34,18 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
   const [formData, setFormData] = useState({
     nome: "",
     telefone: "",
+    email: "",
     cidade: ""
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errors, setErrors] = useState<{ nome?: string; telefone?: string; cidade?: string }>({});
+  const [errors, setErrors] = useState<{ nome?: string; telefone?: string; email?: string; cidade?: string }>({});
+
+  const emailIsRequired = (() => {
+    const target = t.leadForm.contactMethodEmail;
+    if (!target) return false;
+    return Object.values(answers).some((a) => a === target);
+  })();
   const [submitError, setSubmitError] = useState<string | null>(null);
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const previousActive = useRef<HTMLElement | null>(null);
@@ -89,6 +98,12 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
     const newErrors: typeof errors = {};
     if (formData.nome.trim().length < 2) newErrors.nome = t.leadForm.errors?.name ?? "Informe seu nome";
     if (!isValidPhoneBR(formData.telefone)) newErrors.telefone = t.leadForm.errors?.phone ?? "Telefone inválido";
+    const emailTrimmed = formData.email.trim();
+    if (emailIsRequired && !emailTrimmed) {
+      newErrors.email = t.leadForm.errors?.emailRequired ?? "Informe seu e-mail";
+    } else if (emailTrimmed && !isValidEmail(emailTrimmed)) {
+      newErrors.email = t.leadForm.errors?.email ?? "E-mail inválido";
+    }
     if (formData.cidade.trim().length < 2) newErrors.cidade = t.leadForm.errors?.city ?? "Informe sua cidade";
     if (Object.keys(newErrors).length) {
       setErrors(newErrors);
@@ -113,6 +128,7 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
       receivedAt: new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" }),
       nome: formData.nome,
       telefone: formData.telefone,
+      email: formData.email.trim(),
       cidade: formData.cidade,
       answers: answersMap,
       subject: `[SITE Siriúba 2] Novo lead — ${formData.nome}`,
@@ -290,6 +306,26 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
                               />
                             </div>
                             {errors.telefone && <p id="lf-tel-err" className="text-red-600 text-xs mt-1 ml-2">{errors.telefone}</p>}
+                          </div>
+                          <div>
+                            <label htmlFor="lf-email" className="sr-only">{emailIsRequired ? t.leadForm.emailPlaceholder : t.leadForm.emailPlaceholderOptional}</label>
+                            <div className="relative">
+                              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-primary-1/30" size={20} aria-hidden="true" />
+                              <input
+                                id="lf-email"
+                                required={emailIsRequired}
+                                type="email"
+                                inputMode="email"
+                                autoComplete="email"
+                                aria-invalid={!!errors.email}
+                                aria-describedby={errors.email ? "lf-email-err" : undefined}
+                                placeholder={emailIsRequired ? t.leadForm.emailPlaceholder : t.leadForm.emailPlaceholderOptional}
+                                value={formData.email}
+                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                className={`w-full pl-12 pr-4 py-4 rounded-2xl bg-primary-1/5 border-2 outline-none transition-colors text-primary-1 font-medium ${errors.email ? "border-red-500" : "border-transparent focus:border-primary-2"}`}
+                              />
+                            </div>
+                            {errors.email && <p id="lf-email-err" className="text-red-600 text-xs mt-1 ml-2">{errors.email}</p>}
                           </div>
                           <div>
                             <label htmlFor="lf-cidade" className="sr-only">{t.leadForm.cityPlaceholder}</label>

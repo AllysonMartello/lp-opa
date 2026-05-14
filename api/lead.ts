@@ -6,10 +6,13 @@ type LeadPayload = {
   receivedAt?: string;
   nome?: string;
   telefone?: string;
+  email?: string;
   cidade?: string;
   answers?: Record<string, string>;
   subject?: string;
 };
+
+const isValidEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
 
 const escapeHtml = (s: string) =>
   s.replace(/&/g, "&amp;")
@@ -33,6 +36,7 @@ const renderHtml = (p: LeadPayload) => {
   <table style="width:100%;border-collapse:collapse;font-size:14px;">
     ${row("Nome", p.nome ?? "")}
     ${row("Telefone", p.telefone ?? "")}
+    ${p.email ? row("E-mail", p.email) : ""}
     ${row("Cidade", p.cidade ?? "")}
     ${answerRows}
   </table>
@@ -58,12 +62,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const resend = new Resend(apiKey);
 
+  const leadEmail = body.email?.trim();
+  const replyTo = leadEmail && isValidEmail(leadEmail) ? leadEmail : undefined;
+
   try {
     const { error } = await resend.emails.send({
       from: "Siriúba 2 Leads <onboarding@resend.dev>",
       to: [to],
       subject: body.subject ?? `[SITE Siriúba 2] Novo lead — ${body.nome}`,
       html: renderHtml(body),
+      ...(replyTo ? { replyTo } : {}),
     });
 
     if (error) {
