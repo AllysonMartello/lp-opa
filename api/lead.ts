@@ -64,7 +64,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       to: [to],
       subject: body.subject ?? `[SITE Siriúba 2] Novo lead — ${body.nome}`,
       html: renderHtml(body),
-      replyTo: body.telefone,
     });
 
     if (error) {
