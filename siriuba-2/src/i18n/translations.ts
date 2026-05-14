@@ -296,6 +296,7 @@ const pt = {
       name: "Informe seu nome",
       phone: "Telefone inválido",
       city: "Informe sua cidade",
+      submit: "Não foi possível enviar agora. Tente novamente em instantes ou fale com a gente pelo WhatsApp.",
     },
     successTitle: "Solicitação Enviada!",
     successBody:
@@ -675,6 +676,7 @@ const en: Dictionary = {
       name: "Enter your name",
       phone: "Invalid phone",
       city: "Enter your city",
+      submit: "Could not send right now. Please try again in a moment or reach us on WhatsApp.",
     },
     successTitle: "Request Sent!",
     successBody:

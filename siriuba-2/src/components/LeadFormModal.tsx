@@ -37,6 +37,7 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<{ nome?: string; telefone?: string; cidade?: string }>({});
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const previousActive = useRef<HTMLElement | null>(null);
 
@@ -94,46 +95,50 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
       return;
     }
     setErrors({});
+    setSubmitError(null);
     setIsSubmitting(true);
 
-    const emailData: Record<string, string> = {
-      _subject: `[SITE Siriúba 2] Novo lead — ${formData.nome}`,
-      "🏠 Origem": "Landing Page Siriúba 2 (exclusivo.opailhabela.com.br/siriuba-2)",
-      "📅 Recebido em": new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" }),
-      [t.leadForm.fieldLabels.name]: formData.nome,
-      [t.leadForm.fieldLabels.phone]: formData.telefone,
-      [t.leadForm.fieldLabels.city]: formData.cidade,
-    };
-
+    const answersMap: Record<string, string> = {};
     t.leadForm.steps.forEach((step, i) => {
       if (getStepType(i) !== "final") {
         const answer = answers[i];
         if (answer) {
-          emailData[step.question] = Array.isArray(answer) ? answer.join(", ") : answer;
+          answersMap[step.question] = Array.isArray(answer) ? answer.join(", ") : answer;
         }
       }
     });
 
-    const sendTo = (email: string) =>
-      fetch(`https://formsubmit.co/ajax/${email}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify(emailData)
-      });
+    const payload = {
+      origin: "Landing Page Siriúba 2 (exclusivo.opailhabela.com.br/siriuba-2)",
+      receivedAt: new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" }),
+      nome: formData.nome,
+      telefone: formData.telefone,
+      cidade: formData.cidade,
+      answers: answersMap,
+      subject: `[SITE Siriúba 2] Novo lead — ${formData.nome}`,
+    };
 
+    let ok = false;
     try {
-      await Promise.allSettled([
-        sendTo("contato@opailhabela.com.br"),
-        sendTo("opaimoveisilhabela@gmail.com")
-      ]);
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      ok = res.ok;
     } catch (error) {
       console.error("Erro ao enviar formulário:", error);
     }
 
-    // GTM dataLayer push — caminho confiável p/ rastrear o lead em SPAs
+    if (!ok) {
+      setIsSubmitting(false);
+      setSubmitError(
+        t.leadForm.errors?.submit ??
+          "Não foi possível enviar agora. Tente novamente em instantes ou fale com a gente pelo WhatsApp."
+      );
+      return;
+    }
+
     if (typeof window !== "undefined") {
       const w = window as any;
       w.dataLayer = w.dataLayer || [];
@@ -147,7 +152,6 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
         lead_city: formData.cidade,
       });
 
-      // Flag p/ a /obrigado validar que veio de um submit real (evita disparo em refresh/acesso direto)
       try {
         sessionStorage.setItem("lead_submitted", "1");
         sessionStorage.setItem(
@@ -155,7 +159,7 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
           "evt_" + Date.now() + "_" + Math.random().toString(36).slice(2, 10)
         );
       } catch {
-        // sessionStorage pode estar indisponível (modo privado, etc.) — segue o fluxo
+        // sessionStorage indisponível (modo privado) — segue o fluxo
       }
     }
 
@@ -307,6 +311,11 @@ export default function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
                             {errors.cidade && <p id="lf-cid-err" className="text-red-600 text-xs mt-1 ml-2">{errors.cidade}</p>}
                           </div>
                         </div>
+                        {submitError && (
+                          <p role="alert" className="text-red-600 text-sm text-center -mt-2">
+                            {submitError}
+                          </p>
+                        )}
                         <button
                           type="submit"
                           disabled={isSubmitting}
