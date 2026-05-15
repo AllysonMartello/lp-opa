@@ -369,37 +369,14 @@ export default function App() {
           transition={{ duration: 1 }}
           className="relative z-10 flex flex-col items-center text-center px-6"
         >
-          <div className="relative mb-8">
-            {/* glow pulsando atrás da logo */}
-            <motion.div
-              aria-hidden
-              className="absolute inset-0 -z-10 blur-2xl"
-              style={{ background: 'radial-gradient(circle, #0071C655 0%, transparent 70%)' }}
-              animate={{ scale: [1, 1.18, 1], opacity: [0.55, 0.9, 0.55] }}
-              transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
-            />
-
-            {/* logo: entrada com scale + spring, depois flutuação contínua */}
-            <motion.img
-              src="/assets/logo/logo-opa-nova.svg"
-              alt="Opa Ilhabela"
-              className="h-20 md:h-28 drop-shadow-2xl relative"
-              initial={{ opacity: 0, scale: 0.55, y: -40, rotate: -8 }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-                y: [0, -8, 0],
-                rotate: 0,
-              }}
-              transition={{
-                opacity: { duration: 0.9, ease: 'easeOut' },
-                scale: { type: 'spring', stiffness: 180, damping: 14, delay: 0.1 },
-                rotate: { duration: 0.9, ease: 'easeOut', delay: 0.1 },
-                y: { duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 },
-              }}
-              whileHover={{ scale: 1.06, rotate: 2, transition: { type: 'spring', stiffness: 300, damping: 15 } }}
-            />
-          </div>
+          <motion.img
+            src="/assets/logo/logo-opa-nova.svg"
+            alt="Opa Ilhabela"
+            className="h-20 md:h-28 mb-8 drop-shadow-lg"
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.1, ease: 'easeOut' }}
+          />
         </motion.div>
 
         <motion.div
