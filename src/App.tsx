@@ -161,10 +161,10 @@ const acessos = [
 // ── card de imóvel ───────────────────────────────────────────────────────────
 
 function ImovelCard({
-  href, img, badge, badgePulse, title, description, location, index,
+  href, img, badge, badgePulse, title, description, location, code, index,
 }: {
   href: string; img: string; badge: string; badgePulse?: boolean;
-  title: string; description: string; location: string; index: number;
+  title: string; description: string; location: string; code?: string; index: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: '0px 0px -40px 0px' });
@@ -178,13 +178,12 @@ function ImovelCard({
       className="group relative bg-primary-2 rounded-2xl overflow-hidden border border-white/8 hover:border-secondary/30 transition-colors duration-300 shadow-xl flex flex-col sm:flex-row"
     >
       {/* imagem — esquerda */}
-      <div className="relative sm:w-2/5 aspect-[4/3] sm:aspect-auto overflow-hidden shrink-0">
+      <div className="relative sm:w-1/2 aspect-[4/3] sm:aspect-auto overflow-hidden shrink-0">
         <img
           src={img}
           alt={title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-primary-2/60 hidden sm:block" />
       </div>
 
       {/* conteúdo — direita */}
@@ -206,7 +205,10 @@ function ImovelCard({
           {/* título e localização */}
           <div>
             <h3 className="text-white font-bold text-lg leading-snug">{title}</h3>
-            <p className="text-text-sec text-xs mt-0.5">{location}</p>
+            <p className="text-text-sec text-xs mt-0.5">
+              {location}
+              {code && <span className="text-white/40"> · {code}</span>}
+            </p>
           </div>
 
           {/* descrição */}
@@ -451,8 +453,9 @@ export default function App() {
                 img="/assets/siriuba-2/hero-desktop.avif"
                 badge="Lançamento"
                 badgePulse
-                title="Residência Siriúba 2"
+                title="Casa Contemporânea Siriúba 2"
                 location="Siriúba, Ilhabela — SP"
+                code="CA007139"
                 description="Residência contemporânea com arquitetura integrada à natureza, amplas áreas externas e vista privilegiada. Projeto exclusivo em lançamento."
                 index={0}
               />
