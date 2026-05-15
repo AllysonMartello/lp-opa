@@ -48,6 +48,16 @@ function IconHome({ color }: { color: string }) {
   );
 }
 
+function IconInstagram({ color }: { color: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7 icon-draw">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>
+  );
+}
+
 // ── WhatsApp flutuante ───────────────────────────────────────────────────────
 
 const WA_HREF = `https://wa.me/5512974068058?text=${encodeURIComponent('Olá! Gostaria de falar com a OPA Ilhabela.')}`;
@@ -131,6 +141,13 @@ const acessos = [
     title: 'YouTube',
     desc: 'Vídeos e tours pelos nossos imóveis',
     color: '#FF5252',
+  },
+  {
+    href: 'https://www.instagram.com/opaimoveisilhabela/',
+    Icon: IconInstagram,
+    title: 'Instagram',
+    desc: 'Siga e acompanhe nossos bastidores',
+    color: '#E1306C',
   },
   {
     href: 'https://opailhabela.com.br/anuncie-seu-imovel/',
@@ -232,7 +249,7 @@ function AccessCard({ item, index }: { item: typeof acessos[number]; index: numb
       whileTap={{ scale: 0.97 }}
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
-      className="group relative bg-primary-2 rounded-2xl p-5 sm:p-5 border border-white/5 overflow-hidden flex items-center gap-4 shadow-xl cursor-pointer"
+      className="group relative bg-primary-2 rounded-2xl p-6 sm:p-7 border border-white/5 overflow-hidden flex items-center gap-5 shadow-xl cursor-pointer"
     >
       {/* glow radial */}
       <div
@@ -250,7 +267,7 @@ function AccessCard({ item, index }: { item: typeof acessos[number]; index: numb
 
       {/* ícone se desenhando ao entrar na tela */}
       <div
-        className="relative z-10 shrink-0 w-12 h-12 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+        className="relative z-10 shrink-0 w-14 h-14 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
         style={{ background: item.color + '1A' }}
       >
         <div style={{ '--dash': inView ? '0' : '200' } as React.CSSProperties}>
@@ -267,20 +284,20 @@ function AccessCard({ item, index }: { item: typeof acessos[number]; index: numb
 
       {/* texto */}
       <div className="relative z-10 flex-1 min-w-0">
-        <h3 className="text-white font-bold text-base leading-tight mb-0.5">{item.title}</h3>
-        <p className="text-text-sec text-xs leading-snug truncate">{item.desc}</p>
+        <h3 className="text-white font-bold text-lg leading-tight mb-1">{item.title}</h3>
+        <p className="text-text-sec text-sm leading-snug truncate">{item.desc}</p>
       </div>
 
       {/* seta */}
       <div
-        className="relative z-10 shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300"
+        className="relative z-10 shrink-0 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300"
         style={{
           background: item.color + '2A',
           color: item.color,
           transform: hovered ? 'translateX(3px)' : 'translateX(0)',
         }}
       >
-        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
       </div>
@@ -352,11 +369,37 @@ export default function App() {
           transition={{ duration: 1 }}
           className="relative z-10 flex flex-col items-center text-center px-6"
         >
-          <img
-            src="/assets/logo/logo-opa-nova.svg"
-            alt="Opa Ilhabela"
-            className="h-20 md:h-28 mb-8 drop-shadow-lg"
-          />
+          <div className="relative mb-8">
+            {/* glow pulsando atrás da logo */}
+            <motion.div
+              aria-hidden
+              className="absolute inset-0 -z-10 blur-2xl"
+              style={{ background: 'radial-gradient(circle, #0071C655 0%, transparent 70%)' }}
+              animate={{ scale: [1, 1.18, 1], opacity: [0.55, 0.9, 0.55] }}
+              transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
+            />
+
+            {/* logo: entrada com scale + spring, depois flutuação contínua */}
+            <motion.img
+              src="/assets/logo/logo-opa-nova.svg"
+              alt="Opa Ilhabela"
+              className="h-20 md:h-28 drop-shadow-2xl relative"
+              initial={{ opacity: 0, scale: 0.55, y: -40, rotate: -8 }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                y: [0, -8, 0],
+                rotate: 0,
+              }}
+              transition={{
+                opacity: { duration: 0.9, ease: 'easeOut' },
+                scale: { type: 'spring', stiffness: 180, damping: 14, delay: 0.1 },
+                rotate: { duration: 0.9, ease: 'easeOut', delay: 0.1 },
+                y: { duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 },
+              }}
+              whileHover={{ scale: 1.06, rotate: 2, transition: { type: 'spring', stiffness: 300, damping: 15 } }}
+            />
+          </div>
         </motion.div>
 
         <motion.div
